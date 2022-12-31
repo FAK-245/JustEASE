@@ -4,7 +4,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
-import { black, green100 } from 'react-native-paper/lib/typescript/styles/colors';
+//import { black, green100 } from 'react-native-paper/lib/typescript/styles/colors';
 const Theme = {
  red: 'red',
  white: 'white',
@@ -51,6 +51,7 @@ gold: '#ada11f',
   iconSizeSm: 20,
   iconSizeExSm: 12,
   bold: 'bold',
+  Different:'#3343f4',
   errorColor: 'red',
   gray1: '#525455',
   txtTiny: RFPercentage(1.3),

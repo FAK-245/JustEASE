@@ -7,31 +7,11 @@ import {
   Image,
   Alert,
 } from "react-native";
-// import Animated, {
-//   Layout,
-//   FadeOut,
-//   FadeIn,
-//   FadeInDown,
-//   ZoomIn,
-//   SlideInRight,
-//   SlideInLeft,
-//   StretchInX,
-//   StretchInY,
-// } from 'react-native-reanimated';
 import React, { useState } from "react";
 import styles from "./style";
 import { Formik } from "formik";
-// import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as Yup from "yup";
-// import petgram from '../../Assets/Images/mainlogo.png';
-// import Textinput from "../../Components/Textinput/Textinput";
-// import {useTranslation} from 'react-i18next';
-// import auth from '@react-native-firebase/auth';
-// import firestore from '@react-native-firebase/firestore';
-
 import Theme from "../../utils/Theme";
-// import Button from '../../Components/Button/Button';
-
 const signUpSchema = Yup.object({
   Name: Yup.string()
     .min(0, "Minimum Input")
@@ -49,7 +29,6 @@ const signUpSchema = Yup.object({
   House: Yup.string().min(0).required("Required Field").max(20, "Limit Exceed"),
   City: Yup.string().min(0).required("Required Field").max(20, "Limit Exceed"),
 });
-
 const Signup = ({ navigation }) => {
   // const {t, i18n} = useTranslation();
   const [Name, setName] = useState("");
@@ -251,7 +230,7 @@ const Signup = ({ navigation }) => {
                 </Text>
               </View>
               <Text
-                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "2%" }}
+                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
               >
                 What is your phone number?
               </Text>
@@ -269,9 +248,39 @@ const Signup = ({ navigation }) => {
                 {touched.PhoneNumber && errors.PhoneNumber}
               </Text>
             </View>
-            <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
+            <Text
+              style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "4%" }}
+            >
               Do you have a legal representative?
             </Text>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <TouchableOpacity style={styles.yes}>
+                <Text
+                  style={{
+                    color: "white",
+                    textAlign: "center",
+                    margin: 5,
+                    fontWeight: "500",
+                  }}
+                >
+                  Yes
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.no}>
+                <Text
+                  style={{
+                    color: "white",
+                    textAlign: "center",
+                    margin: 5,
+                    fontWeight: "500",
+                  }}
+                >
+                  No
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
       </Formik>

@@ -95,5 +95,24 @@ const styles = StyleSheet.create({
     height: Theme.hp("7%"),
     width: Theme.wp("27%"),
   },
+  yes: {
+    margin: 10,
+
+    height: Theme.hp("4%"),
+    width: Theme.wp("40%"),
+    backgroundColor: "blue",
+    borderRadius: 5,
+    marginLeft: "5%",
+    opacity: 0.8,
+  },
+  no: {
+    margin: 10,
+    height: Theme.hp("4%"),
+    width: Theme.wp("40%"),
+    backgroundColor: "blue",
+    borderRadius: 5,
+    marginRight: "5%",
+    opacity: 0.8,
+  },
 });
 export default styles;

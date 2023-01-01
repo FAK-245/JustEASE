@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   View1: {
     height: Theme.hp("10%"),
     justifyContent: "center",
+    marginTop: "15%",
   },
   signuptxt: {
     color: Theme.black,
@@ -109,6 +110,24 @@ const styles = StyleSheet.create({
     margin: 10,
     height: Theme.hp("4%"),
     width: Theme.wp("40%"),
+    backgroundColor: "blue",
+    borderRadius: 5,
+    marginRight: "5%",
+    opacity: 0.8,
+  },
+  back: {
+    margin: 10,
+    height: Theme.hp("6%"),
+    width: Theme.wp("25%"),
+    backgroundColor: "blue",
+    borderRadius: 5,
+    marginLeft: "5%",
+    opacity: 0.8,
+  },
+  next: {
+    margin: 10,
+    height: Theme.hp("6%"),
+    width: Theme.wp("25%"),
     backgroundColor: "blue",
     borderRadius: 5,
     marginRight: "5%",

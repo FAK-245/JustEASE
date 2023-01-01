@@ -122,6 +122,17 @@ const Signup = ({ navigation }) => {
               <Text style={styles.signuptxt}>Part A - </Text>
               <Text style={styles.signuptxt1}>Personal Information</Text>
             </View>
+            <View style={{}}>
+              <View
+                style={{
+                  backgroundColor: "blue",
+                  opacity: 0.6,
+                  justifyContent: "center",
+                  height: Theme.hp("0.8%"),
+                  width: Theme.wp("15%"),
+                }}
+              ></View>
+            </View>
             <View style={styles.textinputconatiner}>
               <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
                 What is your name?
@@ -278,6 +289,34 @@ const Signup = ({ navigation }) => {
                   }}
                 >
                   No
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <TouchableOpacity style={styles.back}>
+                <Text
+                  style={{
+                    color: "white",
+                    textAlign: "center",
+                    margin: 10,
+                    fontWeight: "500",
+                  }}
+                >
+                  Back
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.next}>
+                <Text
+                  style={{
+                    color: "white",
+                    textAlign: "center",
+                    margin: 10,
+                    fontWeight: "500",
+                  }}
+                >
+                  Next
                 </Text>
               </TouchableOpacity>
             </View>

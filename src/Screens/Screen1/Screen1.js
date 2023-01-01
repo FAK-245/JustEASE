@@ -267,7 +267,10 @@ const Signup = ({ navigation }) => {
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
-              <TouchableOpacity style={styles.yes}>
+              <TouchableOpacity
+                style={styles.yes}
+                onPress={() => navigation.navigate("Screen2")}
+              >
                 <Text
                   style={{
                     color: "white",

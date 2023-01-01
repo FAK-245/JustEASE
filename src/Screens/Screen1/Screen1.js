@@ -52,8 +52,8 @@ const Signup = ({ navigation }) => {
   // const {t, i18n} = useTranslation();
   const [Name, setName] = useState("");
   const [Occupation, setOccupation] = useState("");
-  // const [Dob, setDob] = useState("");
-  // const [Street, setStreet] = useState("");
+  const [Dob, setDob] = useState("");
+  const [Street, setStreet] = useState("");
 
   const createUserFun = (values) => {
     // alert('user registered succesfully!');
@@ -110,8 +110,8 @@ const Signup = ({ navigation }) => {
         initialValues={{
           Name: Name,
           Occupation: Occupation,
-          // Dob: Dob,
-          // Street: Street,
+          Dob: Dob,
+          Street: Street,
         }}
         validationSchema={signUpSchema}
         onSubmit={(values, actions) => {
@@ -134,11 +134,12 @@ const Signup = ({ navigation }) => {
               <Text style={styles.signuptxt}>Part A - </Text>
               <Text style={styles.signuptxt1}>Personal Information</Text>
             </View>
-            <View>
-              <Text>What is your name?</Text>
+            <View style={styles.textinputconatiner}>
+              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
+                What is your name?
+              </Text>
               <TextInput
                 cursorColor="blue"
-                // Usernameinput={true}
                 placeholder="Input your Text in here"
                 style={styles.txtinput}
                 value={values.Name}
@@ -149,10 +150,11 @@ const Signup = ({ navigation }) => {
               <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
                 {touched.Name && errors.Name}
               </Text>
-              <Text>What is your Occupation?</Text>
+              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
+                What is your Occupation?
+              </Text>
               <TextInput
                 cursorColor="#d75f4f"
-                // Emailinput={true}
                 style={styles.txtinput}
                 placeholder="Input your Text in here"
                 value={values.Occupation}
@@ -163,52 +165,50 @@ const Signup = ({ navigation }) => {
               <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
                 {touched.Occupation && errors.Occupation}
               </Text>
-              {/* <Animated.View
-                entering={SlideInRight}
-                layout={Layout.delay(300).easing()}
-              >
-                <Textinput
-                  inputpassword={true}
-                  placeholder={t("placeholderText.Password")}
-                  returnKeyType={"done"}
-                  secureTextEntry={isPasswordSecure1}
-                  keyboardType={"default"}
-                  onChangeText={handleChange("password")}
-                  value={values.password}
-                  iconName={isPasswordSecure1 ? "eye-off-sharp" : "eye"}
-                  onEyePress={() => {
-                    isPasswordSecure1
-                      ? setIsPasswordSecure1(false)
-                      : setIsPasswordSecure1(true);
-                  }}
-                  // onTap={() => eyeIconFun()}
-                />
-              </Animated.View>
+              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
+                What is your date of birth?
+              </Text>
+              <TextInput
+                cursorColor="#d75f4f"
+                style={styles.txtinput}
+                placeholder="Input your Text in here"
+                value={values.Dob}
+                onChangeText={handleChange("Dob")}
+                onBlur={handleBlur("Dob")}
+              />
+
               <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
-                {touched.password && errors.password}
-              </Text> */}
-              {/* <Animated.View
-                entering={SlideInRight}
-                layout={Layout.delay(400).easing()}
-              >
-                <Textinput
-                  confirminput={true}
-                  placeholder={t("placeholderText.ConfirmPassword")}
-                  value={values.confirmPassword}
-                  onChangeText={handleChange("confirmPassword")}
-                  onBlur={handleBlur("confirmPassword")}
-                  secureTextEntry={isPasswordSecure}
-                  iconName={isPasswordSecure ? "eye-off-sharp" : "eye"}
-                  onEyePress={() => {
-                    isPasswordSecure
-                      ? setIsPasswordSecure(false)
-                      : setIsPasswordSecure(true);
-                  }}
+                {touched.Dob && errors.Dob}
+              </Text>
+              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
+                What is your address?
+              </Text>
+              <View style={{ flexDirection: "row" }}>
+                <TextInput
+                  cursorColor="#d75f4f"
+                  style={styles.txtinputAddress}
+                  placeholder="Street"
+                  value={values.Street}
+                  onChangeText={handleChange("Street")}
+                  onBlur={handleBlur("Street")}
                 />
-              </Animated.View>
-              <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
-                {touched.confirmPassword && errors.confirmPassword}
-              </Text> */}
+
+                <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
+                  {touched.Street && errors.Street}
+                </Text>
+                <TextInput
+                  cursorColor="#d75f4f"
+                  style={styles.txtinputHouse}
+                  placeholder="House Nr"
+                  value={values.Street}
+                  onChangeText={handleChange("Street")}
+                  onBlur={handleBlur("Street")}
+                />
+
+                <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
+                  {touched.Street && errors.Street}
+                </Text>
+              </View>
             </View>
           </View>
         )}

@@ -122,14 +122,14 @@ const Signup = ({ navigation }) => {
               <Text style={styles.signuptxt}>Part A - </Text>
               <Text style={styles.signuptxt1}>Personal Information</Text>
             </View>
-            <View style={{}}>
+            <View style={{ marginTop: "5%" }}>
               <View
                 style={{
                   backgroundColor: "blue",
                   opacity: 0.6,
-                  justifyContent: "center",
                   height: Theme.hp("0.8%"),
                   width: Theme.wp("15%"),
+                  alignSelf: "center",
                 }}
               ></View>
             </View>

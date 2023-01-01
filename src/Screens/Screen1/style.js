@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
   },
   textinputconatiner: {
     height: Theme.hp("70%"),
+    // margin: 10,
+    marginTop: "10%",
   },
   txtinput: {
     marginTop: 5,

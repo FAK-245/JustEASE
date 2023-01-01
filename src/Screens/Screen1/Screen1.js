@@ -46,6 +46,8 @@ const signUpSchema = Yup.object({
     .min(0)
     .required("Required Field")
     .max(20, "Limit Exceed"),
+  House: Yup.string().min(0).required("Required Field").max(20, "Limit Exceed"),
+  City: Yup.string().min(0).required("Required Field").max(20, "Limit Exceed"),
 });
 
 const Signup = ({ navigation }) => {
@@ -54,7 +56,10 @@ const Signup = ({ navigation }) => {
   const [Occupation, setOccupation] = useState("");
   const [Dob, setDob] = useState("");
   const [Street, setStreet] = useState("");
-
+  const [House, setHouse] = useState("");
+  const [City, setCity] = useState("");
+  const [PostalCode, setPostalCode] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
   const createUserFun = (values) => {
     // alert('user registered succesfully!');
     Alert.alert("User Registered Succesfully!", "Press Ok to Login", [
@@ -112,6 +117,10 @@ const Signup = ({ navigation }) => {
           Occupation: Occupation,
           Dob: Dob,
           Street: Street,
+          House: House,
+          City: City,
+          PostalCode: PostalCode,
+          PhoneNumber: PhoneNumber,
         }}
         validationSchema={signUpSchema}
         onSubmit={(values, actions) => {
@@ -139,6 +148,7 @@ const Signup = ({ navigation }) => {
                 What is your name?
               </Text>
               <TextInput
+                placeholderTextColor={"#87CEEB"}
                 cursorColor="blue"
                 placeholder="Input your Text in here"
                 style={styles.txtinput}
@@ -154,6 +164,7 @@ const Signup = ({ navigation }) => {
                 What is your Occupation?
               </Text>
               <TextInput
+                placeholderTextColor={"#87CEEB"}
                 cursorColor="#d75f4f"
                 style={styles.txtinput}
                 placeholder="Input your Text in here"
@@ -169,6 +180,7 @@ const Signup = ({ navigation }) => {
                 What is your date of birth?
               </Text>
               <TextInput
+                placeholderTextColor={"#87CEEB"}
                 cursorColor="#d75f4f"
                 style={styles.txtinput}
                 placeholder="Input your Text in here"
@@ -185,6 +197,7 @@ const Signup = ({ navigation }) => {
               </Text>
               <View style={{ flexDirection: "row" }}>
                 <TextInput
+                  placeholderTextColor={"#87CEEB"}
                   cursorColor="#d75f4f"
                   style={styles.txtinputAddress}
                   placeholder="Street"
@@ -192,24 +205,73 @@ const Signup = ({ navigation }) => {
                   onChangeText={handleChange("Street")}
                   onBlur={handleBlur("Street")}
                 />
-
                 <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
                   {touched.Street && errors.Street}
                 </Text>
                 <TextInput
                   cursorColor="#d75f4f"
+                  placeholderTextColor={"#87CEEB"}
                   style={styles.txtinputHouse}
                   placeholder="House Nr"
-                  value={values.Street}
-                  onChangeText={handleChange("Street")}
-                  onBlur={handleBlur("Street")}
+                  value={values.House}
+                  onChangeText={handleChange("House")}
+                  onBlur={handleBlur("House")}
                 />
 
                 <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
-                  {touched.Street && errors.Street}
+                  {touched.House && errors.House}
                 </Text>
               </View>
+              <View style={{ flexDirection: "row" }}>
+                <TextInput
+                  cursorColor="#d75f4f"
+                  placeholderTextColor={"#87CEEB"}
+                  style={styles.txtinputCity}
+                  placeholder="City"
+                  value={values.City}
+                  onChangeText={handleChange("City")}
+                  onBlur={handleBlur("City")}
+                />
+
+                <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
+                  {touched.City && errors.City}
+                </Text>
+                <TextInput
+                  cursorColor="#d75f4f"
+                  placeholderTextColor={"#87CEEB"}
+                  style={styles.txtinputPostalCode}
+                  placeholder="Postal Code"
+                  value={values.PostalCode}
+                  onChangeText={handleChange("PostalCode")}
+                  onBlur={handleBlur("PostalCode")}
+                />
+
+                <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
+                  {touched.PostalCode && errors.PostalCode}
+                </Text>
+              </View>
+              <Text
+                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "2%" }}
+              >
+                What is your phone number?
+              </Text>
+              <TextInput
+                placeholderTextColor={"#87CEEB"}
+                cursorColor="blue"
+                placeholder="Input your Text in here"
+                style={styles.txtinput}
+                value={values.PhoneNumber}
+                onChangeText={handleChange("PhoneNumber")}
+                onBlur={handleBlur("PhoneNumber")}
+              />
+
+              <Text style={{ fontSize: 10, color: "red", margin: "1%" }}>
+                {touched.PhoneNumber && errors.PhoneNumber}
+              </Text>
             </View>
+            <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
+              Do you have a legal representative?
+            </Text>
           </View>
         )}
       </Formik>

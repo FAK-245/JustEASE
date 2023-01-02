@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
 
     height: Theme.hp("15%"),
     width: Theme.wp("80%"),
-    backgroundColor: Theme.Different,
+
+    backgroundColor: "#3243f7",
     borderRadius: 5,
     alignSelf: "center",
     // marginLeft: "5%",
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     margin: 10,
     height: Theme.hp("15%"),
     width: Theme.wp("80%"),
-    backgroundColor: "blue",
+    backgroundColor: "#3243f7",
     borderRadius: 5,
     alignSelf: "center",
     // marginRight: "5%",
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     margin: 10,
     height: Theme.hp("6%"),
     width: Theme.wp("25%"),
-    backgroundColor: "blue",
+    backgroundColor: "#3243f7",
     borderRadius: 5,
     marginLeft: "5%",
     opacity: 0.8,

@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from './style'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
-const Screen3 = () => {
+const Screen3 = ({navigation}) => {
   const [Name, setName] = useState("");
   return (
    
@@ -103,7 +103,7 @@ const Screen3 = () => {
                 Back
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.next}>
+            <TouchableOpacity style={styles.next} onPress={() => navigation.navigate('Screen4')}>
          
               <Text
                 style={{

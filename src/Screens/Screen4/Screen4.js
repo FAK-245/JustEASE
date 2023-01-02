@@ -96,7 +96,7 @@ const Screen4 = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.next}
-              onPress={() => navigation.navigate("Screen4")}
+              onPress={() => navigation.navigate("Screen5")}
             >
               <Text
                 style={{

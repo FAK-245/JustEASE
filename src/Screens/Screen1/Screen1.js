@@ -7,6 +7,7 @@ import {
   Image,
   Alert,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import styles from "./style";
 import { Formik } from "formik";
@@ -375,28 +376,58 @@ const Signup = ({ navigation }) => {
                 }}
               >
                 <TouchableOpacity style={styles.back}>
-                  <Text
+                  <View
                     style={{
-                      color: "white",
-                      textAlign: "center",
-                      margin: 10,
-                      fontWeight: "500",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      margin: 5,
                     }}
                   >
-                    Back
-                  </Text>
+                    <Ionicons
+                      name="chevron-back"
+                      size={24}
+                      color="white"
+                      style={{ margin: 5 }}
+                    />
+                    <Text
+                      style={{
+                        color: "white",
+                        // textAlign: "center",
+                        margin: 10,
+                        fontWeight: "500",
+                      }}
+                    >
+                      Back
+                    </Text>
+                  </View>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.next}>
-                  <Text
+                  <View
                     style={{
-                      color: "white",
-                      textAlign: "center",
-                      margin: 10,
-                      fontWeight: "500",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      margin: 5,
                     }}
                   >
-                    Next
-                  </Text>
+                    <Text
+                      style={{
+                        color: "white",
+                        // textAlign: "right",
+                        // marginLeft: "10%",
+                        paddingLeft: "5%",
+                        margin: 10,
+                        fontWeight: "500",
+                      }}
+                    >
+                      Next
+                    </Text>
+                    <Ionicons
+                      name="chevron-forward"
+                      size={24}
+                      color="white"
+                      style={{ margin: 5 }}
+                    />
+                  </View>
                 </TouchableOpacity>
               </View>
             </View>

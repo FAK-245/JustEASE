@@ -7,9 +7,9 @@ import {
 import Theme from "../../utils/Theme";
 const styles = StyleSheet.create({
   View1: {
-    height: Theme.hp("10%"),
+    // height: Theme.hp("10%"),
     justifyContent: "center",
-    marginTop: "15%",
+    marginTop: "2%",
   },
   Text1: {
     color: Theme.black,
@@ -25,17 +25,17 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   View2: {
-    height: Theme.hp("20%"),
+    // height: Theme.hp("20%"),
   },
   View3: {
-    height: Theme.hp("50%"),
+    // height: Theme.hp("50%"),
+    paddingTop: "10%",
   },
   yes: {
     margin: 10,
 
     height: Theme.hp("15%"),
     width: Theme.wp("80%"),
-
     backgroundColor: "#3243f7",
     borderRadius: 5,
     alignSelf: "center",

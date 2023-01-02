@@ -10,7 +10,9 @@ import Theme from "../../utils/Theme";
 import styles from "./style";
 const Screen2 = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={{ flex: 1, paddingBottom: "20%", backgroundColor: "white" }}
+    >
       <ScrollView>
         <View style={styles.View1}>
           <Text style={styles.Text1}>Part E -</Text>
@@ -73,7 +75,7 @@ const Screen2 = ({ navigation }) => {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              // marginBottom: "10%",
+              paddingTop: "20%",
             }}
           >
             <TouchableOpacity style={styles.back}>

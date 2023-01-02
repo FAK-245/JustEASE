@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginLeft: "5%",
     opacity: 0.8,
-    flexDirection: 'row',
-    justifyContent: 'center'
+    flexDirection: "row",
+    justifyContent: "center",
   },
   next: {
     margin: 10,
@@ -70,11 +70,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginRight: "5%",
     opacity: 0.8,
-    flexDirection: 'row',
-    justifyContent: 'center'
+    flexDirection: "row",
+    justifyContent: "center",
   },
   View1: {
-   // height: Theme.hp("10%"),
+    // height: Theme.hp("10%"),
     justifyContent: "center",
     marginTop: "15%",
   },
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     height: Theme.hp("0.8%"),
     width: Theme.wp("15%"),
     alignSelf: "center",
-    margin: 15
+    margin: 15,
   },
   txtinput: {
     marginTop: 5,
@@ -117,21 +117,18 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   textinputconatiner: {
-   
-    marginTop: 30
+    marginTop: 30,
   },
   textinputconatiner2: {
-    marginTop: 30
+    marginTop: 30,
   },
   uploadimage: {
-
     height: Theme.hp("16%"),
     width: Theme.wp("86%"),
-    backgroundColor:  Theme.image,
-    alignSelf: 'center',
+    backgroundColor: Theme.image,
+    alignSelf: "center",
     margin: 5,
-    borderRadius: 10
-
-  }
+    borderRadius: 10,
+  },
 });
 export default styles;

@@ -91,7 +91,7 @@ const Signup = ({ navigation }) => {
     //   });
   };
   return (
-    <View style={{ flex: 1, paddingBottom: "20%" }}>
+    <View style={{ flex: 1, paddingBottom: "13%" }}>
       <ScrollView style={{ backgroundColor: "white", flexGrow: 1 }}>
         <Formik
           initialValues={{

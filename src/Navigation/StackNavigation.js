@@ -21,7 +21,7 @@ function HomeTabs() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          height: 80,
+          height: 60,
           position: "absolute",
 
           borderTopRightRadius: 12,
@@ -71,16 +71,7 @@ function HomeTabs() {
           ),
         }}
       />
-      <Tab.Screen
-        name="Screen3"
-        component={Screen3}
-        options={{
-          tabBarLabel: () => {
-            return null;
-          },
-         
-        }}
-      />
+     
     </Tab.Navigator>
   );
 }

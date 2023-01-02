@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   textinputconatiner2: {
-    marginTop: 30
+    marginTop: 10
   },
   uploadimage: {
 
@@ -132,6 +132,18 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 10
 
+  },
+  FlatView: {
+    backgroundColor: Theme.image,
+    height: Theme.hp("70%"),
+    width: Theme.wp("86%"),
+    alignSelf: 'center',
+    borderRadius: 10
+  },
+  document1: {
+    fontSize: RFValue(13, 580),
+    padding: 20,
+    fontWeight: '400'
   }
 });
 export default styles;

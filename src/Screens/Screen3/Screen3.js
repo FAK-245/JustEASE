@@ -6,13 +6,14 @@ import { Ionicons } from '@expo/vector-icons';
 
 import styles from './style'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Screen3 = ({navigation}) => {
   const [Name, setName] = useState("");
   return (
    
- 
-    <ScrollView style={{flex: 1, backgroundColor: 'white'}} >
+    <View style={{flex: 1, backgroundColor: 'white',paddingBottom: '20%'}}> 
+    <ScrollView  style={{flexGrow: 1 }} >
     
     <View style={styles.View1}>
              <Text style={styles.signuptxt}>Part E - </Text>
@@ -91,7 +92,7 @@ const Screen3 = ({navigation}) => {
             }}
           >
             <TouchableOpacity style={styles.back}>
-            <Ionicons name="chevron-back" size={24} color="white" style={{margin: 6}} />
+            <Ionicons name="chevron-back" size={24} color="white" style={{margin: 7}} />
               <Text
                 style={{
                   color: "white",
@@ -122,6 +123,7 @@ const Screen3 = ({navigation}) => {
            </View>
   
   </ScrollView>
+  </View>
   )
 }
 

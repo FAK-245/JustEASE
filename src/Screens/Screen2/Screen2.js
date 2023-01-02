@@ -27,7 +27,10 @@ const Screen2 = ({ navigation }) => {
           </Text>
         </View>
         <View style={styles.View3}>
-          <TouchableOpacity style={styles.yes}>
+          <TouchableOpacity
+            style={styles.yes}
+            onPress={() => navigation.navigate("Screen3")}
+          >
             <Text
               style={{
                 color: "white",

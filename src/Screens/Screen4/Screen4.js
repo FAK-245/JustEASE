@@ -8,6 +8,8 @@ import {
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -28,33 +30,40 @@ const Screen4 = ({ navigation }) => {
             Choose how you want to upload your documents
           </Text>
           <View
-            style={{ flexDirection: "row", justifyContent: "space-evenly" }}
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+              marginTop: "20%",
+            }}
           >
             <TouchableOpacity>
               <MaterialIcons
                 name="drive-folder-upload"
-                size={74}
+                size={84}
                 color="black"
               />
-              <Text>from file</Text>
+              <Text style={{ marginLeft: "10%" }}>from file</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-              <MaterialIcons name="add-to-drive" size={74} color="black" />
+              <MaterialIcons name="add-to-drive" size={84} color="black" />
+              <Text>From google </Text>
+              <Text> drive</Text>
             </TouchableOpacity>
           </View>
           <View
-            style={{ flexDirection: "row", justifyContent: "space-evenly" }}
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+              marginTop: "20%",
+            }}
           >
             <TouchableOpacity>
-              <MaterialIcons
-                name="drive-folder-upload"
-                size={74}
-                color="black"
-              />
-              <Text>from file</Text>
+              <FontAwesome name="camera" size={70} color="black" />
+              <Text>Take a photo</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-              <MaterialIcons name="add-to-drive" size={74} color="black" />
+              <Ionicons name="ios-images" size={74} color="black" />
+              <Text>From gallery</Text>
             </TouchableOpacity>
           </View>
         </View>

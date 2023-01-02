@@ -12,7 +12,7 @@ const Screen3 = ({navigation}) => {
   const [Name, setName] = useState("");
   return (
    
-    <View style={{flex: 1, backgroundColor: 'white',paddingBottom: '20%'}}> 
+    <View style={{flex: 1, backgroundColor: 'white',paddingBottom: '10%'}}> 
     <ScrollView  style={{flexGrow: 1 }} >
     
     <View style={styles.View1}>

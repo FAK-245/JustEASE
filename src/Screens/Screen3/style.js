@@ -55,19 +55,23 @@ const styles = StyleSheet.create({
     margin: 10,
     height: Theme.hp("6%"),
     width: Theme.wp("25%"),
-    backgroundColor: "blue",
+    backgroundColor: "#1c5bd9",
     borderRadius: 5,
     marginLeft: "5%",
     opacity: 0.8,
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   next: {
     margin: 10,
     height: Theme.hp("6%"),
     width: Theme.wp("25%"),
-    backgroundColor: "blue",
+    backgroundColor: "#1c5bd9",
     borderRadius: 5,
     marginRight: "5%",
     opacity: 0.8,
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   View1: {
     height: Theme.hp("10%"),

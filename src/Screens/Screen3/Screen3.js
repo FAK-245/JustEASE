@@ -3,6 +3,7 @@
 import { View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
 import { Ionicons } from '@expo/vector-icons';
+
 import styles from './style'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
@@ -81,6 +82,42 @@ const Screen3 = () => {
              <Ionicons name="images-outline" size={60} color="white" style={{alignSelf: 'center', margin: 20}} />
              </TouchableOpacity>
              </View>
+
+             <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              // marginBottom: "10%",
+            }}
+          >
+            <TouchableOpacity style={styles.back}>
+            <Ionicons name="chevron-back" size={24} color="white" style={{margin: 6}} />
+              <Text
+                style={{
+                  color: "white",
+                 
+                  margin: 11,
+                  fontWeight: "500",
+                }}
+              >
+                Back
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.next}>
+         
+              <Text
+                style={{
+                  color: "white",
+               
+                  margin: 10,
+                  fontWeight: "500",
+                }}
+              >
+                Next
+              </Text>
+              <Ionicons name="chevron-forward" size={24} color="white"  style={{margin: 6}}/>
+            </TouchableOpacity>
+          </View>
              
            </View>
   

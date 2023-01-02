@@ -54,6 +54,7 @@ const Theme = {
   Different: "#3343f4",
   errorColor: "red",
   gray1: "#525455",
+  image: '#ccdcfb',
   txtTiny: RFPercentage(1.3),
   txtSmallest: RFPercentage(1.8),
   txtSmallest1: RFPercentage(1.5),

@@ -6,6 +6,7 @@ import {
   ScrollView,
   Image,
   Alert,
+  LogBox
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
@@ -39,6 +40,7 @@ const signUpSchema = Yup.object({
     .required("Required Field")
     .max(20, "Limit Exceed"),
 });
+LogBox.ignoreAllLogs();
 const Signup = ({ navigation }) => {
   // const {t, i18n} = useTranslation();
   const [Name, setName] = useState("");

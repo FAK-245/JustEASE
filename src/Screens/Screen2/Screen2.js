@@ -143,7 +143,7 @@ const Screen2 = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
-      <Progress.Bar progress={1}  width={210} />
+      <Progress.Bar progress={1}  width={210} height={3}/>
 
     </View>
   );

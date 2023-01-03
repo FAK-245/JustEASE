@@ -435,9 +435,10 @@ const Signup = ({ navigation }) => {
             </View>
           )}
         </Formik>
+
        
       </ScrollView>
-      <Progress.Bar progress={1}  width={50} />
+      <Progress.Bar progress={1}  width={50} height={3} />
     
     </View>
     

@@ -81,13 +81,15 @@ const styles = StyleSheet.create({
   signuptxt: {
     color: Theme.black,
     textAlign: "center",
-    fontSize: 25,
+    fontSize: RFValue(25, 580),
+    
     fontWeight: "700",
   },
   signuptxt1: {
     color: Theme.black,
     textAlign: "center",
-    fontSize: 25,
+    fontSize: RFValue(25, 580),
+    
     fontWeight: "700",
     margin: 10,
   },

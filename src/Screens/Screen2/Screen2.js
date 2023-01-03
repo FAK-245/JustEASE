@@ -11,16 +11,16 @@ import Theme from "../../utils/Theme";
 import styles from "./style";
 const Screen2 = ({ navigation }) => {
   return (
-    <SafeAreaView
-      style={{ flex: 1, paddingBottom: "20%", backgroundColor: "white" }}
+    <View
+      style={{ flex: 1, paddingBottom: "13%", backgroundColor: "white" }}
     >
-      <ScrollView>
+      <ScrollView >
         <View style={styles.View1}>
           <Text style={styles.Text1}>Part E -</Text>
           <Text style={styles.Text2}>Gross Income</Text>
         </View>
         <View style={{ marginTop: "5%" }}>
-          <View
+          {/* <View
             style={{
               backgroundColor: "blue",
               opacity: 0.6,
@@ -28,11 +28,12 @@ const Screen2 = ({ navigation }) => {
               width: Theme.wp("15%"),
               alignSelf: "center",
             }}
-          ></View>
+          ></View> */}
+          <View style={styles.Line}></View>
           <View style={styles.View2}>
             <Text
               style={{
-                marginLeft: "7%",
+               marginLeft: '10%',
                 color: "#1c5bd9",
                 marginTop: "15%",
                 color: "#8da2b8",
@@ -44,7 +45,7 @@ const Screen2 = ({ navigation }) => {
           <View style={styles.View3}>
             <TouchableOpacity
               style={styles.yes}
-              onPress={() => navigation.navigate("Screen3")}
+            
             >
               <Text
                 style={{
@@ -79,7 +80,7 @@ const Screen2 = ({ navigation }) => {
               paddingTop: "20%",
             }}
           >
-            <TouchableOpacity style={styles.back}>
+            <TouchableOpacity style={styles.back} onPress={() => navigation.navigate("Screen1")}>
               <View
                 style={{
                   flexDirection: "row",
@@ -105,7 +106,7 @@ const Screen2 = ({ navigation }) => {
                 </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.next}>
+            <TouchableOpacity style={styles.next} onPress={() => navigation.navigate('Screen3')}>
               <View
                 style={{
                   flexDirection: "row",
@@ -134,7 +135,7 @@ const Screen2 = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 

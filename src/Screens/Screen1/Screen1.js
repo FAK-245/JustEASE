@@ -126,15 +126,16 @@ const Signup = ({ navigation }) => {
                 <Text style={styles.signuptxt1}>Personal Information</Text>
               </View>
               <View style={{ marginTop: "5%" }}>
-                <View
+                {/* <View
                   style={{
-                    backgroundColor: "#3243f7",
+                    backgroundColor: "#3343f4",
                     // opacity: 0.6,
                     height: Theme.hp("0.8%"),
                     width: Theme.wp("15%"),
                     alignSelf: "center",
                   }}
-                ></View>
+                ></View> */}
+                  <View style={styles.Line}></View>
               </View>
 
               <Text
@@ -342,7 +343,7 @@ const Signup = ({ navigation }) => {
               >
                 <TouchableOpacity
                   style={styles.yes}
-                  onPress={() => navigation.navigate("Screen2")}
+                  
                 >
                   <Text
                     style={{
@@ -401,7 +402,7 @@ const Signup = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next}>
+                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Screen2")}>
                   <View
                     style={{
                       flexDirection: "row",

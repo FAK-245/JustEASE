@@ -67,6 +67,7 @@ function HomeTabs() {
               name="settings-helper"
               size={30}
               color="black"
+              
             />
           ),
         }}
@@ -75,6 +76,10 @@ function HomeTabs() {
     </Tab.Navigator>
   );
 }
+
+
+
+
 
 const Stack = createNativeStackNavigator();
 const StackNavigation = () => {

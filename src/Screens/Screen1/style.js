@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import Theme from "../../utils/Theme";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
@@ -12,13 +13,14 @@ const styles = StyleSheet.create({
   signuptxt: {
     color: Theme.black,
     textAlign: "center",
-    fontSize: 25,
+    fontSize: RFValue(25, 580),
     fontWeight: "700",
   },
   signuptxt1: {
     color: Theme.black,
     textAlign: "center",
-    fontSize: 25,
+    fontSize: RFValue(25, 580),
+   
     fontWeight: "700",
     margin: 10,
   },
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
     margin: 5,
     height: Theme.hp("4%"),
     width: Theme.wp("40%"),
-    backgroundColor: "#3243f7",
+    backgroundColor: "#1c5bd9",
     borderRadius: 5,
     marginLeft: "5%",
     opacity: 0.8,
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
     margin: 5,
     height: Theme.hp("4%"),
     width: Theme.wp("40%"),
-    backgroundColor: "#3243f7",
+    backgroundColor: "#1c5bd9",
     borderRadius: 5,
     marginRight: "5%",
     opacity: 0.8,
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
     margin: 10,
     height: Theme.hp("6%"),
     width: Theme.wp("25%"),
-    backgroundColor: "#3243f7",
+    backgroundColor: "#1c5bd9",
     borderRadius: 5,
     marginLeft: "5%",
     opacity: 0.8,
@@ -119,10 +121,18 @@ const styles = StyleSheet.create({
     margin: 10,
     height: Theme.hp("6%"),
     width: Theme.wp("25%"),
-    backgroundColor: "#3243f7",
+    backgroundColor: "#1c5bd9",
     borderRadius: 5,
     marginRight: "5%",
     opacity: 0.8,
+  },
+  Line: {
+    backgroundColor: Theme.Different,
+    opacity: 0.6,
+    height: Theme.hp("0.8%"),
+    width: Theme.wp("15%"),
+    alignSelf: "center",
+    margin: 15,
   },
 });
 export default styles;

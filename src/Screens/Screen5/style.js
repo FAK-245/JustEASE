@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
   signuptxt: {
     color: Theme.black,
     textAlign: "center",
-    fontSize: 25,
+    fontSize: RFValue(24, 580),
+    
     fontWeight: "700",
   },
   signuptxt1: {
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     margin: 5,
     height: Theme.hp("5%"),
     width: Theme.wp("40%"),
-    backgroundColor: "#3243f7",
+    backgroundColor: "#1c5bd9",
     borderRadius: 20,
     // marginLeft: "5%",
     opacity: 0.8,

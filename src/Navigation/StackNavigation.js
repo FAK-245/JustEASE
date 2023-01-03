@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import { Entypo } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Screen1 from "../Screens/Screen1/Screen1";
 import Screen2 from "../Screens/Screen2/Screen2";
@@ -14,7 +15,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Tab = createBottomTabNavigator();
-
 function HomeTabs() {
   return (
     <Tab.Navigator
@@ -49,11 +49,37 @@ function HomeTabs() {
               name="home"
               size={30}
               color="black"
-              style={{ elevation: 40, backgroundColor: "white" }}
+              style={{ elevation: 40, backgroundColor: "white",  }}
             />
           ),
         }}
       />
+            <Tab.Screen
+        name="HomeTabs"
+        component={HomeTabs}
+      
+        listeners={{
+          tabPress: e => {
+            // Prevent default action
+            e.preventDefault();
+          },
+        }}
+        options={{
+  
+          tabBarLabel: () => (
+            <>
+            <Text style={{marginBottom: 17, fontWeight: '600'}}>My Applications</Text>
+            </>
+          ),
+          tabBarIcon: () => {
+        return null
+          },
+        }}
+      
+      
+      />
+     
+      
 
       <Tab.Screen
         name="Screen2"
@@ -63,12 +89,7 @@ function HomeTabs() {
             return null;
           },
           tabBarIcon: () => (
-            <MaterialCommunityIcons
-              name="settings-helper"
-              size={30}
-              color="black"
-              
-            />
+            <Entypo name="dots-three-horizontal" size={30} color="black" style={{backgroundColor: '#FFB6C1', }}/>
           ),
         }}
       />
@@ -88,7 +109,7 @@ const StackNavigation = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Screen1" component={HomeTabs} />
         <Stack.Screen name="Screen2" component={Screen2} />
-        <Stack.Screen name="Screen3" component={Screen4} />
+        <Stack.Screen name="Screen3" component={Screen3} />
         <Stack.Screen name="Screen4" component={Screen4} />
         <Stack.Screen name="Screen5" component={Screen5} />
       </Stack.Navigator>

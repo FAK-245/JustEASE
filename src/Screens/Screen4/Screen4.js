@@ -71,53 +71,67 @@ const Screen4 = ({ navigation }) => {
         </View>
 
         <View style={styles.textinputconatiner2}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              // marginBottom: "10%",
-            }}
-          >
-            <TouchableOpacity style={styles.back}>
-              <Ionicons
-                name="chevron-back"
-                size={24}
-                color="white"
-                style={{ margin: 7 }}
-              />
-              <Text
+        <View
                 style={{
-                  color: "white",
-
-                  margin: 11,
-                  fontWeight: "500",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
                 }}
               >
-                Back
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.next}
-              onPress={() => navigation.navigate("Screen5")}
-            >
-              <Text
-                style={{
-                  color: "white",
-
-                  margin: 10,
-                  fontWeight: "500",
-                }}
-              >
-                Next
-              </Text>
-              <Ionicons
-                name="chevron-forward"
-                size={24}
-                color="white"
-                style={{ margin: 6 }}
-              />
-            </TouchableOpacity>
-          </View>
+                <TouchableOpacity style={styles.back} onPress={() => navigation.navigate('Screen3')}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                   
+                      margin: 5,
+                    }}
+                  >
+                    <Ionicons
+                      name="chevron-back"
+                      size={24}
+                      color="white"
+                      style={{ margin: 5 }}
+                    />
+                    <Text
+                      style={{
+                        color: "white",
+                        // textAlign: "center",
+                        margin: 10,
+                        fontWeight: "500",
+                      }}
+                    >
+                      Back
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Screen5")}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                     
+                      margin: 5,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: "white",
+                        // textAlign: "right",
+                        // marginLeft: "10%",
+                        paddingLeft: "6%",
+                        margin: 10,
+                        fontWeight: "500",
+                      }}
+                    >
+                      Next
+                    </Text>
+                    <Ionicons
+                      name="chevron-forward"
+                      size={24}
+                      color="white"
+                      style={{ margin: 6 }}
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
         </View>
       </ScrollView>
       <Progress.Bar progress={1}  width={210} height={3}/>

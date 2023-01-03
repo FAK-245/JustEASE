@@ -6,13 +6,16 @@ import {
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import * as Progress from 'react-native-progress';
+
 import React from "react";
 import Theme from "../../utils/Theme";
 import styles from "./style";
 const Screen2 = ({ navigation }) => {
   return (
     <View
-      style={{ flex: 1, paddingBottom: "13%", backgroundColor: "white" }}
+      style={{ flex: 1, paddingBottom: "14.7%", backgroundColor: "white" }}
     >
       <ScrollView >
         <View style={styles.View1}>
@@ -51,9 +54,11 @@ const Screen2 = ({ navigation }) => {
                 style={{
                   color: "white",
                   textAlign: "center",
-                  margin: 10,
-                  marginTop: "15%",
+                
+                   
                   fontWeight: "500",
+                  margin: '11%',
+                  fontSize: RFValue(15, 580),
                 }}
               >
                 Yes
@@ -64,9 +69,12 @@ const Screen2 = ({ navigation }) => {
                 style={{
                   color: "white",
                   textAlign: "center",
-                  margin: 10,
-                  marginTop: "15%",
+                 
+                 
                   fontWeight: "500",
+                  margin: '11%',
+                  fontSize: RFValue(15, 580),
+                  
                 }}
               >
                 No
@@ -84,7 +92,7 @@ const Screen2 = ({ navigation }) => {
               <View
                 style={{
                   flexDirection: "row",
-                  justifyContent: "center",
+                 
                   margin: 5,
                 }}
               >
@@ -110,7 +118,7 @@ const Screen2 = ({ navigation }) => {
               <View
                 style={{
                   flexDirection: "row",
-                  justifyContent: "center",
+                 
                   margin: 5,
                 }}
               >
@@ -135,6 +143,8 @@ const Screen2 = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
+      <Progress.Bar progress={1}  width={210} />
+
     </View>
   );
 };

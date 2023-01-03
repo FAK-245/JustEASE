@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import styles from "./style";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import * as Progress from 'react-native-progress';
 import Theme from "../../utils/Theme";
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -91,7 +92,7 @@ const Signup = ({ navigation }) => {
     //   });
   };
   return (
-    <View style={{ flex: 1, paddingBottom: "13%" }}>
+    <View style={{ flex: 1, paddingBottom: "14.5%", backgroundColor: 'white' }}>
       <ScrollView style={{ backgroundColor: "white", flexGrow: 1 }}>
         <Formik
           initialValues={{
@@ -135,7 +136,7 @@ const Signup = ({ navigation }) => {
                     alignSelf: "center",
                   }}
                 ></View> */}
-                  <View style={styles.Line}></View>
+                
               </View>
 
               <Text
@@ -380,7 +381,7 @@ const Signup = ({ navigation }) => {
                   <View
                     style={{
                       flexDirection: "row",
-                      justifyContent: "center",
+                   
                       margin: 5,
                     }}
                   >
@@ -406,7 +407,7 @@ const Signup = ({ navigation }) => {
                   <View
                     style={{
                       flexDirection: "row",
-                      justifyContent: "center",
+                     
                       margin: 5,
                     }}
                   >
@@ -415,7 +416,7 @@ const Signup = ({ navigation }) => {
                         color: "white",
                         // textAlign: "right",
                         // marginLeft: "10%",
-                        paddingLeft: "5%",
+                        paddingLeft: "6%",
                         margin: 10,
                         fontWeight: "500",
                       }}
@@ -426,7 +427,7 @@ const Signup = ({ navigation }) => {
                       name="chevron-forward"
                       size={24}
                       color="white"
-                      style={{ margin: 5 }}
+                      style={{ margin: 6 }}
                     />
                   </View>
                 </TouchableOpacity>
@@ -434,8 +435,12 @@ const Signup = ({ navigation }) => {
             </View>
           )}
         </Formik>
+       
       </ScrollView>
+      <Progress.Bar progress={1}  width={50} />
+    
     </View>
+    
   );
 };
 

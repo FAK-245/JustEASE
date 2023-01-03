@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
     paddingTop: "10%",
   },
   yes: {
-    margin: 10,
+    margin: 15,
 
-    height: Theme.hp("15%"),
+    height: Theme.hp("13%"),
     width: Theme.wp("80%"),
     backgroundColor: "#1c5bd9",
     borderRadius: 5,
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   no: {
     margin: 10,
-    height: Theme.hp("15%"),
+    height: Theme.hp("13%"),
     width: Theme.wp("80%"),
     backgroundColor: "#1c5bd9",
     borderRadius: 5,

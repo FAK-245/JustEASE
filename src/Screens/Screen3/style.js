@@ -82,14 +82,14 @@ const styles = StyleSheet.create({
     color: Theme.black,
     textAlign: "center",
     fontSize: RFValue(25, 580),
-    
+
     fontWeight: "700",
   },
   signuptxt1: {
     color: Theme.black,
     textAlign: "center",
     fontSize: RFValue(25, 580),
-    
+
     fontWeight: "700",
     margin: 10,
   },
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     margin: 15,
   },
   txtinput: {
+    color: "#87CEEB",
     marginTop: 5,
     flexDirection: "row",
     alignItems: "center",

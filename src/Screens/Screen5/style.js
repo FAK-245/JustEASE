@@ -109,5 +109,17 @@ const styles = StyleSheet.create({
     // marginLeft: "5%",
     opacity: 0.8,
   },
+  back: {
+    margin: 10,
+    height: Theme.hp("6%"),
+    width: Theme.wp("25%"),
+    backgroundColor: "#1c5bd9",
+    borderRadius: 5,
+    marginLeft: "5%",
+    opacity: 0.8,
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: Theme.hp("15%"),
+  },
 });
 export default styles;

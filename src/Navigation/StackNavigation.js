@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Screen1 from "../Screens/Screen1/Screen1";
 import Screen2 from "../Screens/Screen2/Screen2";
@@ -49,42 +49,33 @@ function HomeTabs() {
               name="home"
               size={30}
               color="black"
-              style={{ elevation: 40, backgroundColor: "white",  }}
+              style={{ elevation: 40, backgroundColor: "white" }}
             />
           ),
         }}
       />
-            <Tab.Screen
+      <Tab.Screen
         name="HomeTabs"
         component={HomeTabs}
-      
         listeners={{
-          tabPress: e => {
+          tabPress: (e) => {
             // Prevent default action
             e.preventDefault();
           },
         }}
         options={{
-  
           tabBarLabel: () => (
             <>
-            <Text style={{marginBottom: '15%', fontWeight: '600'}}>My Applications</Text>
+              <Text style={{ marginBottom: "15%", fontWeight: "600" }}>
+                My Applications
+              </Text>
             </>
           ),
           tabBarIcon: () => {
-        return null
+            return null;
           },
         }}
-      
-      
       />
-
-
-      
-
-      
-     
-      
 
       <Tab.Screen
         name="Screen2"
@@ -94,17 +85,18 @@ function HomeTabs() {
             return null;
           },
           tabBarIcon: () => (
-            <Entypo name="dots-three-horizontal" size={30} color="black" style={{backgroundColor: '#FFB6C1', }}/>
+            <Entypo
+              name="dots-three-horizontal"
+              size={30}
+              color="black"
+              style={{ backgroundColor: "#FFB6C1" }}
+            />
           ),
         }}
       />
-      
-     
     </Tab.Navigator>
   );
 }
-
-
 
 function HomeTabs2() {
   return (
@@ -140,42 +132,34 @@ function HomeTabs2() {
               name="home"
               size={30}
               color="black"
-              style={{ elevation: 40, backgroundColor: "white",  }}
+              style={{ elevation: 40, backgroundColor: "white" }}
             />
           ),
         }}
       />
-          
-          <Tab.Screen
+
+      <Tab.Screen
         name="HomeTabs2"
         component={HomeTabs2}
-      
         listeners={{
-          tabPress: e => {
+          tabPress: (e) => {
             // Prevent default action
             e.preventDefault();
           },
         }}
         options={{
-  
           tabBarLabel: () => (
             <>
-            <Text style={{marginBottom: '15%', fontWeight: '600'}}>My Applications</Text>
+              <Text style={{ marginBottom: "15%", fontWeight: "600" }}>
+                My Applications
+              </Text>
             </>
           ),
           tabBarIcon: () => {
-        return null
+            return null;
           },
         }}
-      
-      
       />
-
-      
-
-      
-     
-      
 
       <Tab.Screen
         name="Screen4"
@@ -185,19 +169,136 @@ function HomeTabs2() {
             return null;
           },
           tabBarIcon: () => (
-            <Entypo name="dots-three-horizontal" size={30} color="black" style={{backgroundColor: '#FFB6C1', }}/>
+            <Entypo
+              name="dots-three-horizontal"
+              size={30}
+              color="black"
+              style={{ backgroundColor: "#FFB6C1" }}
+            />
           ),
         }}
       />
-      
-     
     </Tab.Navigator>
   );
 }
 
 
+function HomeTabs3() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          height: 60,
+          position: "absolute",
 
+          borderTopRightRadius: 12,
+          backgroundColor: "white",
+        },
+      }}
+      null
+      // screenOptions={{headerShown: false,
 
+      // }}
+      tabBarOptions={{
+        activeTintColor: "#2F5FDB",
+        inactiveTintColor: "lightgray",
+      }}
+    >
+      <Tab.Screen
+        name="Screen5"
+        component={Screen5}
+        options={{
+          tabBarLabel: () => {
+            return null;
+          },
+          tabBarIcon: () => (
+            <FontAwesome
+              name="home"
+              size={30}
+              color="black"
+              style={{ elevation: 40, backgroundColor: "white" }}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="HomeTabs2"
+        component={HomeTabs2}
+        listeners={{
+          tabPress: (e) => {
+            // Prevent default action
+            e.preventDefault();
+          },
+        }}
+        options={{
+          tabBarLabel: () => (
+            <>
+              <Text style={{ marginBottom: "15%", fontWeight: "600" }}>
+                My Applications
+              </Text>
+            </>
+          ),
+          tabBarIcon: () => {
+            return null;
+          },
+        }}
+      />
+
+<Tab.Screen
+        name="HomeTabs3"
+        component={HomeTabs3}
+        listeners={{
+          tabPress: (e) => {
+            // Prevent default action
+            e.preventDefault();
+          },
+        }}
+        options={{
+          tabBarLabel: () => (
+            <>
+            <Entypo
+              name="dots-three-horizontal"
+              size={30}
+              color="black"
+              style={{ backgroundColor: "#FFB6C1" , marginBottom: 15}}
+            />
+            </>
+          ),
+          tabBarIcon: () => {
+           
+              <FontAwesome
+                name="home"
+                size={30}
+                color="black"
+                style={{ elevation: 40, backgroundColor: "white" }}
+              />
+           
+          },
+        }}
+      />
+
+      {/* <Tab.Screen
+        name="Screen5"
+        component={Screen5}
+        options={{
+          tabBarLabel: () => {
+            return null;
+          },
+          tabBarIcon: () => (
+            <Entypo
+              name="dots-three-horizontal"
+              size={30}
+              color="black"
+              style={{ backgroundColor: "#FFB6C1" }}
+            />
+          ),
+        }}
+      /> */}
+    </Tab.Navigator>
+  );
+}
 
 const Stack = createNativeStackNavigator();
 const StackNavigation = () => {
@@ -208,7 +309,7 @@ const StackNavigation = () => {
         <Stack.Screen name="Screen2" component={Screen2} />
         <Stack.Screen name="Screen3" component={HomeTabs2} />
         <Stack.Screen name="Screen4" component={Screen4} />
-        <Stack.Screen name="Screen5" component={Screen5} />
+        <Stack.Screen name="Screen5" component={HomeTabs3} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -89,7 +89,7 @@ function HomeTabs() {
               name="dots-three-horizontal"
               size={30}
               color="black"
-              style={{ backgroundColor: "#FFB6C1" }}
+              style={{ backgroundColor: "white" }}
             />
           ),
         }}
@@ -173,7 +173,7 @@ function HomeTabs2() {
               name="dots-three-horizontal"
               size={30}
               color="black"
-              style={{ backgroundColor: "#FFB6C1" }}
+              style={{ backgroundColor: "white" }}
             />
           ),
         }}
@@ -181,7 +181,6 @@ function HomeTabs2() {
     </Tab.Navigator>
   );
 }
-
 
 function HomeTabs3() {
   return (
@@ -246,7 +245,7 @@ function HomeTabs3() {
         }}
       />
 
-<Tab.Screen
+      <Tab.Screen
         name="HomeTabs3"
         component={HomeTabs3}
         listeners={{
@@ -258,23 +257,21 @@ function HomeTabs3() {
         options={{
           tabBarLabel: () => (
             <>
-            <Entypo
-              name="dots-three-horizontal"
-              size={30}
-              color="black"
-              style={{ backgroundColor: "#FFB6C1" , marginBottom: 15}}
-            />
+              <Entypo
+                name="dots-three-horizontal"
+                size={30}
+                color="black"
+                style={{ backgroundColor: "white", marginBottom: 15 }}
+              />
             </>
           ),
           tabBarIcon: () => {
-           
-              <FontAwesome
-                name="home"
-                size={30}
-                color="black"
-                style={{ elevation: 40, backgroundColor: "white" }}
-              />
-           
+            <FontAwesome
+              name="home"
+              size={30}
+              color="black"
+              style={{ elevation: 40, backgroundColor: "white" }}
+            />;
           },
         }}
       />

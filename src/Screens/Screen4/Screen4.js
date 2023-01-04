@@ -34,7 +34,7 @@ const Screen4 = ({ navigation }) => {
             style={{
               flexDirection: "row",
               justifyContent: "space-evenly",
-              marginTop: "20%",
+              // marginTop: "20%",
             }}
           >
             <TouchableOpacity>

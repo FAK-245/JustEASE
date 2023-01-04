@@ -79,6 +79,7 @@ const Screen3 = ({ navigation }) => {
                   color: "#1c5bd9",
                   textAlign: "center",
                   fontSize: RFValue(13, 580),
+                  marginHorizontal: "2%",
                 }}
               >
                 1.1) How much do you earn monthly in € (gross)?
@@ -109,29 +110,35 @@ const Screen3 = ({ navigation }) => {
                     color: "#1c5bd9",
                     marginLeft: "9%",
                     fontSize: RFValue(13, 580),
+                    marginHorizontal: "2%",
                   }}
                 >
                   Please upload the following documents here:
                 </Text>
               </View>
               <View style={{ margin: 10 }}>
-                <Text
+                {/* <Text
                   style={{
+                    marginHorizontal: "5%",
                     color: "#1c5bd9",
-                    textAlign: "center",
                     fontSize: RFValue(13, 580),
+                    textAlign: "center",
                   }}
                 >
                   E1-1.1) wage or salary slips from the workspace
-                </Text>
+                </Text> */}
                 <Text
                   style={{
+                    marginHorizontal: "2%",
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
+                    textAlign: "center",
                     marginLeft: "6.5%",
+                    marginRight: "6.5%",
                   }}
                 >
-                  for the past 12 months proir to the application
+                  E1-1.1) wage or salary slips from the workspace for the past
+                  12 months proir to the application.
                 </Text>
 
                 <TouchableOpacity style={styles.uploadimage}>
@@ -145,7 +152,7 @@ const Screen3 = ({ navigation }) => {
               </View>
 
               <View style={{ margin: 10 }}>
-                <Text
+                {/* <Text
                   style={{
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
@@ -153,17 +160,21 @@ const Screen3 = ({ navigation }) => {
                   }}
                 >
                   E1-1.1b) Latest income tax notice from the tax
-                </Text>
+                </Text> */}
                 <Text
                   style={{
+                    textAlign: "center",
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
                     marginLeft: "6.5%",
+                    marginRight: "6.5%",
                   }}
                 >
-                  office or electronic wage tax certificate
+                  E1-1.1b) Latest income tax notice from the tax office or
+                  electronic wage tax certificate revealing gross and net income
+                  of last year.
                 </Text>
-                <Text
+                {/* <Text
                   style={{
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
@@ -171,7 +182,7 @@ const Screen3 = ({ navigation }) => {
                   }}
                 >
                   revealing gross and net income of last year
-                </Text>
+                </Text> */}
 
                 <TouchableOpacity style={styles.uploadimage}>
                   <Ionicons

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     color: Theme.black,
     textAlign: "center",
     fontSize: RFValue(25, 580),
-   
+
     fontWeight: "700",
     margin: 10,
   },

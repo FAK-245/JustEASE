@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: Theme.hp("15%"),
+    marginTop: Theme.hp("5%"),
   },
 });
 export default styles;

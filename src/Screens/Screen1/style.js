@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
 
   txtinput: {
     marginTop: 5,
+    color: "#87CEEB",
     // flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
@@ -57,6 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 5,
     borderWidth: 1,
+    color: "#87CEEB",
     borderColor: "#87CEEB",
     borderRadius: 1,
     fontSize: 14,
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#87CEEB",
     borderRadius: 1,
+    color: "#87CEEB",
     fontSize: 14,
     borderRadius: 5,
     paddingHorizontal: 10,

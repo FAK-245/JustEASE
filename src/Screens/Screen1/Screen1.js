@@ -15,6 +15,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
 import Theme from "../../utils/Theme";
+
 const signUpSchema = Yup.object({
   Name: Yup.string()
     .min(0, "Minimum Input")
@@ -41,7 +42,7 @@ const signUpSchema = Yup.object({
     .max(20, "Limit Exceed"),
 });
 LogBox.ignoreAllLogs();
-const Signup = ({ navigation }) => {
+const Screen1 = ({ navigation }) => {
   // const {t, i18n} = useTranslation();
   const [Name, setName] = useState("");
   const [Occupation, setOccupation] = useState("");
@@ -53,19 +54,22 @@ const Signup = ({ navigation }) => {
   const [PhoneNumber, setPhoneNumber] = useState("");
 
   const createUserFun = (values) => {
-    // alert('user registered succesfully!');
-    Alert.alert(
-      "Personal Informaton Submitted!",
-      "Press Ok to go on Next Part",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => navigation.navigate("Screen2") },
-      ]
-    );
+    if (values != "") {
+      Alert.alert(
+        "Personal Informaton Submitted!",
+        "Press Ok to go on Next Part",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel",
+          },
+          { text: "OK", onPress: () => navigation.navigate("Screen2") },
+        ]
+      );
+    } else {
+      Alert.alert("Please Complete your information!");
+    }
     // auth()
     //   .createUserWithEmailAndPassword(values.email, values.password)
     //   .then(() => {
@@ -115,6 +119,7 @@ const Signup = ({ navigation }) => {
           validationSchema={signUpSchema}
           onSubmit={(values, actions) => {
             createUserFun(values);
+            console.log(values);
             // actions.resetForm();
           }}
         >
@@ -152,7 +157,7 @@ const Signup = ({ navigation }) => {
               </Text>
               <TextInput
                 placeholderTextColor={"#87CEEB"}
-                cursorColor="blue"
+                cursorColor="#d75f4f"
                 placeholder="Input your Text in here"
                 style={styles.txtinput}
                 value={values.Name}
@@ -318,7 +323,7 @@ const Signup = ({ navigation }) => {
               </Text>
               <TextInput
                 placeholderTextColor={"#87CEEB"}
-                cursorColor="blue"
+                cursorColor="#d75f4f"
                 placeholder="Input your Text in here"
                 style={styles.txtinput}
                 value={values.PhoneNumber}
@@ -408,7 +413,9 @@ const Signup = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.next}
-                  onPress={() => navigation.navigate("Screen2")}
+                  onPress={handleSubmit}
+
+                  // onPress={() => navigation.navigate("Screen2")}
                 >
                   <View
                     style={{
@@ -447,4 +454,4 @@ const Signup = ({ navigation }) => {
   );
 };
 
-export default Signup;
+export default Screen1;

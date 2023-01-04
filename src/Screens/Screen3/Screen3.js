@@ -64,7 +64,7 @@ const Screen3 = ({ navigation }) => {
         handleSubmit,
       }) => (
         <View
-          style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}
+          style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%",  }}
         >
           <ScrollView style={{ flexGrow: 1 }}>
             <View style={styles.View1}>

@@ -2,6 +2,9 @@
   "expo": {
     "name": "JUSTEASE",
     "slug": "JUSTEASE",
+    "sdkVersion": "47.0.0",
+    
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,10 +27,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.yamleeha.JUSTEASE"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f560b16e-ed67-40ba-80f8-f04967a5baa9"
+      }
     }
   }
 }

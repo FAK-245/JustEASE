@@ -65,6 +65,35 @@ const Screen5 = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity
+          style={styles.back}
+          onPress={() => navigation.navigate("Screen3")}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+
+              margin: 5,
+            }}
+          >
+            <Ionicons
+              name="chevron-back"
+              size={24}
+              color="white"
+              style={{ margin: 5 }}
+            />
+            <Text
+              style={{
+                color: "white",
+                // textAlign: "center",
+                margin: 10,
+                fontWeight: "500",
+              }}
+            >
+              Back
+            </Text>
+          </View>
+        </TouchableOpacity>
       </ScrollView>
       <Progress.Bar progress={1} width={410} height={3} />
     </View>

@@ -51,16 +51,21 @@ const Signup = ({ navigation }) => {
   const [City, setCity] = useState("");
   const [PostalCode, setPostalCode] = useState("");
   const [PhoneNumber, setPhoneNumber] = useState("");
+
   const createUserFun = (values) => {
     // alert('user registered succesfully!');
-    Alert.alert("User Registered Succesfully!", "Press Ok to Login", [
-      {
-        text: "Cancel",
-        onPress: () => console.log("Cancel Pressed"),
-        style: "cancel",
-      },
-      { text: "OK", onPress: () => navigation.navigate("Home") },
-    ]);
+    Alert.alert(
+      "Personal Informaton Submitted!",
+      "Press Ok to go on Next Part",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => navigation.navigate("Screen2") },
+      ]
+    );
     // auth()
     //   .createUserWithEmailAndPassword(values.email, values.password)
     //   .then(() => {
@@ -343,7 +348,7 @@ const Signup = ({ navigation }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <TouchableOpacity style={styles.yes}>
+                <TouchableOpacity style={styles.yes} onPress={handleSubmit}>
                   <Text
                     style={{
                       color: "white",
@@ -355,7 +360,7 @@ const Signup = ({ navigation }) => {
                     Yes
                   </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.no}>
+                <TouchableOpacity style={styles.no} onPress={handleSubmit}>
                   <Text
                     style={{
                       color: "white",
@@ -375,7 +380,7 @@ const Signup = ({ navigation }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <TouchableOpacity style={styles.back}>
+                <TouchableOpacity style={styles.back} onPress={handleSubmit}>
                   <View
                     style={{
                       flexDirection: "row",

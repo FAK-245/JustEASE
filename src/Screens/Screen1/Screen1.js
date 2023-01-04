@@ -316,9 +316,7 @@ const Screen1 = ({ navigation }) => {
                   </Text>
                 </View>
               </View>
-              <Text
-                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
-              >
+              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
                 What is your phone number?
               </Text>
               <TextInput
@@ -402,8 +400,8 @@ const Screen1 = ({ navigation }) => {
                     <Text
                       style={{
                         color: "white",
-                        // textAlign: "center",
-                        margin: 10,
+                        textAlign: "center",
+                        margin: 7,
                         fontWeight: "500",
                       }}
                     >
@@ -430,7 +428,7 @@ const Screen1 = ({ navigation }) => {
                         // textAlign: "right",
                         // marginLeft: "10%",
                         paddingLeft: "6%",
-                        margin: 10,
+                        margin: 7,
                         fontWeight: "500",
                       }}
                     >
@@ -440,7 +438,7 @@ const Screen1 = ({ navigation }) => {
                       name="chevron-forward"
                       size={24}
                       color="white"
-                      style={{ margin: 6 }}
+                      style={{ margin: 5 }}
                     />
                   </View>
                 </TouchableOpacity>

@@ -56,7 +56,7 @@ const Screen5 = ({ navigation }) => {
                 fontSize: 15,
                 color: "white",
                 textAlign: "center",
-                margin: 10,
+                margin: 7,
 
                 fontWeight: "600",
               }}
@@ -85,8 +85,8 @@ const Screen5 = ({ navigation }) => {
             <Text
               style={{
                 color: "white",
-                // textAlign: "center",
-                margin: 10,
+                textAlign: "center",
+                margin: 7,
                 fontWeight: "500",
               }}
             >

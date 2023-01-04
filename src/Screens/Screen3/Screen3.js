@@ -211,7 +211,7 @@ const Screen3 = ({ navigation }) => {
                       style={{
                         color: "white",
                         // textAlign: "center",
-                        margin: 10,
+                        margin: 7,
                         fontWeight: "500",
                       }}
                     >
@@ -233,7 +233,7 @@ const Screen3 = ({ navigation }) => {
                         // textAlign: "right",
                         // marginLeft: "10%",
                         paddingLeft: "6%",
-                        margin: 10,
+                        margin: 7,
                         fontWeight: "500",
                       }}
                     >
@@ -243,7 +243,7 @@ const Screen3 = ({ navigation }) => {
                       name="chevron-forward"
                       size={24}
                       color="white"
-                      style={{ margin: 6 }}
+                      style={{ margin: 5 }}
                     />
                   </View>
                 </TouchableOpacity>

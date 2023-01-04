@@ -19,7 +19,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const Screen4 = ({ navigation }) => {
   const [Name, setName] = useState("");
   return (
-    <View style={{ flex: 1, backgroundColor: "white", paddingBottom: "20%" }}>
+    <View style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}>
       <ScrollView style={{ flexGrow: 1 }}>
         <View style={styles.View1}>
           <Text style={styles.signuptxt}>Part E - </Text>

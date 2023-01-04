@@ -9,8 +9,7 @@ import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import * as Progress from 'react-native-progress';
-
+import * as Progress from "react-native-progress";
 
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
@@ -67,8 +66,7 @@ const Screen5 = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <Progress.Bar progress={1}  width={410} height={3}/>
-
+      <Progress.Bar progress={1} width={410} height={3} />
     </View>
   );
 };

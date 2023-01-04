@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     color: Theme.black,
     textAlign: "center",
     fontSize: RFValue(24, 580),
-    
+
     fontWeight: "700",
   },
   signuptxt1: {

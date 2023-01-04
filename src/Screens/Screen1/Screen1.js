@@ -6,14 +6,14 @@ import {
   ScrollView,
   Image,
   Alert,
-  LogBox
+  LogBox,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import styles from "./style";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import * as Progress from 'react-native-progress';
+import * as Progress from "react-native-progress";
 import Theme from "../../utils/Theme";
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -94,7 +94,7 @@ const Signup = ({ navigation }) => {
     //   });
   };
   return (
-    <View style={{ flex: 1, paddingBottom: "14.5%", backgroundColor: 'white' }}>
+    <View style={{ flex: 1, paddingBottom: "14.5%", backgroundColor: "white" }}>
       <ScrollView style={{ backgroundColor: "white", flexGrow: 1 }}>
         <Formik
           initialValues={{
@@ -138,7 +138,6 @@ const Signup = ({ navigation }) => {
                     alignSelf: "center",
                   }}
                 ></View> */}
-                
               </View>
 
               <Text
@@ -344,10 +343,7 @@ const Signup = ({ navigation }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <TouchableOpacity
-                  style={styles.yes}
-                  
-                >
+                <TouchableOpacity style={styles.yes}>
                   <Text
                     style={{
                       color: "white",
@@ -383,7 +379,7 @@ const Signup = ({ navigation }) => {
                   <View
                     style={{
                       flexDirection: "row",
-                   
+
                       margin: 5,
                     }}
                   >
@@ -405,11 +401,14 @@ const Signup = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Screen2")}>
+                <TouchableOpacity
+                  style={styles.next}
+                  onPress={() => navigation.navigate("Screen2")}
+                >
                   <View
                     style={{
                       flexDirection: "row",
-                     
+
                       margin: 5,
                     }}
                   >
@@ -437,13 +436,9 @@ const Signup = ({ navigation }) => {
             </View>
           )}
         </Formik>
-
-       
       </ScrollView>
-      <Progress.Bar progress={1}  width={50} height={3} />
-    
+      <Progress.Bar progress={1} width={50} height={3} />
     </View>
-    
   );
 };
 

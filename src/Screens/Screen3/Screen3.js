@@ -160,7 +160,18 @@ const Screen3 = ({ navigation }) => {
                   style={{padding: 10}}
                 ></Ionicons>
               </TouchableOpacity>
-              <Text
+              {/* <Text
+                style={{
+                  fontSize: 10,
+                  color: "red",
+                  margin: "1%",
+                  marginLeft: "8%",
+                }}
+              >
+                {touched.Name && errors.Name}
+              </Text> */}
+            </View>
+            <Text
                 style={{
                   fontSize: 10,
                   color: "red",
@@ -170,7 +181,6 @@ const Screen3 = ({ navigation }) => {
               >
                 {touched.Name && errors.Name}
               </Text>
-            </View>
             <View style={styles.textinputconatiner2}>
               <View>
                 <Text

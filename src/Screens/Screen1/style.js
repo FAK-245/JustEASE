@@ -5,6 +5,15 @@ const styles = StyleSheet.create({
   mainView: {
     flex: 1,
   },
+  textinputconatiner: {
+   
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignContent:'center',
+    justifyContent: 'space-between',
+    alignSelf: 'center'
+   
+  },
   View1: {
     // height: Theme.hp("10%"),
     justifyContent: "center",
@@ -38,7 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     height: Theme.hp("7%"),
-    width: Theme.wp("90%"),
+    width: Theme.wp("80%"),
     alignSelf: "center",
   },
   txtinputAddress: {

@@ -5,11 +5,21 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  Button,
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import * as Progress from "react-native-progress";
 import * as Yup from "yup";
+import Dialog, {
+  DialogTitle,
+  DialogContent,
+  DialogFooter,
+  DialogButton,
+  SlideAnimation,
+  ScaleAnimation,
+} from "react-native-popup-dialog";
 import { Formik } from "formik";
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
@@ -21,6 +31,9 @@ const signUpSchema = Yup.object({
     .max(30, "Limit Exceed"),
 });
 const Screen3 = ({ navigation }) => {
+  const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
+  const [scaleAnimationDialog, setScaleAnimationDialog] = useState(false);
+  const [slideAnimationDialog, setSlideAnimationDialog] = useState(false);
   const [Name, setName] = useState("");
 
   const createUserFun = (values) => {
@@ -64,26 +77,73 @@ const Screen3 = ({ navigation }) => {
         handleSubmit,
       }) => (
         <View
-          style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%",  }}
+          style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}
         >
           <ScrollView style={{ flexGrow: 1 }}>
+            <Dialog
+              onTouchOutside={() => {
+                setScaleAnimationDialog(false);
+              }}
+              width={0.9}
+              visible={scaleAnimationDialog}
+              dialogAnimation={new ScaleAnimation()}
+              onHardwareBackPress={() => {
+                setScaleAnimationDialog(false);
+                console.log("onHardwareBackPress");
+                return true;
+              }}
+              dialogTitle={
+                <DialogTitle
+                  title="Scale Animation Dialog Sample"
+                  hasTitleBar={false}
+                />
+              }
+              actions={[
+                <DialogButton
+                  text="DISMISS"
+                  onPress={() => {
+                    setScaleAnimationDialog(false);
+                  }}
+                  key="button-1"
+                />,
+              ]}
+            >
+              <DialogContent>
+                <View>
+                  <Text>
+                    Here is an example of scale animation dialog. Close using
+                    back button press
+                  </Text>
+                  <Button
+                    title="Close"
+                    onPress={() => {
+                      setScaleAnimationDialog(false);
+                    }}
+                    key="button-1"
+                  />
+                </View>
+              </DialogContent>
+            </Dialog>
             <View style={styles.View1}>
               <Text style={styles.signuptxt}>Part E - </Text>
               <Text style={styles.signuptxt1}>Gross Income</Text>
             </View>
             <View style={styles.Line}></View>
 
-            <View style={styles.textinputconatiner}>
-              <Text
+            <Text
                 style={{
                   color: "#1c5bd9",
                   textAlign: "center",
                   fontSize: RFValue(13, 580),
-                  marginHorizontal: "2%",
+                  
                 }}
               >
                 1.1) How much do you earn monthly in € (gross)?
               </Text>
+
+            <View style={styles.textinputconatiner}>
+            
+             
               <TextInput
                 placeholderTextColor={"#87CEEB"}
                 cursorColor="blue"
@@ -92,6 +152,12 @@ const Screen3 = ({ navigation }) => {
                 onChangeText={handleChange("Name")}
                 onBlur={handleBlur("Name")}
               />
+              <TouchableOpacity onPress={() => setScaleAnimationDialog(true)}>
+                <Ionicons
+                  name="information-circle-outline"
+                  size={25}
+                ></Ionicons>
+              </TouchableOpacity>
               <Text
                 style={{
                   fontSize: 10,

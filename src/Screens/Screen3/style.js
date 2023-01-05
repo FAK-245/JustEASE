@@ -116,11 +116,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     // backgroundColor: "",
     height: Theme.hp("7%"),
-    width: Theme.wp("86%"),
+    width: Theme.wp("80%"),
     alignSelf: "center",
+    marginLeft: '10%'
   },
   textinputconatiner: {
-    marginTop: 30,
+   
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignContent:'center',
+    justifyContent: 'space-between',
+    alignSelf: 'center'
+   
   },
   textinputconatiner2: {
     marginTop: 30,

@@ -94,7 +94,8 @@ const Screen3 = ({ navigation }) => {
               }}
               dialogTitle={
                 <DialogTitle
-                  title="Scale Animation Dialog Sample"
+                  title="Info Box For Monthly Gross
+                  "
                   hasTitleBar={false}
                 />
               }
@@ -110,7 +111,7 @@ const Screen3 = ({ navigation }) => {
             >
               <DialogContent>
                 <View>
-                  <Text>
+                  <Text style={{marginBottom: '2%'}}>
                     Here is an example of scale animation dialog. Close using
                     back button press
                   </Text>
@@ -156,6 +157,7 @@ const Screen3 = ({ navigation }) => {
                 <Ionicons
                   name="information-circle-outline"
                   size={25}
+                  style={{padding: 10}}
                 ></Ionicons>
               </TouchableOpacity>
               <Text

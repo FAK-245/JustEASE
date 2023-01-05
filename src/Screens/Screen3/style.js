@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     height: Theme.hp("7%"),
     width: Theme.wp("80%"),
     alignSelf: "center",
-    marginLeft: '10%'
+    marginLeft: '15%'
   },
   textinputconatiner: {
    

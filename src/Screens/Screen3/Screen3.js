@@ -344,7 +344,7 @@ const Screen3 = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next} >
+                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate('Screen4')} >
                   <View
                     style={{
                       flexDirection: "row",

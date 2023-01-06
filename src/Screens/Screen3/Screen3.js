@@ -6,10 +6,14 @@ import {
   TouchableOpacity,
   Alert,
   Button,
+  FlatList
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo } from '../../redux/action';
+
 import * as Progress from "react-native-progress";
 import * as Yup from "yup";
 import Dialog, {
@@ -24,58 +28,68 @@ import { Formik } from "formik";
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
-const signUpSchema = Yup.object({
-  Name: Yup.string()
-    .min(0, "Minimum Input")
-    .required("Required Field")
-    .max(30, "Limit Exceed"),
-});
+// const signUpSchema = Yup.object({
+//   Name: Yup.string()
+//     .min(0, "Minimum Input")
+//     .required("Required Field")
+//     .max(30, "Limit Exceed"),
+// });
 const Screen3 = ({ navigation }) => {
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
   const [scaleAnimationDialog, setScaleAnimationDialog] = useState(false);
   const [slideAnimationDialog, setSlideAnimationDialog] = useState(false);
-  const [Name, setName] = useState("");
+  // const [Name, setName] = useState("");
+  const [task, setTask] = React.useState('');
+  const  todoList  = useSelector(state => state.todos);
+  const dispatch = useDispatch();
 
-  const createUserFun = (values) => {
-    if (values != "") {
-      Alert.alert(
-        "Personal Informaton Submitted!",
-        "Press Ok to go on Next Part",
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel",
-          },
-          { text: "OK", onPress: () => navigation.navigate("Screen4") },
-        ]
-      );
-    } else {
-      Alert.alert("Please Complete your information!");
-    }
-  };
+
+  const handleAddTodo = () => {
+    dispatch(addTodo(task))
+    // console.log(todoList)
+    setTask('')
+  }
+
+  // const createUserFun = (values) => {
+  //   if (values != "") {
+  //     Alert.alert(
+  //       "Personal Informaton Submitted!",
+  //       "Press Ok to go on Next Part",
+  //       [
+  //         {
+  //           text: "Cancel",
+  //           onPress: () => console.log("Cancel Pressed"),
+  //           style: "cancel",
+  //         },
+  //         { text: "OK", onPress: () => navigation.navigate("Screen4") },
+  //       ]
+  //     );
+  //   } else {
+  //     Alert.alert("Please Complete your information!");
+  //   }
+  // };
   return (
-    <Formik
-      initialValues={{
-        Name: Name,
-      }}
-      validationSchema={signUpSchema}
-      onSubmit={(values, actions) => {
-        createUserFun(values);
-        console.log(values);
-        // actions.resetForm();
-      }}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        isValid,
-        handleChange,
-        handleBlur,
-        isSubmitting,
-        handleSubmit,
-      }) => (
+    // <Formik
+    //   initialValues={{
+    //    task: task,
+    //   }}
+    //   validationSchema={signUpSchema}
+    //   onSubmit={(values, actions) => {
+    //     createUserFun(values);
+    //     console.log(values);
+    //     // actions.resetForm();
+    //   }}
+    // >
+      // {({
+      //   values,
+      //   errors,
+      //   touched,
+      //   isValid,
+      //   handleChange,
+      //   handleBlur,
+      //   isSubmitting,
+      //   handleSubmit,
+      // }) => (
         <View
           style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}
         >
@@ -146,12 +160,18 @@ const Screen3 = ({ navigation }) => {
             
              
               <TextInput
-                placeholderTextColor={"#87CEEB"}
-                cursorColor="blue"
-                placeholder="Input your Text in here"
+                // placeholderTextColor={"#87CEEB"}
+                // cursorColor="blue"
+                // placeholder="Input your Text in here"
+                // style={styles.txtinput}
+                // onChangeText={handleChange("Name")}
+                // onBlur={handleBlur("Name")}
                 style={styles.txtinput}
-                onChangeText={handleChange("Name")}
-                onBlur={handleBlur("Name")}
+
+                mode="outlined"
+                label="Task"
+                value={task}
+                 onChangeText={task => setTask(task)}
               />
               <TouchableOpacity onPress={() => setScaleAnimationDialog(true)}>
                 <Ionicons
@@ -160,6 +180,7 @@ const Screen3 = ({ navigation }) => {
                   style={{padding: 10}}
                 ></Ionicons>
               </TouchableOpacity>
+              
               {/* <Text
                 style={{
                   fontSize: 10,
@@ -171,7 +192,22 @@ const Screen3 = ({ navigation }) => {
                 {touched.Name && errors.Name}
               </Text> */}
             </View>
-            <Text
+            <Button title='Add' color="#841584" onPress={handleAddTodo} />
+
+            <View style={{backgroundColor: 'red'}}>
+
+            <FlatList
+        data={todoList}
+        keyExtractor={(item) => item.id}
+        renderItem={({item, index}) => {
+          console.log(item)
+          return (
+              <Text style={styles.list}>{item.task}</Text>
+          );
+        }}
+      />
+</View>
+            {/* <Text
                 style={{
                   fontSize: 10,
                   color: "red",
@@ -180,7 +216,7 @@ const Screen3 = ({ navigation }) => {
                 }}
               >
                 {touched.Name && errors.Name}
-              </Text>
+              </Text> */}
             <View style={styles.textinputconatiner2}>
               <View>
                 <Text
@@ -308,7 +344,7 @@ const Screen3 = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.next} >
                   <View
                     style={{
                       flexDirection: "row",
@@ -341,8 +377,8 @@ const Screen3 = ({ navigation }) => {
           </ScrollView>
           <Progress.Bar progress={1} width={210} height={3} />
         </View>
-      )}
-    </Formik>
+      // )}
+    // </Formik>
   );
 };
 

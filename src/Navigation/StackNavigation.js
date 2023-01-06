@@ -10,6 +10,11 @@ import Screen3 from "../Screens/Screen3/Screen3";
 import Screen4 from "../Screens/Screen4/Screen4";
 import Screen5 from "../Screens/Screen5/Screen5";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { PersistGate } from 'redux-persist/integration/react'
+import {store, persistor} from '../redux/store';
+
+import { Provider } from 'react-redux';
+
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -300,11 +305,22 @@ function HomeTabs3() {
 const Stack = createNativeStackNavigator();
 const StackNavigation = () => {
   return (
+
+  
+
+        
+
     <NavigationContainer>
+
+
+      
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Screen1" component={HomeTabs} />
-        {/* <Stack.Screen name="Screen2" component={Screen2} /> */}
-        <Stack.Screen name="Screen3" component={HomeTabs2} />
+        <Stack.Screen name="Screen2" component={Screen2} />
+
+        
+    <Stack.Screen name="Screen3" component={HomeTabs2} />
+     
         <Stack.Screen name="Screen4" component={Screen4} />
         <Stack.Screen name="Screen5" component={HomeTabs3} />
       </Stack.Navigator>

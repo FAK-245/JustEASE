@@ -40,15 +40,15 @@ const Screen4 = ({ navigation }) => {
             <TouchableOpacity>
               <MaterialIcons
                 name="drive-folder-upload"
-                size={84}
+                size={89}
                 color="black"
               />
-              <Text style={{ marginLeft: "10%" }}>from file</Text>
+              <Text style={{ textAlign: "center" }}>From file</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-              <MaterialIcons name="add-to-drive" size={84} color="black" />
+              <MaterialIcons name="add-to-drive" size={89} color="black" />
               <Text>From google </Text>
-              <Text> drive</Text>
+              <Text style={{ textAlign: "center" }}> drive</Text>
             </TouchableOpacity>
           </View>
           <View
@@ -60,11 +60,11 @@ const Screen4 = ({ navigation }) => {
           >
             <TouchableOpacity>
               <FontAwesome name="camera" size={70} color="black" />
-              <Text>Take a photo</Text>
+              <Text style={{ marginRight: "1%" }}>Take a photo</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-              <Ionicons name="ios-images" size={74} color="black" />
-              <Text>From gallery</Text>
+              <Ionicons name="ios-images" size={70} color="black" />
+              <Text style={{ textAlign: "center" }}>From gallery</Text>
             </TouchableOpacity>
           </View>
         </View>

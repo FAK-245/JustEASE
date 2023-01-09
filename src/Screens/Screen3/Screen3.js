@@ -6,13 +6,13 @@ import {
   TouchableOpacity,
   Alert,
   Button,
-  FlatList
+  FlatList,
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { useSelector, useDispatch } from 'react-redux';
-import { addTodo } from '../../redux/action';
+import { useSelector, useDispatch } from "react-redux";
+import { addTodo } from "../../redux/action";
 
 import * as Progress from "react-native-progress";
 import * as Yup from "yup";
@@ -28,27 +28,26 @@ import { Formik } from "formik";
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
-// const signUpSchema = Yup.object({
-//   Name: Yup.string()
-//     .min(0, "Minimum Input")
-//     .required("Required Field")
-//     .max(30, "Limit Exceed"),
-// });
+const signUpSchema = Yup.object({
+  Task: Yup.string()
+    .min(0, "Minimum Input")
+    .required("Required Field")
+    .max(30, "Limit Exceed"),
+});
 const Screen3 = ({ navigation }) => {
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
   const [scaleAnimationDialog, setScaleAnimationDialog] = useState(false);
   const [slideAnimationDialog, setSlideAnimationDialog] = useState(false);
   // const [Name, setName] = useState("");
-  const [task, setTask] = React.useState('');
-  const  todoList  = useSelector(state => state.todos);
+  const [Task, setTask] = React.useState("");
+  const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
-
   const handleAddTodo = () => {
-    dispatch(addTodo(task))
+    dispatch(addTodo(Task));
     // console.log(todoList)
-    setTask('')
-  }
+    setTask("");
+  };
 
   // const createUserFun = (values) => {
   //   if (values != "") {
@@ -69,27 +68,27 @@ const Screen3 = ({ navigation }) => {
   //   }
   // };
   return (
-    // <Formik
-    //   initialValues={{
-    //    task: task,
-    //   }}
-    //   validationSchema={signUpSchema}
-    //   onSubmit={(values, actions) => {
-    //     createUserFun(values);
-    //     console.log(values);
-    //     // actions.resetForm();
-    //   }}
-    // >
-      // {({
-      //   values,
-      //   errors,
-      //   touched,
-      //   isValid,
-      //   handleChange,
-      //   handleBlur,
-      //   isSubmitting,
-      //   handleSubmit,
-      // }) => (
+    <Formik
+      initialValues={{
+        Task: Task,
+      }}
+      validationSchema={signUpSchema}
+      onSubmit={(values, actions) => {
+        createUserFun(values);
+        console.log(values);
+        // actions.resetForm();
+      }}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        isValid,
+        handleChange,
+        handleBlur,
+        isSubmitting,
+        handleSubmit,
+      }) => (
         <View
           style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}
         >
@@ -125,7 +124,7 @@ const Screen3 = ({ navigation }) => {
             >
               <DialogContent>
                 <View>
-                  <Text style={{marginBottom: '2%'}}>
+                  <Text style={{ marginBottom: "2%" }}>
                     Here is an example of scale animation dialog. Close using
                     back button press
                   </Text>
@@ -146,41 +145,37 @@ const Screen3 = ({ navigation }) => {
             <View style={styles.Line}></View>
 
             <Text
-                style={{
-                  color: "#1c5bd9",
-                  textAlign: "center",
-                  fontSize: RFValue(13, 580),
-                  
-                }}
-              >
-                1.1) How much do you earn monthly in € (gross)?
-              </Text>
+              style={{
+                color: "#1c5bd9",
+                textAlign: "center",
+                fontSize: RFValue(13, 580),
+              }}
+            >
+              1.1) How much do you earn monthly in € (gross)?
+            </Text>
 
             <View style={styles.textinputconatiner}>
-            
-             
               <TextInput
                 // placeholderTextColor={"#87CEEB"}
                 // cursorColor="blue"
                 // placeholder="Input your Text in here"
                 // style={styles.txtinput}
                 // onChangeText={handleChange("Name")}
-                // onBlur={handleBlur("Name")}
+                onBlur={handleBlur("Task")}
                 style={styles.txtinput}
-
                 mode="outlined"
                 label="Task"
-                value={task}
-                 onChangeText={task => setTask(task)}
+                value={Task}
+                onChangeText={(Task) => handleChange(Task)}
               />
               <TouchableOpacity onPress={() => setScaleAnimationDialog(true)}>
                 <Ionicons
                   name="information-circle-outline"
                   size={25}
-                  style={{padding: 10}}
+                  style={{ padding: 10 }}
                 ></Ionicons>
               </TouchableOpacity>
-              
+
               {/* <Text
                 style={{
                   fontSize: 10,
@@ -192,21 +187,18 @@ const Screen3 = ({ navigation }) => {
                 {touched.Name && errors.Name}
               </Text> */}
             </View>
-            <Button title='Add' color="#841584" onPress={handleAddTodo} />
+            <Button title="Add" color="#841584" onPress={handleAddTodo} />
 
-            <View style={{backgroundColor: 'red'}}>
-
-            <FlatList
-        data={todoList}
-        keyExtractor={(item) => item.id}
-        renderItem={({item, index}) => {
-          console.log(item)
-          return (
-              <Text style={styles.list}>{item.task}</Text>
-          );
-        }}
-      />
-</View>
+            <View style={{ backgroundColor: "red" }}>
+              <FlatList
+                data={todoList}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item, index }) => {
+                  console.log(item);
+                  return <Text style={styles.list}>{item.Task}</Text>;
+                }}
+              />
+            </View>
             {/* <Text
                 style={{
                   fontSize: 10,
@@ -344,7 +336,7 @@ const Screen3 = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate('Screen4')} >
+                <TouchableOpacity style={styles.next} onPress={handleSubmit}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -378,8 +370,8 @@ const Screen3 = ({ navigation }) => {
           </ScrollView>
           <Progress.Bar progress={1} width={210} height={3} />
         </View>
-      // )}
-    // </Formik>
+      )}
+    </Formik>
   );
 };
 

@@ -26,5 +26,5 @@ export const addTodo = (
     City,
     PostalCode,
     PhoneNumber,
-  },
+  }
 });

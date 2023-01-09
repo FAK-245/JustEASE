@@ -36,7 +36,11 @@ const todoReducer = (state = initialState, action) => {
             PhoneNumber,
           },
         ],
-      };
+      // const { id, Task } = action.payload;
+      // return {
+      //   ...state,
+      //   todos: [...state.todos, { id, Task }],
+       };
     }
     default:
       return state;

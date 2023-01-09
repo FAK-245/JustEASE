@@ -350,6 +350,7 @@ const Screen3 = ({ navigation }) => {
                       flexDirection: "row",
 
                       margin: 5,
+                    
                     }}
                   >
                     <Text

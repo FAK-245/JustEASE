@@ -7,8 +7,11 @@ import {
   Image,
   Alert,
   LogBox,
-  Button
+  Button,
 } from "react-native";
+
+import { useSelector, useDispatch } from "react-redux";
+import { addTodo } from "../../redux/action";
 import { Ionicons } from "@expo/vector-icons";
 import Dialog, {
   DialogTitle,
@@ -67,284 +70,317 @@ const Screen1 = ({ navigation }) => {
   const [dobDialog, setDobDialog] = useState(false);
   const [phoneDialog, setPhoneDialog] = useState(false);
   const [addDialog, setAddDialog] = useState(false);
-  const createUserFun = (values) => {
-    if (values != "") {
-      Alert.alert(
-        "Personal Informaton Submitted!",
-        "Press Ok to go on Next Part",
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel",
-          },
-          { text: "OK", onPress: () => navigation.navigate("Screen2") },
-        ]
-      );
-    } else {
-      Alert.alert("Please Complete your information!");
-    }
-    // auth()
-    //   .createUserWithEmailAndPassword(values.email, values.password)
-    //   .then(() => {
-    //     firestore()
-    //       .collection('Users')
-    //       .doc(auth().currentUser.uid)
-    //       .set({
-    //         name: values.userName,
-    //         email: values.email,
-    //         // password: values.password,
-    //       })
-    //       .then(() => {
-    //         console.log('User added!');
-    //       })
-    //       .catch(e => {
-    //         console.log(e);
-    //       });
-    //     console.log('User account created & signed in!');
-    //     alert('user registered successfully');
-    //   })
-    //   .catch(error => {
-    //     if (error.code === 'auth/email-already-in-use') {
-    //       console.log('That email address is already in use!');
-    //     }
+  // const createUserFun = (values) => {
+  //   if (values != "") {
+  //     Alert.alert(
+  //       "Personal Informaton Submitted!",
+  //       "Press Ok to go on Next Part",
+  //       [
+  //         {
+  //           text: "Cancel",
+  //           onPress: () => console.log("Cancel Pressed"),
+  //           style: "cancel",
+  //         },
+  //         { text: "OK", onPress: () => navigation.navigate("Screen2") },
+  //       ]
+  //     );
+  //   } else {
+  //     Alert.alert("Please Complete your information!");
+  //   }
+  // auth()
+  //   .createUserWithEmailAndPassword(values.email, values.password)
+  //   .then(() => {
+  //     firestore()
+  //       .collection('Users')
+  //       .doc(auth().currentUser.uid)
+  //       .set({
+  //         name: values.userName,
+  //         email: values.email,
+  //         // password: values.password,
+  //       })
+  //       .then(() => {
+  //         console.log('User added!');
+  //       })
+  //       .catch(e => {
+  //         console.log(e);
+  //       });
+  //     console.log('User account created & signed in!');
+  //     alert('user registered successfully');
+  //   })
+  //   .catch(error => {
+  //     if (error.code === 'auth/email-already-in-use') {
+  //       console.log('That email address is already in use!');
+  //     }
 
-    //     if (error.code === 'auth/invalid-email') {
-    //       console.log('That email address is invalid!');
-    //     }
+  //     if (error.code === 'auth/invalid-email') {
+  //       console.log('That email address is invalid!');
+  //     }
 
-    //     console.error(error);
-    //   });
+  //     console.error(error);
+  //   });
+  //};
+
+  const todoList = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
+
+  const handleAddTodo = () => {
+    dispatch(
+      addTodo(
+        Name,
+        Occupation,
+        Dob,
+        Street,
+        House,
+        City,
+        PostalCode,
+        PhoneNumber
+      )
+    );
+    // console.log(todoList)
+    setName("");
+    setOccupation("");
+    setDob("");
+    setStreet("");
+    setHouse();
+    setCity("");
+    setPostalCode("");
+    setPhoneNumber("");
   };
   return (
     <View style={{ flex: 1, paddingBottom: "14.5%", backgroundColor: "white" }}>
       <ScrollView style={{ backgroundColor: "white", flexGrow: 1 }}>
-      {/* //For Name input */}
-      <Dialog
-              onTouchOutside={() => {
+        {/* //For Name input */}
+        <Dialog
+          onTouchOutside={() => {
+            setNameDialog(false);
+          }}
+          width={0.9}
+          visible={nameDialog}
+          dialogAnimation={new ScaleAnimation()}
+          onHardwareBackPress={() => {
+            setNameDialog(false);
+            console.log("onHardwareBackPress");
+            return true;
+          }}
+          dialogTitle={
+            <DialogTitle
+              title="Info Box For Name Field
+                  "
+              hasTitleBar={false}
+            />
+          }
+          actions={[
+            <DialogButton
+              text="DISMISS"
+              onPress={() => {
                 setNameDialog(false);
               }}
-              width={0.9}
-              visible={nameDialog}
-              dialogAnimation={new ScaleAnimation()}
-              onHardwareBackPress={() => {
-                setNameDialog(false);
-                console.log("onHardwareBackPress");
-                return true;
-              }}
-              dialogTitle={
-                <DialogTitle
-                  title="Info Box For Name Field
+              key="button-1"
+            />,
+          ]}
+        >
+          <DialogContent>
+            <View>
+              <Text style={{ marginBottom: "2%" }}>
+                Here you have to input your exact name which is written in your
+                documents etc..
+              </Text>
+              <Button
+                title="Close"
+                onPress={() => {
+                  setNameDialog(false);
+                }}
+                key="button-1"
+              />
+            </View>
+          </DialogContent>
+        </Dialog>
+        {/* //for Occupation */}
+
+        <Dialog
+          onTouchOutside={() => {
+            setOccDialog(false);
+          }}
+          width={0.9}
+          visible={occDialog}
+          dialogAnimation={new ScaleAnimation()}
+          onHardwareBackPress={() => {
+            setOccDialog(false);
+            console.log("onHardwareBackPress");
+            return true;
+          }}
+          dialogTitle={
+            <DialogTitle
+              title="Info Box For Occupation Field
                   "
-                  hasTitleBar={false}
-                />
-              }
-              actions={[
-                <DialogButton
-                  text="DISMISS"
-                  onPress={() => {
-                    setNameDialog(false);
-                  }}
-                  key="button-1"
-                />,
-              ]}
-            >
-              <DialogContent>
-                <View>
-                  <Text style={{marginBottom: '2%'}}>
-                    Here you have to input your exact name which is written in your documents etc..
-                  </Text>
-                  <Button
-                    title="Close"
-                    onPress={() => {
-                      setNameDialog(false);
-                    }}
-                    key="button-1"
-                  />
-                </View>
-              </DialogContent>
-            </Dialog>
-            {/* //for Occupation */}
-            
-            <Dialog
-              onTouchOutside={() => {
+              hasTitleBar={false}
+            />
+          }
+          actions={[
+            <DialogButton
+              text="DISMISS"
+              onPress={() => {
                 setOccDialog(false);
               }}
-              width={0.9}
-              visible={occDialog}
-              dialogAnimation={new ScaleAnimation()}
-              onHardwareBackPress={() => {
-                setOccDialog(false);
-                console.log("onHardwareBackPress");
-                return true;
-              }}
-              dialogTitle={
-                <DialogTitle
-                  title="Info Box For Occupation Field
+              key="button-1"
+            />,
+          ]}
+        >
+          <DialogContent>
+            <View>
+              <Text style={{ marginBottom: "2%" }}>
+                Here you have to input your Occupation for which you are
+                working....
+              </Text>
+              <Button
+                title="Close"
+                onPress={() => {
+                  setOccDialog(false);
+                }}
+                key="button-1"
+              />
+            </View>
+          </DialogContent>
+        </Dialog>
+        {/* //for Dob */}
+        <Dialog
+          onTouchOutside={() => {
+            setDobDialog(false);
+          }}
+          width={0.9}
+          visible={dobDialog}
+          dialogAnimation={new ScaleAnimation()}
+          onHardwareBackPress={() => {
+            setDobDialog(false);
+            console.log("onHardwareBackPress");
+            return true;
+          }}
+          dialogTitle={
+            <DialogTitle
+              title="Info Box For Date of Birth Field
                   "
-                  hasTitleBar={false}
-                />
-              }
-              actions={[
-                <DialogButton
-                  text="DISMISS"
-                  onPress={() => {
-                    setOccDialog(false);
-                  }}
-                  key="button-1"
-                />,
-              ]}
-            >
-              <DialogContent>
-                <View>
-                  <Text style={{marginBottom: '2%'}}>
-                    Here you have to input your Occupation for which you are working....
-                  </Text>
-                  <Button
-                    title="Close"
-                    onPress={() => {
-                      setOccDialog(false);
-                    }}
-                    key="button-1"
-                  />
-                </View>
-              </DialogContent>
-            </Dialog>
-{/* //for Dob */}
-<Dialog
-              onTouchOutside={() => {
+              hasTitleBar={false}
+            />
+          }
+          actions={[
+            <DialogButton
+              text="DISMISS"
+              onPress={() => {
                 setDobDialog(false);
               }}
-              width={0.9}
-              visible={dobDialog}
-              dialogAnimation={new ScaleAnimation()}
-              onHardwareBackPress={() => {
-                setDobDialog(false);
-                console.log("onHardwareBackPress");
-                return true;
-              }}
-              dialogTitle={
-                <DialogTitle
-                  title="Info Box For Date of Birth Field
+              key="button-1"
+            />,
+          ]}
+        >
+          <DialogContent>
+            <View>
+              <Text style={{ marginBottom: "2%" }}>
+                Here you have to input your exact DATE of BIRTH (MM/DD/YY) in
+                this form, by keeping in consider the documents...
+              </Text>
+              <Button
+                title="Close"
+                onPress={() => {
+                  setDobDialog(false);
+                }}
+                key="button-1"
+              />
+            </View>
+          </DialogContent>
+        </Dialog>
+        {/* //for Address Field */}
+        <Dialog
+          onTouchOutside={() => {
+            setAddDialog(false);
+          }}
+          width={0.9}
+          visible={addDialog}
+          dialogAnimation={new ScaleAnimation()}
+          onHardwareBackPress={() => {
+            setAddDialog(false);
+            console.log("onHardwareBackPress");
+            return true;
+          }}
+          dialogTitle={
+            <DialogTitle
+              title="Info Box For Address Field
                   "
-                  hasTitleBar={false}
-                />
-              }
-              actions={[
-                <DialogButton
-                  text="DISMISS"
-                  onPress={() => {
-                    setDobDialog(false);
-                  }}
-                  key="button-1"
-                />,
-              ]}
-            >
-              <DialogContent>
-                <View>
-                  <Text style={{marginBottom: '2%'}}>
-                    Here you have to input your exact DATE of BIRTH (MM/DD/YY) in this form, by keeping in consider the documents...
-                  </Text>
-                  <Button
-                    title="Close"
-                    onPress={() => {
-                      setDobDialog(false);
-                    }}
-                    key="button-1"
-                  />
-                </View>
-              </DialogContent>
-            </Dialog>
-            {/* //for Address Field */}
-            <Dialog
-              onTouchOutside={() => {
+              hasTitleBar={false}
+            />
+          }
+          actions={[
+            <DialogButton
+              text="DISMISS"
+              onPress={() => {
                 setAddDialog(false);
               }}
-              width={0.9}
-              visible={addDialog}
-              dialogAnimation={new ScaleAnimation()}
-              onHardwareBackPress={() => {
-                setAddDialog(false);
-                console.log("onHardwareBackPress");
-                return true;
-              }}
-              dialogTitle={
-                <DialogTitle
-                  title="Info Box For Address Field
+              key="button-1"
+            />,
+          ]}
+        >
+          <DialogContent>
+            <View>
+              <Text style={{ marginBottom: "2%" }}>
+                Here you have to input your exact Address (Street no,House
+                no,City and PostalCode) in this form, by keeping in consider the
+                documents...
+              </Text>
+              <Button
+                title="Close"
+                onPress={() => {
+                  setAddDialog(false);
+                }}
+                key="button-1"
+              />
+            </View>
+          </DialogContent>
+        </Dialog>
+        {/* //for Phone number */}
+        <Dialog
+          onTouchOutside={() => {
+            setPhoneDialog(false);
+          }}
+          width={0.9}
+          visible={phoneDialog}
+          dialogAnimation={new ScaleAnimation()}
+          onHardwareBackPress={() => {
+            setPhoneDialog(false);
+            console.log("onHardwareBackPress");
+            return true;
+          }}
+          dialogTitle={
+            <DialogTitle
+              title="Info Box For Phone Number
                   "
-                  hasTitleBar={false}
-                />
-              }
-              actions={[
-                <DialogButton
-                  text="DISMISS"
-                  onPress={() => {
-                    setAddDialog(false);
-                  }}
-                  key="button-1"
-                />,
-              ]}
-            >
-              <DialogContent>
-                <View>
-                  <Text style={{marginBottom: '2%'}}>
-                    Here you have to input your exact Address (Street no,House no,City and PostalCode) in this form, by keeping in consider the documents...
-                  </Text>
-                  <Button
-                    title="Close"
-                    onPress={() => {
-                      setAddDialog(false);
-                    }}
-                    key="button-1"
-                  />
-                </View>
-              </DialogContent>
-            </Dialog>
-{/* //for Phone number */}
-<Dialog
-              onTouchOutside={() => {
+              hasTitleBar={false}
+            />
+          }
+          actions={[
+            <DialogButton
+              text="DISMISS"
+              onPress={() => {
                 setPhoneDialog(false);
               }}
-              width={0.9}
-              visible={phoneDialog}
-              dialogAnimation={new ScaleAnimation()}
-              onHardwareBackPress={() => {
-                setPhoneDialog(false);
-                console.log("onHardwareBackPress");
-                return true;
-              }}
-              dialogTitle={
-                <DialogTitle
-                  title="Info Box For Phone Number
-                  "
-                  hasTitleBar={false}
-                />
-              }
-              actions={[
-                <DialogButton
-                  text="DISMISS"
-                  onPress={() => {
-                    setPhoneDialog(false);
-                  }}
-                  key="button-1"
-                />,
-              ]}
-            >
-              <DialogContent>
-                <View>
-                  <Text style={{marginBottom: '2%'}}>
-                    Here you have to input your exact Phone Number, by keeping in consider the documents...
-                  </Text>
-                  <Button
-                    title="Close"
-                    onPress={() => {
-                      setPhoneDialog(false);
-                    }}
-                    key="button-1"
-                  />
-                </View>
-              </DialogContent>
-            </Dialog>
+              key="button-1"
+            />,
+          ]}
+        >
+          <DialogContent>
+            <View>
+              <Text style={{ marginBottom: "2%" }}>
+                Here you have to input your exact Phone Number, by keeping in
+                consider the documents...
+              </Text>
+              <Button
+                title="Close"
+                onPress={() => {
+                  setPhoneDialog(false);
+                }}
+                key="button-1"
+              />
+            </View>
+          </DialogContent>
+        </Dialog>
         <Formik
           initialValues={{
             Name: Name,
@@ -378,33 +414,30 @@ const Screen1 = ({ navigation }) => {
                 <Text style={styles.signuptxt}>Part A - </Text>
                 <Text style={styles.signuptxt1}>Personal Information</Text>
               </View>
-             
 
               <Text
                 style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
               >
                 What is your name?
               </Text>
-<View style={styles.textinputconatiner}>
-              <TextInput
-                placeholderTextColor={"#87CEEB"}
-                cursorColor="#d75f4f"
-                placeholder="Input your Text in here"
-                style={styles.txtinput}
-                value={values.Name}
-                onChangeText={handleChange("Name")}
-                onBlur={handleBlur("Name")}
-              />
-   <TouchableOpacity onPress={() => setNameDialog(true)}>
-                <Ionicons
-                  name="information-circle-outline"
-                  size={25}
-                  style={{padding: 10}}
-                ></Ionicons>
-              </TouchableOpacity>
-
-
-</View>
+              <View style={styles.textinputconatiner}>
+                <TextInput
+                  placeholderTextColor={"#87CEEB"}
+                  cursorColor="#d75f4f"
+                  placeholder="Input your Text in here"
+                  style={styles.txtinput}
+                  value={values.Name}
+                  onChangeText={handleChange("Name")}
+                  onBlur={handleBlur("Name")}
+                />
+                <TouchableOpacity onPress={() => setNameDialog(true)}>
+                  <Ionicons
+                    name="information-circle-outline"
+                    size={25}
+                    style={{ padding: 10 }}
+                  ></Ionicons>
+                </TouchableOpacity>
+              </View>
               <Text
                 style={{
                   fontSize: 10,
@@ -419,22 +452,22 @@ const Screen1 = ({ navigation }) => {
                 What is your Occupation?
               </Text>
               <View style={styles.textinputconatiner}>
-              <TextInput
-                placeholderTextColor={"#87CEEB"}
-                cursorColor="#d75f4f"
-                style={styles.txtinput}
-                placeholder="Input your Text in here"
-                value={values.Occupation}
-                onChangeText={handleChange("Occupation")}
-                onBlur={handleBlur("Occupation")}
-              />
-              <TouchableOpacity onPress={() => setOccDialog(true)}>
-                <Ionicons
-                  name="information-circle-outline"
-                  size={25}
-                  style={{padding: 10}}
-                ></Ionicons>
-              </TouchableOpacity>
+                <TextInput
+                  placeholderTextColor={"#87CEEB"}
+                  cursorColor="#d75f4f"
+                  style={styles.txtinput}
+                  placeholder="Input your Text in here"
+                  value={values.Occupation}
+                  onChangeText={handleChange("Occupation")}
+                  onBlur={handleBlur("Occupation")}
+                />
+                <TouchableOpacity onPress={() => setOccDialog(true)}>
+                  <Ionicons
+                    name="information-circle-outline"
+                    size={25}
+                    style={{ padding: 10 }}
+                  ></Ionicons>
+                </TouchableOpacity>
               </View>
 
               <Text
@@ -451,22 +484,22 @@ const Screen1 = ({ navigation }) => {
                 What is your date of birth?
               </Text>
               <View style={styles.textinputconatiner}>
-              <TextInput
-                placeholderTextColor={"#87CEEB"}
-                cursorColor="#d75f4f"
-                style={styles.txtinput}
-                placeholder="Input your Text in here"
-                value={values.Dob}
-                onChangeText={handleChange("Dob")}
-                onBlur={handleBlur("Dob")}
-              />
-              <TouchableOpacity onPress={() => setDobDialog(true)}>
-                <Ionicons
-                  name="information-circle-outline"
-                  size={25}
-                  style={{padding: 10}}
-                ></Ionicons>
-              </TouchableOpacity>
+                <TextInput
+                  placeholderTextColor={"#87CEEB"}
+                  cursorColor="#d75f4f"
+                  style={styles.txtinput}
+                  placeholder="Input your Text in here"
+                  value={values.Dob}
+                  onChangeText={handleChange("Dob")}
+                  onBlur={handleBlur("Dob")}
+                />
+                <TouchableOpacity onPress={() => setDobDialog(true)}>
+                  <Ionicons
+                    name="information-circle-outline"
+                    size={25}
+                    style={{ padding: 10 }}
+                  ></Ionicons>
+                </TouchableOpacity>
               </View>
 
               <Text
@@ -479,20 +512,24 @@ const Screen1 = ({ navigation }) => {
               >
                 {touched.Dob && errors.Dob}
               </Text>
-              <View style={{flexDirection:"row",alignItems: 'center',
-    alignContent:'center',
-    // justifyContent: 'space-between',
-    }}>
-              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your address?
-              </Text>
-              <TouchableOpacity onPress={() => setAddDialog(true)}>
-                <Ionicons
-                  name="information-circle-outline"
-                  size={25}
-                  style={{padding: 1}}
-                ></Ionicons>
-              </TouchableOpacity>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  alignContent: "center",
+                  // justifyContent: 'space-between',
+                }}
+              >
+                <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
+                  What is your address?
+                </Text>
+                <TouchableOpacity onPress={() => setAddDialog(true)}>
+                  <Ionicons
+                    name="information-circle-outline"
+                    size={25}
+                    style={{ padding: 1 }}
+                  ></Ionicons>
+                </TouchableOpacity>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ marginLeft: "2%" }}>
@@ -589,26 +626,24 @@ const Screen1 = ({ navigation }) => {
               <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
                 What is your phone number?
               </Text>
-              <View style={{flexDirection:"row",marginLeft:"5%"}}>
-                
-              <TextInput
-                placeholderTextColor={"#87CEEB"}
-                cursorColor="#d75f4f"
-                placeholder="Input your Text in here"
-                style={styles.txtinput}
-                value={values.PhoneNumber}
-                onChangeText={handleChange("PhoneNumber")}
-                onBlur={handleBlur("PhoneNumber")}
-              />
-                 <TouchableOpacity onPress={() => setPhoneDialog(true)}>
-                <Ionicons
-                  name="information-circle-outline"
-                  size={25}
-                  style={{paddingVertical:20,marginLeft:"10%"}}
-                ></Ionicons>
-              </TouchableOpacity>
-                
-</View>
+              <View style={{ flexDirection: "row", marginLeft: "5%" }}>
+                <TextInput
+                  placeholderTextColor={"#87CEEB"}
+                  cursorColor="#d75f4f"
+                  placeholder="Input your Text in here"
+                  style={styles.txtinput}
+                  value={values.PhoneNumber}
+                  onChangeText={handleChange("PhoneNumber")}
+                  onBlur={handleBlur("PhoneNumber")}
+                />
+                <TouchableOpacity onPress={() => setPhoneDialog(true)}>
+                  <Ionicons
+                    name="information-circle-outline"
+                    size={25}
+                    style={{ paddingVertical: 20, marginLeft: "10%" }}
+                  ></Ionicons>
+                </TouchableOpacity>
+              </View>
               <Text
                 style={{
                   fontSize: 10,
@@ -726,6 +761,28 @@ const Screen1 = ({ navigation }) => {
             </View>
           )}
         </Formik>
+
+
+        <Button title='Add' color="#841584" onPress={handleAddTodo} />
+
+<View style={{backgroundColor: 'red'}}>
+
+<FlatList
+data={todoList}
+keyExtractor={(item) => item.id}
+renderItem={({item, index}) => {
+console.log(item)
+return (
+  <View>  <Text style={styles.list}>{item.Name}</Text>
+  <Text style={styles.list}>{item.PhoneNumber}</Text>
+  <Text style={styles.list}>{item.City}</Text>
+  <Text style={styles.list}>{item.PostalCode}</Text>
+  <Text style={styles.list}>{item.Dob}</Text>
+  </View>
+);
+}}
+/>
+</View>
       </ScrollView>
       <Progress.Bar progress={1} width={50} height={3} />
     </View>

@@ -14,6 +14,8 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { addTodo } from "../../redux/action";
 import { Ionicons } from "@expo/vector-icons";
+import { printToFileAsync } from 'expo-print';
+import { shareAsync } from 'expo-sharing';
 import Dialog, {
   DialogTitle,
   DialogContent,
@@ -56,6 +58,9 @@ const signUpSchema = Yup.object({
 });
 LogBox.ignoreAllLogs();
 const Screen1 = ({ navigation }) => {
+
+  const todoList = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
   // const {t, i18n} = useTranslation();
   const [Name, setName] = useState("");
   const [Occupation, setOccupation] = useState("");
@@ -71,6 +76,35 @@ const Screen1 = ({ navigation }) => {
   const [dobDialog, setDobDialog] = useState(false);
   const [phoneDialog, setPhoneDialog] = useState(false);
   const [addDialog, setAddDialog] = useState(false);
+
+
+
+  const html = `
+    <html>
+      <body>
+        <h1>Hi ${todoList.Name}</h1>
+        <h1>Hi ${todoList.occupation}</h1>
+        <h1>Hi ${todoList.dob}</h1>
+        <h1>Hi ${todoList.street}</h1>
+        <h1>Hi ${todoList.house}</h1>
+        <h1>Hi ${todoList.city}</h1>
+        <h1>Hi ${todoList.code}</h1>
+        <h1>Hi ${todoList.number}</h1>
+        
+        <p style="color: red;">Hello. Bonjour. Hola.</p>
+      </body>
+    </html>
+  `;
+
+  
+  let generatePdf = async () => {
+    const file = await printToFileAsync({
+      html: html,
+      base64: false
+    });
+
+    await shareAsync(file.uri);
+  };
 
   const createUserFun = (values) => {
     // console.log(values)
@@ -141,8 +175,7 @@ const Screen1 = ({ navigation }) => {
   //   });
    };
 
-  const todoList = useSelector((state) => state.todos);
-  const dispatch = useDispatch();
+  
   console.log(todoList)
 
   const handleAddTodo = () => {
@@ -790,7 +823,7 @@ const Screen1 = ({ navigation }) => {
 
 
      
-
+        <Button title="Generate PDF" onPress={generatePdf} />
 
       </ScrollView>
       <Progress.Bar progress={1} width={50} height={3} />

@@ -39,6 +39,8 @@ const signUpSchema = Yup.object({
     .max(30, "Limit Exceed"),
 });
 const Screen3 = ({ navigation }) => {
+  const todoList = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
   const [scaleAnimationDialog, setScaleAnimationDialog] = useState(false);
   const [slideAnimationDialog, setSlideAnimationDialog] = useState(false);
@@ -46,7 +48,7 @@ const Screen3 = ({ navigation }) => {
   const [hasGalleryPermission1, sethasGalleryPermissin1] = useState(null);
   const [image, setImage] = useState(null);
   const [image2, setImage2] = useState(null);
-  let [Name, setName] = useState("");
+  const [Name, setName] = useState("");
   // const [task, setTask] = React.useState("");
 
   // const handleAddTodo = () => {
@@ -58,12 +60,11 @@ const Screen3 = ({ navigation }) => {
   const html = `
     <html>
       <body>
-        <h1>Hi ${Name}</h1>
+        <h1>Hi ${todoList.name}</h1>
         <p style="color: red;">Hello. Bonjour. Hola.</p>
       </body>
     </html>
   `;
-
 
   
   let generatePdf = async () => {
@@ -76,7 +77,9 @@ const Screen3 = ({ navigation }) => {
   };
   useEffect(() => {
     (async () => {
-      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync(dispatch(
+        todoList
+      ));
       sethasGalleryPermissin(galleryStatus.status === 'granted');
 
     }) ();
@@ -118,8 +121,7 @@ const Screen3 = ({ navigation }) => {
       quality: 1,
     
     })
-    console.log(result);
-
+    
     if (!result.canceled){
       setImage2(result.uri);
 
@@ -135,10 +137,13 @@ const Screen3 = ({ navigation }) => {
   }
 
   const createUserFun = (values) => {
+    setName(values.Name)
     if (values != "") {
       dispatch(
         addTodo({
           name: values.Name,
+          
+         
 
           // age:"123445",
         })
@@ -161,19 +166,18 @@ const Screen3 = ({ navigation }) => {
     }
   };
 
-  let options = {
-    saveToPhotos: true,
-    mediaType: 'photo',
-  };
-  const openGallery = async () => {
-    const result = await ImagePicker(options);
-    setGalleryPhoto(result.assets[0].uri);
+  // let options = {
+  //   saveToPhotos: true,
+  //   mediaType: 'photo',
+  // };
+  // const openGallery = async () => {
+  //   const result = await ImagePicker(options);
+  //   setGalleryPhoto(result.assets[0].uri);
     
-  };
+  // };
 
-  const todoList = useSelector((state) => state.todos);
-  const dispatch = useDispatch();
-  console.log(todoList);
+ 
+ console.log(todoList.name);
   return (
     <Formik
       initialValues={{
@@ -268,10 +272,10 @@ const Screen3 = ({ navigation }) => {
                 cursorColor="blue"
                 placeholder="Input your Text in here"
                 style={styles.txtinput}
-                //onChangeText={handleChange("Name")}
+                onChangeText={handleChange("Name")}
                 onBlur={handleBlur("Name")}
-                 values={Name}
-                 onChangeText={(value) => setName(value)}
+                //  values={Name}
+                //  onChangeText={(value) => setName(value)}
               />
               <TouchableOpacity onPress={() => setScaleAnimationDialog(true)}>
                 <Ionicons

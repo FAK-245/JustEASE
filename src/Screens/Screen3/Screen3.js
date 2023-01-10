@@ -7,8 +7,9 @@ import {
   Alert,
   Button,
   FlatList,
+  Image
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,10 +27,13 @@ import Dialog, {
 } from "react-native-popup-dialog";
 import { Formik } from "formik";
 import styles from "./style";
+import { printToFileAsync } from 'expo-print';
+import { shareAsync } from 'expo-sharing';
+import * as  ImagePicker from 'expo-image-picker'
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
 const signUpSchema = Yup.object({
-  Task: Yup.string()
+  Name: Yup.string()
     .min(0, "Minimum Input")
     .required("Required Field")
     .max(30, "Limit Exceed"),
@@ -38,43 +42,147 @@ const Screen3 = ({ navigation }) => {
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
   const [scaleAnimationDialog, setScaleAnimationDialog] = useState(false);
   const [slideAnimationDialog, setSlideAnimationDialog] = useState(false);
-  // const [Name, setName] = useState("");
-  const [Task, setTask] = React.useState("");
-  const todoList = useSelector((state) => state.todos);
-  const dispatch = useDispatch();
+  const [hasGalleryPermission, sethasGalleryPermissin] = useState(null);
+  const [hasGalleryPermission1, sethasGalleryPermissin1] = useState(null);
+  const [image, setImage] = useState(null);
+  const [image2, setImage2] = useState(null);
+  let [Name, setName] = useState("");
+  // const [task, setTask] = React.useState("");
 
-  const handleAddTodo = () => {
-    dispatch(addTodo(Task));
-    // console.log(todoList)
-    setTask("");
+  // const handleAddTodo = () => {
+  //   dispatch(addTodo(task));
+  //   console.log(todoList)
+  //   setTask("");
+  // };
+
+  const html = `
+    <html>
+      <body>
+        <h1>Hi ${Name}</h1>
+        <p style="color: red;">Hello. Bonjour. Hola.</p>
+      </body>
+    </html>
+  `;
+
+
+  
+  let generatePdf = async () => {
+    const file = await printToFileAsync({
+      html: html,
+      base64: false
+    });
+
+    await shareAsync(file.uri);
+  };
+  useEffect(() => {
+    (async () => {
+      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      sethasGalleryPermissin(galleryStatus.status === 'granted');
+
+    }) ();
+  },[]);
+  useEffect(() => {
+    (async () => {
+      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      sethasGalleryPermissin1(galleryStatus.status === 'granted');
+
+    }) ();
+  },[]);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4,3],
+      quality: 1,
+    
+    })
+    console.log(result);
+
+    if (!result.canceled){
+      setImage(result.uri);
+    }
+   
+  };
+  if (hasGalleryPermission === false){
+    return <Text>no access to internal storage</Text>
+  }
+
+
+
+  const pickSecondImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4,3],
+      quality: 1,
+    
+    })
+    console.log(result);
+
+    if (!result.canceled){
+      setImage2(result.uri);
+
+     
+
+
+    
+    }
+   
+  };
+  if (hasGalleryPermission1 === false){
+    return <Text>no access to internal storage</Text>
+  }
+
+  const createUserFun = (values) => {
+    if (values != "") {
+      dispatch(
+        addTodo({
+          name: values.Name,
+
+          // age:"123445",
+        })
+      );
+
+      Alert.alert(
+        "Personal Informaton Submitted!",
+        "Press Ok to go on Next Part",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel",
+          },
+          { text: "OK", onPress: () => navigation.navigate("Screen4") },
+        ]
+      );
+    } else {
+      Alert.alert("Please Complete your information!");
+    }
   };
 
-  // const createUserFun = (values) => {
-  //   if (values != "") {
-  //     Alert.alert(
-  //       "Personal Informaton Submitted!",
-  //       "Press Ok to go on Next Part",
-  //       [
-  //         {
-  //           text: "Cancel",
-  //           onPress: () => console.log("Cancel Pressed"),
-  //           style: "cancel",
-  //         },
-  //         { text: "OK", onPress: () => navigation.navigate("Screen4") },
-  //       ]
-  //     );
-  //   } else {
-  //     Alert.alert("Please Complete your information!");
-  //   }
-  // };
+  let options = {
+    saveToPhotos: true,
+    mediaType: 'photo',
+  };
+  const openGallery = async () => {
+    const result = await ImagePicker(options);
+    setGalleryPhoto(result.assets[0].uri);
+    
+  };
+
+  const todoList = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
+  console.log(todoList);
   return (
     <Formik
       initialValues={{
-        Task: Task,
+        Name: Name,
       }}
       validationSchema={signUpSchema}
       onSubmit={(values, actions) => {
         createUserFun(values);
+     
         console.log(values);
         // actions.resetForm();
       }}
@@ -156,17 +264,14 @@ const Screen3 = ({ navigation }) => {
 
             <View style={styles.textinputconatiner}>
               <TextInput
-                // placeholderTextColor={"#87CEEB"}
-                // cursorColor="blue"
-                // placeholder="Input your Text in here"
-                // style={styles.txtinput}
-                // onChangeText={handleChange("Name")}
-                onBlur={handleBlur("Task")}
+                placeholderTextColor={"#87CEEB"}
+                cursorColor="blue"
+                placeholder="Input your Text in here"
                 style={styles.txtinput}
-                mode="outlined"
-                label="Task"
-                value={Task}
-                onChangeText={(Task) => handleChange(Task)}
+                //onChangeText={handleChange("Name")}
+                onBlur={handleBlur("Name")}
+                 values={Name}
+                 onChangeText={(value) => setName(value)}
               />
               <TouchableOpacity onPress={() => setScaleAnimationDialog(true)}>
                 <Ionicons
@@ -187,31 +292,21 @@ const Screen3 = ({ navigation }) => {
                 {touched.Name && errors.Name}
               </Text> */}
             </View>
-            <Button title="Add" color="#841584" onPress={handleAddTodo} />
 
-            <View style={{ backgroundColor: "red" }}>
-              <FlatList
-                data={todoList}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item, index }) => {
-                  console.log(item);
-                  return <Text style={styles.list}>{item.Task}</Text>;
-                }}
-              />
-            </View>
-            {/* <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "8%",
-                }}
-              >
-                {touched.Name && errors.Name}
-              </Text> */}
+            <View style={{ backgroundColor: "red" }}></View>
+            <Text
+              style={{
+                fontSize: 10,
+                color: "red",
+                margin: "1%",
+                marginLeft: "8%",
+              }}
+            >
+              {touched.Name && errors.Name}
+            </Text>
             <View style={styles.textinputconatiner2}>
               <View>
-                <Text
+                {/* <Text
                   style={{
                     color: "#1c5bd9",
                     marginLeft: "9%",
@@ -220,7 +315,7 @@ const Screen3 = ({ navigation }) => {
                   }}
                 >
                   Please upload the following documents here:
-                </Text>
+                </Text> */}
               </View>
               <View style={{ margin: 10 }}>
                 {/* <Text
@@ -247,14 +342,19 @@ const Screen3 = ({ navigation }) => {
                   12 months proir to the application.
                 </Text>
 
-                <TouchableOpacity style={styles.uploadimage}>
+                <TouchableOpacity style={styles.uploadimage} onPress={() => pickImage()}> 
+                <Image  style={styles.picker
+       }  source={ image ? {uri: image}: image } />
                   <Ionicons
                     name="images-outline"
                     size={60}
                     color="white"
                     style={{ alignSelf: "center", margin: 20 }}
                   />
+                    {/* {image && <Image source={{uri: image}} style={{flex: 1}} />} */}
+                    
                 </TouchableOpacity>
+              
               </View>
 
               <View style={{ margin: 10 }}>
@@ -290,7 +390,9 @@ const Screen3 = ({ navigation }) => {
                   revealing gross and net income of last year
                 </Text> */}
 
-                <TouchableOpacity style={styles.uploadimage}>
+                <TouchableOpacity style={styles.uploadimage} onPress={() => pickSecondImage()}>
+                <Image  style={styles.picker
+       }  source={ image2 ? {uri: image2}: image2}/>
                   <Ionicons
                     name="images-outline"
                     size={60}
@@ -342,7 +444,6 @@ const Screen3 = ({ navigation }) => {
                       flexDirection: "row",
 
                       margin: 5,
-                    
                     }}
                   >
                     <Text
@@ -367,6 +468,7 @@ const Screen3 = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
             </View>
+            <Button title="Generate PDF" onPress={generatePdf} />
           </ScrollView>
           <Progress.Bar progress={1} width={210} height={3} />
         </View>

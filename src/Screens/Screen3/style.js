@@ -140,5 +140,12 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 10,
   },
+  picker: {
+    height: Theme.hp("16%"),
+    width: Theme.wp("86%"),
+    borderColor: 'black',
+    borderRadius: 10,
+    
+  }
 });
 export default styles;

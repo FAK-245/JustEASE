@@ -8,6 +8,7 @@ import {
   Alert,
   LogBox,
   Button,
+  FlatList
 } from "react-native";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -70,23 +71,43 @@ const Screen1 = ({ navigation }) => {
   const [dobDialog, setDobDialog] = useState(false);
   const [phoneDialog, setPhoneDialog] = useState(false);
   const [addDialog, setAddDialog] = useState(false);
-  // const createUserFun = (values) => {
-  //   if (values != "") {
-  //     Alert.alert(
-  //       "Personal Informaton Submitted!",
-  //       "Press Ok to go on Next Part",
-  //       [
-  //         {
-  //           text: "Cancel",
-  //           onPress: () => console.log("Cancel Pressed"),
-  //           style: "cancel",
-  //         },
-  //         { text: "OK", onPress: () => navigation.navigate("Screen2") },
-  //       ]
-  //     );
-  //   } else {
-  //     Alert.alert("Please Complete your information!");
-  //   }
+
+  const createUserFun = (values) => {
+    // console.log(values)
+    // return
+    if (values != "") {
+      dispatch(addTodo({
+        name:values.Name,
+         occupation:values.Occupation,
+         dob:values.Dob,
+         street:values.Street,
+         house:values.House,
+         city:values.City,
+         code:values.PostalCode,
+         number:values.PhoneNumber
+
+
+
+
+        // age:"123445",
+      }))
+    //  console.log(todoList)
+
+      Alert.alert(
+        "Personal Informaton Submitted!",
+        "Press Ok to go on Next Part",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel",
+          },
+          { text: "OK", onPress: () => navigation.navigate("Screen2") },
+        ]
+      );
+    } else {
+      Alert.alert("Please Complete your information!");
+    }
   // auth()
   //   .createUserWithEmailAndPassword(values.email, values.password)
   //   .then(() => {
@@ -118,33 +139,38 @@ const Screen1 = ({ navigation }) => {
 
   //     console.error(error);
   //   });
-  //};
+   };
 
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+  console.log(todoList)
 
   const handleAddTodo = () => {
-    dispatch(
-      addTodo(
-        Name,
-        Occupation,
-        Dob,
-        Street,
-        House,
-        City,
-        PostalCode,
-        PhoneNumber
-      )
-    );
-    // console.log(todoList)
+    // dispatch(
+      dispatch(addTodo({
+        name:"N",
+        age:"123445",
+      }))
+    //   addTodo(
+    //     Name,
+    //     // Occupation,
+    //     // Dob,
+    //     // Street,
+    //     // House,
+    //     // City,
+    //     // PostalCode,
+    //     // PhoneNumber
+    //   )
+    // );
+    //  console.log(todoList)
     setName("");
-    setOccupation("");
-    setDob("");
-    setStreet("");
-    setHouse();
-    setCity("");
-    setPostalCode("");
-    setPhoneNumber("");
+    // setOccupation("");
+    // setDob("");
+    // setStreet("");
+    // setHouse();
+    // setCity("");
+    // setPostalCode("");
+    // setPhoneNumber("");
   };
   return (
     <View style={{ flex: 1, paddingBottom: "14.5%", backgroundColor: "white" }}>
@@ -395,7 +421,7 @@ const Screen1 = ({ navigation }) => {
           validationSchema={signUpSchema}
           onSubmit={(values, actions) => {
             createUserFun(values);
-            console.log(values);
+           // console.log(values);
             // actions.resetForm();
           }}
         >
@@ -763,26 +789,9 @@ const Screen1 = ({ navigation }) => {
         </Formik>
 
 
-        <Button title='Add' color="#841584" onPress={handleAddTodo} />
+     
 
-<View style={{backgroundColor: 'red'}}>
 
-<FlatList
-data={todoList}
-keyExtractor={(item) => item.id}
-renderItem={({item, index}) => {
-console.log(item)
-return (
-  <View>  <Text style={styles.list}>{item.Name}</Text>
-  <Text style={styles.list}>{item.PhoneNumber}</Text>
-  <Text style={styles.list}>{item.City}</Text>
-  <Text style={styles.list}>{item.PostalCode}</Text>
-  <Text style={styles.list}>{item.Dob}</Text>
-  </View>
-);
-}}
-/>
-</View>
       </ScrollView>
       <Progress.Bar progress={1} width={50} height={3} />
     </View>

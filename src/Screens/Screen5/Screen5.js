@@ -5,22 +5,66 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import * as Progress from "react-native-progress";
+import { printToFileAsync } from 'expo-print';
+import { shareAsync } from 'expo-sharing';
+import todoReducer from "../../redux/todoReducer";
+import { useSelector, useDispatch } from "react-redux";
+import { addTodo } from "../../redux/action";
 
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Screen5 = ({ navigation }) => {
-  const [Name, setName] = useState("");
+
+  const todoList = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
+  const [userData, setUserData] = useState("");
+
+
+  const html = `
+    <html>
+      <body>
+      
+      <h1>Hi ${todoList.name}</h1>
+      <h2>Hi ${todoList.Screen3}</h2>
+      <h3>Hi ${todoList.occupation}</h3>
+      <h4>Hi ${todoList.dob}</h4>
+      <h5>Hi ${todoList.street}</h5>
+      <h6>Hi ${todoList.house}</h6>
+      <h7>Hi ${todoList.city}</h7>
+      <h8>Hi ${todoList.code}</h8>
+      <h9>Hi ${todoList.number}</h9>
+     
+        <p style="color: red;">Hello. Bonjour. Hola.</p>
+      </body>
+    </html>
+  `;
+
+  
+  let generatePdf = async () => {
+    const file = await printToFileAsync({
+      html: html,
+      base64: false
+    });
+
+    await shareAsync(file.uri);
+  };
+
+
+
+ 
   return (
     <View style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.5%" }}>
       <ScrollView style={{ flexGrow: 1 }}>
         <View style={styles.View1}>
+         
+          {/* <Text style={{fontSize:20, color: 'black'}}>{todoList.code}</Text> */}
           <Text style={styles.signuptxt}>Download</Text>
         </View>
         <View style={styles.Line}></View>
@@ -50,7 +94,7 @@ const Screen5 = ({ navigation }) => {
           }}
         >
           <MaterialIcons name="file-download" size={50} color="black" />
-          <TouchableOpacity style={styles.download}>
+          <TouchableOpacity style={styles.download} onPress={generatePdf}>
             <Text
               style={{
                 fontSize: 15,

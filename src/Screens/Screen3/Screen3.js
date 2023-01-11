@@ -57,24 +57,24 @@ const Screen3 = ({ navigation }) => {
   //   setTask("");
   // };
 
-  const html = `
-    <html>
-      <body>
-        <h1>Hi ${todoList.name}</h1>
-        <p style="color: red;">Hello. Bonjour. Hola.</p>
-      </body>
-    </html>
-  `;
+  // const html = `
+  //   <html>
+  //     <body>
+  //       <h1>Hi ${todoList.name}</h1>
+  //       <p style="color: red;">Hello. Bonjour. Hola.</p>
+  //     </body>
+  //   </html>
+  // `;
 
   
-  let generatePdf = async () => {
-    const file = await printToFileAsync({
-      html: html,
-      base64: false
-    });
+  // let generatePdf = async () => {
+  //   const file = await printToFileAsync({
+  //     html: html,
+  //     base64: false
+  //   });
 
-    await shareAsync(file.uri);
-  };
+  //   await shareAsync(file.uri);
+  // };
   useEffect(() => {
     (async () => {
       const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync(dispatch(
@@ -135,19 +135,29 @@ const Screen3 = ({ navigation }) => {
   if (hasGalleryPermission1 === false){
     return <Text>no access to internal storage</Text>
   }
+  console.log(todoList, "d")
 
   const createUserFun = (values) => {
     setName(values.Name)
     if (values != "") {
       dispatch(
         addTodo({
-          name: values.Name,
+          Screen3: values.Name, 
+           name:todoList.name,
+         occupation:todoList.occupation,
+         dob:todoList.dob,
+         street:todoList.street,
+         house:todoList.house,
+         city:todoList.city,
+         code:todoList.code,
+         number:todoList.number
           
          
 
           // age:"123445",
         })
       );
+      
 
       Alert.alert(
         "Personal Informaton Submitted!",
@@ -177,7 +187,7 @@ const Screen3 = ({ navigation }) => {
   // };
 
  
- console.log(todoList.name);
+//  console.log(todoList.name);
   return (
     <Formik
       initialValues={{
@@ -472,7 +482,7 @@ const Screen3 = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
             </View>
-            <Button title="Generate PDF" onPress={generatePdf} />
+            {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
           </ScrollView>
           <Progress.Bar progress={1} width={210} height={3} />
         </View>

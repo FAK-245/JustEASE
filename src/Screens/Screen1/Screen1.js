@@ -79,32 +79,32 @@ const Screen1 = ({ navigation }) => {
 
 
 
-  const html = `
-    <html>
-      <body>
-        <h1>Hi ${todoList.Name}</h1>
-        <h1>Hi ${todoList.occupation}</h1>
-        <h1>Hi ${todoList.dob}</h1>
-        <h1>Hi ${todoList.street}</h1>
-        <h1>Hi ${todoList.house}</h1>
-        <h1>Hi ${todoList.city}</h1>
-        <h1>Hi ${todoList.code}</h1>
-        <h1>Hi ${todoList.number}</h1>
+  // const html = `
+  //   <html>
+  //     <body>
+  //       <h1>Hi ${todoList.Name}</h1>
+  //       <h1>Hi ${todoList.occupation}</h1>
+  //       <h1>Hi ${todoList.dob}</h1>
+  //       <h1>Hi ${todoList.street}</h1>
+  //       <h1>Hi ${todoList.house}</h1>
+  //       <h1>Hi ${todoList.city}</h1>
+  //       <h1>Hi ${todoList.code}</h1>
+  //       <h1>Hi ${todoList.number}</h1>
         
-        <p style="color: red;">Hello. Bonjour. Hola.</p>
-      </body>
-    </html>
-  `;
+  //       <p style="color: red;">Hello. Bonjour. Hola.</p>
+  //     </body>
+  //   </html>
+  // `;
 
   
-  let generatePdf = async () => {
-    const file = await printToFileAsync({
-      html: html,
-      base64: false
-    });
+  // let generatePdf = async () => {
+  //   const file = await printToFileAsync({
+  //     html: html,
+  //     base64: false
+  //   });
 
-    await shareAsync(file.uri);
-  };
+  //   await shareAsync(file.uri);
+  // };
 
   const createUserFun = (values) => {
     // console.log(values)
@@ -823,7 +823,7 @@ const Screen1 = ({ navigation }) => {
 
 
      
-        <Button title="Generate PDF" onPress={generatePdf} />
+        {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
 
       </ScrollView>
       <Progress.Bar progress={1} width={50} height={3} />

@@ -10,13 +10,32 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import * as Progress from "react-native-progress";
-
+import * as ImagePicker from "expo-image-picker";
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Screen4 = ({ navigation }) => {
-  const [Name, setName] = useState("");
+  const [hasGalleryPermission, sethasGalleryPermissin] = useState(null);
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.uri);
+    }
+  };
+  if (hasGalleryPermission === false) {
+    return <Text>no access to internal storage</Text>;
+  }
+
   return (
     <View style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}>
       <ScrollView style={{ flexGrow: 1 }}>
@@ -62,7 +81,7 @@ const Screen4 = ({ navigation }) => {
               <FontAwesome name="camera" size={70} color="black" />
               <Text style={{ marginRight: "1%" }}>Take a photo</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => pickImage()}>
               <Ionicons name="ios-images" size={70} color="black" />
               <Text style={{ textAlign: "center" }}>From gallery</Text>
             </TouchableOpacity>

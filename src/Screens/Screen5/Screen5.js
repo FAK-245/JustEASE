@@ -4,6 +4,7 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  Image
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,29 +20,38 @@ import { addTodo } from "../../redux/action";
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import im from '../../../assets/icon.png'
 const Screen5 = ({ navigation }) => {
 
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
   const [userData, setUserData] = useState("");
-
+console.log("hello",typeof(todoList.image))
 
   const html = `
     <html>
       <body>
       
-      <h1>Hi ${todoList.name}</h1>
-      <h2>Hi ${todoList.Screen3}</h2>
-      <h3>Hi ${todoList.occupation}</h3>
-      <h4>Hi ${todoList.dob}</h4>
-      <h5>Hi ${todoList.street}</h5>
-      <h6>Hi ${todoList.house}</h6>
-      <h7>Hi ${todoList.city}</h7>
-      <h8>Hi ${todoList.code}</h8>
-      <h9>Hi ${todoList.number}</h9>
+      <h1>Name: ${todoList.name}</h1>
+      <h1>earrning: ${todoList.Screen3}</h1>
+      <h1>work: ${todoList.occupation}</h1>
+      <h1>Date of Birth: ${todoList.dob}</h1>
+      <h1>Area: ${todoList.street}</h1>
+      <h1>Home: ${todoList.house}</h1>
+      <h1>City: ${todoList.city}</h1>
+      <h1>Postal Code: ${todoList.code}</h1>
+      <h1>Phone Number: ${todoList.number}</h1>
+      <h1>Phone Number: ${todoList.image}</h1>
+      <h1>Phone Number: ${todoList.image2}</h1>
+
+      
+
+      
      
-        <p style="color: red;">Hello. Bonjour. Hola.</p>
+      <img  src=${im}  width="460" height="345">
+
+      <img    src= "../../../assets/icon.png"  width="460" height="345">
+      
       </body>
     </html>
   `;
@@ -68,7 +78,13 @@ const Screen5 = ({ navigation }) => {
           <Text style={styles.signuptxt}>Download</Text>
         </View>
         <View style={styles.Line}></View>
+{/* <Image
+source={{uri:todoList.image}}
+style={{height:200,width:200}}/>
 
+<Image
+source={{uri:todoList.image2}}
+style={{height:200,width:200}}/> */}
         <View style={styles.FlatView}>
           <View style={{ margin: "8%" }}>
             <Text style={styles.document1}>Your application is complete.</Text>

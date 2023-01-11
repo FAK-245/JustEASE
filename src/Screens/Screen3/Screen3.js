@@ -120,6 +120,7 @@ const Screen3 = ({ navigation }) => {
       aspect: [4,3],
       quality: 1,
     
+    
     })
     
     if (!result.canceled){
@@ -130,11 +131,16 @@ const Screen3 = ({ navigation }) => {
 
     
     }
+    console.log(result.uri, "heloo")
    
   };
   if (hasGalleryPermission1 === false){
     return <Text>no access to internal storage</Text>
   }
+
+
+
+  
   console.log(todoList, "d")
 
   const createUserFun = (values) => {
@@ -143,6 +149,8 @@ const Screen3 = ({ navigation }) => {
       dispatch(
         addTodo({
           Screen3: values.Name, 
+         image :image,
+         image2 :image2,
            name:todoList.name,
          occupation:todoList.occupation,
          dob:todoList.dob,

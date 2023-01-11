@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Modal,
+  Alert
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
@@ -13,7 +14,49 @@ import * as Progress from "react-native-progress";
 import React from "react";
 import Theme from "../../utils/Theme";
 import styles from "./style";
+
+
 const Screen2 = ({ navigation }) => {
+
+
+  const createThreeButtonAlert = () =>
+  Alert.alert(
+    "Yes is selected",
+    "Selected",
+    [
+      {
+        text: "Yes is selected",
+        onPress: () => console.log("Ask me later pressed")
+      },
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel"
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") }
+    ]
+  );
+
+
+  const NoSelected = () =>
+  Alert.alert(
+    "No is Selected",
+    "Selected",
+    [
+      {
+        text: "Yes is selected",
+        onPress: () => console.log("Ask me later pressed")
+      },
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel"
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") }
+    ]
+  );
+
+  
 
   
   return (
@@ -48,7 +91,7 @@ const Screen2 = ({ navigation }) => {
           </View>
           <View style={styles.View3}>
           
-            <TouchableOpacity style={styles.yes}>
+            <TouchableOpacity style={styles.yes}  onPress={createThreeButtonAlert}>
               <Text
                 style={{
                   color: "white",
@@ -63,7 +106,7 @@ const Screen2 = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
            
-            <TouchableOpacity style={styles.no}>
+            <TouchableOpacity style={styles.no} onPress={NoSelected}>
               <Text
                 style={{
                   color: "white",

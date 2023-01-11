@@ -33,9 +33,11 @@ const Screen5 = ({ navigation }) => {
   const [userData, setUserData] = useState("");
 console.log("hello",typeof(todoList.image))
 
+
+
   const html = `
     <html>
-      <body style="background-color:#33475b">
+      <body>
       
       <h1>Name: ${todoList.name}</h1>
       <h1>earrning: ${todoList.Screen3}</h1>
@@ -46,12 +48,7 @@ console.log("hello",typeof(todoList.image))
       <h1>City: ${todoList.city}</h1>
       <h1>Postal Code: ${todoList.code}</h1>
       <h1>Phone Number: ${todoList.number}</h1>
-      <h1>Phone Number: ${todoList.image}</h1>
-     
-
-      
-    
-      <img  src={ ${todoList.image}} />
+      <img src= "${todoList.image}" style="height: 300, width: 300" />
       
       </body>
     </html>
@@ -59,6 +56,7 @@ console.log("hello",typeof(todoList.image))
 
   
   let generatePdf = async () => {
+
     const file = await printToFileAsync({
       html: html,
       base64: false

@@ -368,17 +368,18 @@ const Screen3 = ({ navigation }) => {
                   style={styles.uploadimage}
                   onPress={() => pickImage()}
                 >
+                  {image!=null?
                   <Image
                     style={styles.picker}
-                    source={image ? { uri: image } : image}
-                  />
+                    source={ { uri: image }}
+                  />:
                   <Ionicons
                     name="images-outline"
                     size={60}
                     color="white"
                     style={{ alignSelf: "center", margin: 20,  }}
                    
-                  />
+                  />}
                   {/* {image && <Image source={{uri: image}} style={{flex: 1}} />} */}
                 </TouchableOpacity>
               </View>
@@ -420,16 +421,17 @@ const Screen3 = ({ navigation }) => {
                   style={styles.uploadimage}
                   onPress={() => pickSecondImage()}
                 >
+                   {image2!=null?
                   <Image
                     style={styles.picker}
-                    source={image2 ? { uri: image2 } : image2}
-                  />
+                    source={ { uri: image2 }}
+                  />:
                   <Ionicons
                     name="images-outline"
                     size={60}
                     color="white"
                     style={{ alignSelf: "center", margin: 20 }}
-                  />
+                  />}
                 </TouchableOpacity>
               </View>
 

@@ -82,14 +82,14 @@ const Screen1 = ({ navigation }) => {
   // const html = `
   //   <html>
   //     <body>
-  //       <h1>Hi ${todoList.Name}</h1>
-  //       <h1>Hi ${todoList.occupation}</h1>
-  //       <h1>Hi ${todoList.dob}</h1>
-  //       <h1>Hi ${todoList.street}</h1>
-  //       <h1>Hi ${todoList.house}</h1>
-  //       <h1>Hi ${todoList.city}</h1>
-  //       <h1>Hi ${todoList.code}</h1>
-  //       <h1>Hi ${todoList.number}</h1>
+        // <h1>Hi ${todoList.Name}</h1>
+        // <h1>Hi ${todoList.occupation}</h1>
+        // <h1>Hi ${todoList.dob}</h1>
+        // <h1>Hi ${todoList.street}</h1>
+        // <h1>Hi ${todoList.house}</h1>
+        // <h1>Hi ${todoList.city}</h1>
+        // <h1>Hi ${todoList.code}</h1>
+        // <h1>Hi ${todoList.number}</h1>
         
   //       <p style="color: red;">Hello. Bonjour. Hola.</p>
   //     </body>

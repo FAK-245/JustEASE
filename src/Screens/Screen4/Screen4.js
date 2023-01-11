@@ -4,6 +4,7 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  Alert
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -21,6 +22,7 @@ import { addTodo } from "../../redux/action";
 
 const Screen4 = ({ navigation }) => {
 
+
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
   const [hasGalleryPermission, sethasGalleryPermissin] = useState(null);
@@ -33,6 +35,41 @@ const Screen4 = ({ navigation }) => {
   //   console.log(result);
   // };
 
+  const createThreeButtonAlert = () =>
+  Alert.alert(
+    "Yet Working on it",
+    "Working",
+    [
+      // {
+      //   text: "Yes is selected",
+      //   onPress: () => console.log("Ask me later pressed")
+      // },
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel"
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") }
+    ]
+  );
+
+  const Drive = () =>
+  Alert.alert(
+    "Not Included on it",
+    "not",
+    [
+      // {
+      //   text: "Yes is selected",
+      //   onPress: () => console.log("Ask me later pressed")
+      // },
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel"
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") }
+    ]
+  );
 
   const pickDocument = async () => {
     let result = await DocumentPicker.getDocumentAsync({});
@@ -130,7 +167,7 @@ console.log(todoList,"hello")
               // marginTop: "20%",
             }}
           >
-            <TouchableOpacity     onPress={pickDocument}>
+            <TouchableOpacity     onPress={createThreeButtonAlert}>
               <MaterialIcons
                 name="drive-folder-upload"
                 size={89}
@@ -138,7 +175,7 @@ console.log(todoList,"hello")
               />
               <Text style={{ textAlign: "center" }}>From file</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={Drive}>
               <MaterialIcons name="add-to-drive" size={89} color="black" />
               <Text>From google </Text>
               <Text style={{ textAlign: "center" }}> drive</Text>
@@ -200,7 +237,7 @@ console.log(todoList,"hello")
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.next}
-              onPress= { () => createUserFun}
+              onPress= { () => navigation.navigate('Screen5')}
             >
               <View
                 style={{

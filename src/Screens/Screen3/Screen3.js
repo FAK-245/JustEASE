@@ -7,9 +7,9 @@ import {
   Alert,
   Button,
   FlatList,
-  Image
+  Image,
 } from "react-native";
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -27,9 +27,9 @@ import Dialog, {
 } from "react-native-popup-dialog";
 import { Formik } from "formik";
 import styles from "./style";
-import { printToFileAsync } from 'expo-print';
-import { shareAsync } from 'expo-sharing';
-import * as  ImagePicker from 'expo-image-picker'
+import { printToFileAsync } from "expo-print";
+import { shareAsync } from "expo-sharing";
+import * as ImagePicker from "expo-image-picker";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
 const signUpSchema = Yup.object({
@@ -66,7 +66,6 @@ const Screen3 = ({ navigation }) => {
   //   </html>
   // `;
 
-  
   // let generatePdf = async () => {
   //   const file = await printToFileAsync({
   //     html: html,
@@ -77,74 +76,68 @@ const Screen3 = ({ navigation }) => {
   // };
   useEffect(() => {
     (async () => {
-      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync(dispatch(
-        todoList
-      ));
-      sethasGalleryPermissin(galleryStatus.status === 'granted');
-
-    }) ();
-  },[]);
+      const galleryStatus =
+        await ImagePicker.requestMediaLibraryPermissionsAsync(
+          dispatch(todoList)
+        );
+      sethasGalleryPermissin(galleryStatus.status === "granted");
+    })();
+  }, []);
   useEffect(() => {
     (async () => {
-      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      sethasGalleryPermissin1(galleryStatus.status === 'granted');
-
-    }) ();
-  },[]);
+      const galleryStatus =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+      sethasGalleryPermissin1(galleryStatus.status === "granted");
+    })();
+  }, []);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4,3],
+      aspect: [4, 3],
       quality: 1,
-    
-    })
+    });
     console.log(result);
 
-    if (!result.canceled){
+    if (!result.canceled) {
       setImage(result.uri);
     }
-   
   };
-  if (hasGalleryPermission === false){
-    return <Text>no access to internal storage</Text>
+  if (hasGalleryPermission === false) {
+    return <Text>no access to internal storage</Text>;
   }
-
-
 
   const pickSecondImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4,3],
+      aspect: [4, 3],
       quality: 1,
     
     
     })
     
-    if (!result.canceled){
+   
+
+    if (!result.canceled) {
       setImage2(result.uri);
-
-     
-
-
-    
     }
     console.log(result.uri, "heloo")
    
   };
-  if (hasGalleryPermission1 === false){
-    return <Text>no access to internal storage</Text>
+  if (hasGalleryPermission1 === false) {
+    return <Text>no access to internal storage</Text>;
   }
 
 
 
   
   console.log(todoList, "d")
+  console.log(todoList, "d");
 
   const createUserFun = (values) => {
-    setName(values.Name)
+    setName(values.Name);
     if (values != "") {
       dispatch(
         addTodo({
@@ -161,11 +154,19 @@ const Screen3 = ({ navigation }) => {
          number:todoList.number
           
          
+          // Screen3: values.Name,
+          // name: todoList.name,
+          // occupation: todoList.occupation,
+          // dob: todoList.dob,
+          // street: todoList.street,
+          // house: todoList.house,
+          // city: todoList.city,
+          // code: todoList.code,
+          // number: todoList.number,
 
           // age:"123445",
         })
       );
-      
 
       Alert.alert(
         "Personal Informaton Submitted!",
@@ -191,11 +192,10 @@ const Screen3 = ({ navigation }) => {
   // const openGallery = async () => {
   //   const result = await ImagePicker(options);
   //   setGalleryPhoto(result.assets[0].uri);
-    
+
   // };
 
- 
-//  console.log(todoList.name);
+  //  console.log(todoList.name);
   return (
     <Formik
       initialValues={{
@@ -204,7 +204,7 @@ const Screen3 = ({ navigation }) => {
       validationSchema={signUpSchema}
       onSubmit={(values, actions) => {
         createUserFun(values);
-     
+
         console.log(values);
         // actions.resetForm();
       }}
@@ -364,19 +364,22 @@ const Screen3 = ({ navigation }) => {
                   12 months proir to the application.
                 </Text>
 
-                <TouchableOpacity style={styles.uploadimage} onPress={() => pickImage()}> 
-                <Image  style={styles.picker
-       }  source={ image ? {uri: image}: image } />
+                <TouchableOpacity
+                  style={styles.uploadimage}
+                  onPress={() => pickImage()}
+                >
+                  <Image
+                    style={styles.picker}
+                    source={image ? { uri: image } : image}
+                  />
                   <Ionicons
                     name="images-outline"
                     size={60}
                     color="white"
                     style={{ alignSelf: "center", margin: 20 }}
                   />
-                    {/* {image && <Image source={{uri: image}} style={{flex: 1}} />} */}
-                    
+                  {/* {image && <Image source={{uri: image}} style={{flex: 1}} />} */}
                 </TouchableOpacity>
-              
               </View>
 
               <View style={{ margin: 10 }}>
@@ -412,9 +415,14 @@ const Screen3 = ({ navigation }) => {
                   revealing gross and net income of last year
                 </Text> */}
 
-                <TouchableOpacity style={styles.uploadimage} onPress={() => pickSecondImage()}>
-                <Image  style={styles.picker
-       }  source={ image2 ? {uri: image2}: image2}/>
+                <TouchableOpacity
+                  style={styles.uploadimage}
+                  onPress={() => pickSecondImage()}
+                >
+                  <Image
+                    style={styles.picker}
+                    source={image2 ? { uri: image2 } : image2}
+                  />
                   <Ionicons
                     name="images-outline"
                     size={60}

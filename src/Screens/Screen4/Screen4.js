@@ -11,6 +11,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import * as Progress from "react-native-progress";
 import * as ImagePicker from "expo-image-picker";
+// import * as DocumentPicker from "expo-document-picker";
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -18,6 +19,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const Screen4 = ({ navigation }) => {
   const [hasGalleryPermission, sethasGalleryPermissin] = useState(null);
   const [image, setImage] = useState(null);
+  // const [fileResponse, setFileResponse] = useState([]);
+
+  // const pickDocument = async () => {
+  //   let result = await DocumentPicker.getDocumentAsync({});
+  //   alert(result.uri);
+  //   console.log(result);
+  // };
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({

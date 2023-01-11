@@ -133,7 +133,7 @@ const Screen3 = ({ navigation }) => {
 
 
   
-  console.log(todoList, "d")
+  // console.log(todoList, "d")
   console.log(todoList, "d");
 
   const createUserFun = (values) => {
@@ -376,7 +376,8 @@ const Screen3 = ({ navigation }) => {
                     name="images-outline"
                     size={60}
                     color="white"
-                    style={{ alignSelf: "center", margin: 20 }}
+                    style={{ alignSelf: "center", margin: 20,  }}
+                   
                   />
                   {/* {image && <Image source={{uri: image}} style={{flex: 1}} />} */}
                 </TouchableOpacity>

@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ScrollView,
+  Modal,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
@@ -13,6 +14,8 @@ import React from "react";
 import Theme from "../../utils/Theme";
 import styles from "./style";
 const Screen2 = ({ navigation }) => {
+
+  
   return (
     <View style={{ flex: 1, paddingBottom: "14.7%", backgroundColor: "white" }}>
       <ScrollView>
@@ -44,6 +47,7 @@ const Screen2 = ({ navigation }) => {
             </Text>
           </View>
           <View style={styles.View3}>
+          
             <TouchableOpacity style={styles.yes}>
               <Text
                 style={{
@@ -58,6 +62,7 @@ const Screen2 = ({ navigation }) => {
                 Yes
               </Text>
             </TouchableOpacity>
+           
             <TouchableOpacity style={styles.no}>
               <Text
                 style={{

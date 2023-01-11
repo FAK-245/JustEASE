@@ -11,12 +11,18 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import * as Progress from "react-native-progress";
 import * as ImagePicker from "expo-image-picker";
+import * as DocumentPicker from "expo-document-picker"
 // import * as DocumentPicker from "expo-document-picker";
 import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useSelector, useDispatch } from "react-redux";
+import { addTodo } from "../../redux/action";
 
 const Screen4 = ({ navigation }) => {
+
+  const todoList = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
   const [hasGalleryPermission, sethasGalleryPermissin] = useState(null);
   const [image, setImage] = useState(null);
   // const [fileResponse, setFileResponse] = useState([]);
@@ -27,7 +33,47 @@ const Screen4 = ({ navigation }) => {
   //   console.log(result);
   // };
 
+
+  const pickDocument = async () => {
+    let result = await DocumentPicker.getDocumentAsync({});
+    console.log(result.uri);
+    console.log(result);
+  };
+
+  const createUserFun = () => {
+      
+    if (image != "") {
+      dispatch(
+        addTodo({
+          image:todoList.image
+          
+         
+         
+        })
+      );
+
+      Alert.alert(
+        "Personal Informaton Submitted!",
+        "Press Ok to go on Next Part",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel",
+          },
+          { text: "OK", onPress: () => navigation.navigate("Screen5") },
+        ]
+      );
+    } else {
+      Alert.alert("Please Complete your information!");
+    }
+  };
+console.log(todoList,"hello")
   const pickImage = async () => {
+
+
+   
+  
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -84,7 +130,7 @@ const Screen4 = ({ navigation }) => {
               // marginTop: "20%",
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity     onPress={pickDocument}>
               <MaterialIcons
                 name="drive-folder-upload"
                 size={89}
@@ -154,7 +200,7 @@ const Screen4 = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.next}
-              onPress={() => navigation.navigate("Screen5")}
+              onPress= { () => createUserFun}
             >
               <View
                 style={{

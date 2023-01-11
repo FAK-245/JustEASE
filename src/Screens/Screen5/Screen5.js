@@ -21,7 +21,12 @@ import styles from "./style";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
 import im from '../../../assets/icon.png'
+
+
 const Screen5 = ({ navigation }) => {
+
+
+  
 
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
@@ -30,7 +35,7 @@ console.log("hello",typeof(todoList.image))
 
   const html = `
     <html>
-      <body>
+      <body style="background-color:#33475b">
       
       <h1>Name: ${todoList.name}</h1>
       <h1>earrning: ${todoList.Screen3}</h1>
@@ -42,15 +47,11 @@ console.log("hello",typeof(todoList.image))
       <h1>Postal Code: ${todoList.code}</h1>
       <h1>Phone Number: ${todoList.number}</h1>
       <h1>Phone Number: ${todoList.image}</h1>
-      <h1>Phone Number: ${todoList.image2}</h1>
-
-      
-
-      
      
-      <img  src=${im}  width="460" height="345">
 
-      <img    src= "../../../assets/icon.png"  width="460" height="345">
+      
+    
+      <img  src={ ${todoList.image}} />
       
       </body>
     </html>

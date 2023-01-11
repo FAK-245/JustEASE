@@ -36,6 +36,26 @@ const Screen4 = ({ navigation }) => {
     return <Text>no access to internal storage</Text>;
   }
 
+  const openCamera = async () => {
+    // Ask the user for the permission to access the camera
+    const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert("You've refused to allow this appp to access your camera!");
+      return;
+    }
+
+    const result = await ImagePicker.launchCameraAsync();
+
+    // Explore the result
+    console.log(result);
+
+    if (!result.cancelled) {
+      setPickedImagePath(result.uri);
+      console.log(result.uri);
+    }
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}>
       <ScrollView style={{ flexGrow: 1 }}>
@@ -77,7 +97,7 @@ const Screen4 = ({ navigation }) => {
               marginTop: "20%",
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => openCamera()}>
               <FontAwesome name="camera" size={70} color="black" />
               <Text style={{ marginRight: "1%" }}>Take a photo</Text>
             </TouchableOpacity>

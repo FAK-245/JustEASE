@@ -83,7 +83,7 @@ const Screen2 = ({ navigation }) => {
                 marginLeft: "10%",
                 color: "#1c5bd9",
                 marginTop: "15%",
-                color: "#8da2b8",
+                //color: "#8da2b8",
               }}
             >
               Do you have income from employment?

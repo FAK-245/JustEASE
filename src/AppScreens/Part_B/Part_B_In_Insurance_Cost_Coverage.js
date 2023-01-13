@@ -25,7 +25,7 @@ import Dialog, {
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import React, { useState } from "react";
-import styles from "./style";
+import styles from "../../../Styles/style_in";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
@@ -470,8 +470,8 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           }) => (
             <View style={styles.mainView}>
               <View style={styles.View1}>
-                <Text style={styles.signuptxt}>Part A - </Text>
-                <Text style={styles.signuptxt1}>Personal Information</Text>
+                <Text style={styles.signuptxt}>Part B - </Text>
+                <Text style={styles.signuptxt1}> Legal Protection </Text>
               </View>
 
               <Text

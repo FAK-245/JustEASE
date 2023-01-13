@@ -25,10 +25,11 @@ import Dialog, {
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import React, { useState } from "react";
-import styles from "./style";
+import styles from "../../../Styles/style_in";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
+import Part_B_Dec_Insurance from "../Part_B/Part_B_Dec_Insurance"
 import Theme from "../../utils/Theme";
 
 const signUpSchema = Yup.object({
@@ -57,7 +58,7 @@ const signUpSchema = Yup.object({
     .max(20, "Limit Exceed"),
 });
 LogBox.ignoreAllLogs();
-const Part_A_Applicant_Info = ({ navigation }) => {
+const Part_A_Legal_Rep_Info = ({ navigation }) => {
 
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
@@ -471,7 +472,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
             <View style={styles.mainView}>
               <View style={styles.View1}>
                 <Text style={styles.signuptxt}>Part A - </Text>
-                <Text style={styles.signuptxt1}>Personal Information</Text>
+                <Text style={styles.signuptxt1}>Legal Representative Information</Text>
               </View>
 
               <Text
@@ -785,9 +786,9 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.next}
-                  onPress={handleSubmit}
+                  //onPress={handleSubmit}
 
-                  // onPress={() => navigation.navigate("Screen2")}
+                   onPress={() => navigation.navigate("Screen2")}
                 >
                   <View
                     style={{
@@ -831,4 +832,4 @@ const Part_A_Applicant_Info = ({ navigation }) => {
   );
 };
 
-export default Part_A_Applicant_Info;
+export default Part_A_Legal_Rep_Info;

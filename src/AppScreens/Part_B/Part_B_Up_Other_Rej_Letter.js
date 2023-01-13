@@ -26,7 +26,7 @@ import Dialog, {
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import { Formik } from "formik";
-import styles from "./style";
+import styles from "../../../Styles/style_up";
 import { printToFileAsync } from "expo-print";
 import { shareAsync } from "expo-sharing";
 import * as ImagePicker from "expo-image-picker";

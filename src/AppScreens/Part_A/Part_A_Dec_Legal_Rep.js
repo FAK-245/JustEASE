@@ -13,10 +13,10 @@ import * as Progress from "react-native-progress";
 
 import React from "react";
 import Theme from "../../utils/Theme";
-import styles from "./style";
+import styles from "../../../Styles/style_dec";
+import Part_A_Legal_Rep_Info from "./Part_A_Legal_Rep_Info"
 
-
-const Part_A_Legal_Rep_Decision = ({ navigation }) => {
+const Part_A_Dec_Legal_Rep = ({ navigation }) => {
 
 
   const createThreeButtonAlert = () =>
@@ -56,15 +56,15 @@ const Part_A_Legal_Rep_Decision = ({ navigation }) => {
     ]
   );
 
-  
 
-  
+
+
   return (
     <View style={{ flex: 1, paddingBottom: "14.7%", backgroundColor: "white" }}>
       <ScrollView>
         <View style={styles.View1}>
-          <Text style={styles.Text1}>Part E -</Text>
-          <Text style={styles.Text2}>Gross Income</Text>
+          <Text style={styles.Text1}>Part A -</Text>
+          <Text style={styles.Text2}>Personal Information</Text>
         </View>
         <View style={{ marginTop: "5%" }}>
           {/* <View
@@ -76,7 +76,7 @@ const Part_A_Legal_Rep_Decision = ({ navigation }) => {
               alignSelf: "center",
             }}
           ></View> */}
-          <View style={styles.Line}></View>
+          <View style={styles.Line}/>
           <View style={styles.View2}>
             <Text
               style={{
@@ -90,8 +90,10 @@ const Part_A_Legal_Rep_Decision = ({ navigation }) => {
             </Text>
           </View>
           <View style={styles.View3}>
-          
-            <TouchableOpacity style={styles.yes}  onPress={createThreeButtonAlert}>
+
+            <TouchableOpacity
+                style={styles.yes}
+                onPress={() => navigation.navigate("Part_A_Legal_Rep_Info")}>
               <Text
                 style={{
                   color: "white",
@@ -105,7 +107,7 @@ const Part_A_Legal_Rep_Decision = ({ navigation }) => {
                 Yes
               </Text>
             </TouchableOpacity>
-           
+
             <TouchableOpacity style={styles.no} onPress={NoSelected}>
               <Text
                 style={{
@@ -130,7 +132,7 @@ const Part_A_Legal_Rep_Decision = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={() => navigation.navigate("Screen1")}
+              onPress={() => navigation.navigate("Part_A_Applicant_Info")}
             >
               <View
                 style={{
@@ -196,4 +198,4 @@ const Part_A_Legal_Rep_Decision = ({ navigation }) => {
   );
 };
 
-export default Part_A_Legal_Rep_Decision;
+export default Part_A_Dec_Legal_Rep;

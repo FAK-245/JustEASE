@@ -25,11 +25,12 @@ import Dialog, {
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import React, { useState } from "react";
-import styles from "./style";
+import styles from "../../../Styles/style_in";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
 import Theme from "../../utils/Theme";
+import Part_A_Dec_Legal_Rep from "./Part_A_Dec_Legal_Rep";
 
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -57,7 +58,7 @@ const signUpSchema = Yup.object({
     .max(20, "Limit Exceed"),
 });
 LogBox.ignoreAllLogs();
-const Screen1 = ({ navigation }) => {
+const Part_A_Applicant_Info = ({ navigation }) => {
 
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
@@ -90,13 +91,13 @@ const Screen1 = ({ navigation }) => {
         // <h1>Hi ${todoList.city}</h1>
         // <h1>Hi ${todoList.code}</h1>
         // <h1>Hi ${todoList.number}</h1>
-        
+
   //       <p style="color: red;">Hello. Bonjour. Hola.</p>
   //     </body>
   //   </html>
   // `;
 
-  
+
   // let generatePdf = async () => {
   //   const file = await printToFileAsync({
   //     html: html,
@@ -175,7 +176,7 @@ const Screen1 = ({ navigation }) => {
   //   });
    };
 
-  
+
   console.log(todoList)
 
   const handleAddTodo = () => {
@@ -471,7 +472,7 @@ const Screen1 = ({ navigation }) => {
             <View style={styles.mainView}>
               <View style={styles.View1}>
                 <Text style={styles.signuptxt}>Part A - </Text>
-                <Text style={styles.signuptxt1}>Personal Information</Text>
+                <Text style={styles.signuptxt1}> Personal Information </Text>
               </View>
 
               <Text
@@ -490,8 +491,7 @@ const Screen1 = ({ navigation }) => {
                   onBlur={handleBlur("Name")}
                 />
                 <TouchableOpacity onPress={() => setNameDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
+                  <Ionicons name="information-circle-outline"
                     size={25}
                     style={{ padding: 10 }}
                   ></Ionicons>
@@ -714,7 +714,9 @@ const Screen1 = ({ navigation }) => {
                 {touched.PhoneNumber && errors.PhoneNumber}
               </Text>
 
-              <Text
+              {/* Not required anymore since the decisions gets an extra screen*/}
+
+              {/*<Text
                 style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "4%" }}
               >
                 Do you have a legal representative?
@@ -749,7 +751,7 @@ const Screen1 = ({ navigation }) => {
                     No
                   </Text>
                 </TouchableOpacity>
-              </View>
+              </View>*/}
 
               <View
                 style={{
@@ -785,9 +787,9 @@ const Screen1 = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.next}
-                  onPress={handleSubmit}
+                  //onPress={handleSubmit}
 
-                  // onPress={() => navigation.navigate("Screen2")}
+                  onPress={() => navigation.navigate("Part_A_Dec_Legal_Rep")}
                 >
                   <View
                     style={{
@@ -822,7 +824,7 @@ const Screen1 = ({ navigation }) => {
         </Formik>
 
 
-     
+
         {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
 
       </ScrollView>
@@ -831,4 +833,4 @@ const Screen1 = ({ navigation }) => {
   );
 };
 
-export default Screen1;
+export default Part_A_Applicant_Info;

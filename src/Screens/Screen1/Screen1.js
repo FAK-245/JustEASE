@@ -471,7 +471,7 @@ const Screen1 = ({ navigation }) => {
             <View style={styles.mainView}>
               <View style={styles.View1}>
                 <Text style={styles.signuptxt}>Part A - </Text>
-                <Text style={styles.signuptxt1}>Personal Information</Text>
+                <Text style={styles.signuptxt1}> Test </Text>
               </View>
 
               <Text

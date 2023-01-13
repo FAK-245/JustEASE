@@ -25,7 +25,7 @@ import Dialog, {
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import React, { useState } from "react";
-import styles from "./style";
+import styles from "../../../Styles/style_dec";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
@@ -470,8 +470,8 @@ const Screen1 = ({ navigation }) => {
           }) => (
             <View style={styles.mainView}>
               <View style={styles.View1}>
-                <Text style={styles.signuptxt}>Part A - </Text>
-                <Text style={styles.signuptxt1}>Personal Information</Text>
+                <Text style={styles.signuptxt}>Part B - </Text>
+                <Text style={styles.signuptxt1}>Legal Protection</Text>
               </View>
 
               <Text
@@ -717,7 +717,7 @@ const Screen1 = ({ navigation }) => {
               <Text
                 style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "4%" }}
               >
-                Do you have a legal representative?
+                1) Do you have legal protection insurance?
               </Text>
               <View
                 style={{

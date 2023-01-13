@@ -7,9 +7,9 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 //import { black, green100 } from 'react-native-paper/lib/typescript/styles/colors';
 const Theme = {
   red: "red",
-  white: "white",
-  green: "green",
-  btnGrey: "#FFFFFFCC",
+  //white: "white",
+  //green: "green",
+  //btnGrey: "#FFFFFFCC",
   btnblue: "#0047AB",
   primary: "#6066D0",
   secondary: "#fffcf8",

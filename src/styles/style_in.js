@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import Theme from "../src/utils/Theme";
+import Theme from "../utils/Theme";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 const styles = StyleSheet.create({
   mainView: {

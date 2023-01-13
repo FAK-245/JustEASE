@@ -26,19 +26,21 @@ import Dialog, {
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import { Formik } from "formik";
-import styles from "../../../Styles/style_up";
+import styles from "../../styles/style_up"
 import { printToFileAsync } from "expo-print";
 import { shareAsync } from "expo-sharing";
 import * as ImagePicker from "expo-image-picker";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Part_B_Dec_Contacted_Insurance from "./Part_B_Dec_Contacted_Insurance";
+import Part_B_Dec_Insurance from "./Part_B_Dec_Insurance";
 const signUpSchema = Yup.object({
   Name: Yup.string()
     .min(0, "Minimum Input")
     .required("Required Field")
     .max(30, "Limit Exceed"),
 });
-const Screen3 = ({ navigation }) => {
+const Part_B_Up_Insurance = ({ navigation }) => {
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
@@ -237,8 +239,7 @@ const Screen3 = ({ navigation }) => {
               }}
               dialogTitle={
                 <DialogTitle
-                  title="Info Box For Monthly Gross
-                  "
+                  title="Info Box For Insurance Policy Document"
                   hasTitleBar={false}
                 />
               }
@@ -269,51 +270,10 @@ const Screen3 = ({ navigation }) => {
               </DialogContent>
             </Dialog>
             <View style={styles.View1}>
-              <Text style={styles.signuptxt}>Part E - </Text>
-              <Text style={styles.signuptxt1}>Gross Income</Text>
+              <Text style={styles.signuptxt}>Part B - </Text>
+              <Text style={styles.signuptxt1}>Legal Protection</Text>
             </View>
             <View style={styles.Line}></View>
-
-            <Text
-              style={{
-                color: "#1c5bd9",
-                textAlign: "center",
-                fontSize: RFValue(13, 580),
-              }}
-            >
-              1.1) How much do you earn monthly in € (gross)?
-            </Text>
-
-            <View style={styles.textinputconatiner}>
-              <TextInput
-                placeholderTextColor={"#87CEEB"}
-                cursorColor="blue"
-                placeholder="Input your Text in here"
-                style={styles.txtinput}
-                onChangeText={handleChange("Name")}
-                onBlur={handleBlur("Name")}
-                //  values={Name}
-                //  onChangeText={(value) => setName(value)}
-              />
-              <TouchableOpacity onPress={() => setScaleAnimationDialog(true)}>
-                <Ionicons
-                  name="information-circle-outline"
-                  size={25}
-                  style={{ padding: 10 }}
-                ></Ionicons>
-              </TouchableOpacity>
-
-              {/* <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "8%",
-                }}
-              >
-                {touched.Name && errors.Name}
-              </Text> */}
-            </View>
 
             <View style={{ backgroundColor: "red" }}></View>
             <Text
@@ -360,8 +320,7 @@ const Screen3 = ({ navigation }) => {
                     marginRight: "6.5%",
                   }}
                 >
-                  E1-1.1) wage or salary slips from the workspace for the past
-                  12 months proir to the application.
+                  B-1) Please upload a copy of the insurance policy document.
                 </Text>
 
                 <TouchableOpacity
@@ -384,56 +343,6 @@ const Screen3 = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
 
-              <View style={{ margin: 10 }}>
-                {/* <Text
-                  style={{
-                    color: "#1c5bd9",
-                    fontSize: RFValue(13, 580),
-                    marginLeft: "6.5%",
-                  }}
-                >
-                  E1-1.1b) Latest income tax notice from the tax
-                </Text> */}
-                <Text
-                  style={{
-                    textAlign: "center",
-                    color: "#1c5bd9",
-                    fontSize: RFValue(13, 580),
-                    marginLeft: "6.5%",
-                    marginRight: "6.5%",
-                  }}
-                >
-                  E1-1.1b) Latest income tax notice from the tax office or
-                  electronic wage tax certificate revealing gross and net income
-                  of last year.
-                </Text>
-                {/* <Text
-                  style={{
-                    color: "#1c5bd9",
-                    fontSize: RFValue(13, 580),
-                    marginLeft: "6.5%",
-                  }}
-                >
-                  revealing gross and net income of last year
-                </Text> */}
-
-                <TouchableOpacity
-                  style={styles.uploadimage}
-                  onPress={() => pickSecondImage()}
-                >
-                   {image2!=null?
-                  <Image
-                    style={styles.picker}
-                    source={ { uri: image2 }}
-                  />:
-                  <Ionicons
-                    name="images-outline"
-                    size={60}
-                    color="white"
-                    style={{ alignSelf: "center", margin: 20 }}
-                  />}
-                </TouchableOpacity>
-              </View>
 
               <View
                 style={{
@@ -444,7 +353,7 @@ const Screen3 = ({ navigation }) => {
               >
                 <TouchableOpacity
                   style={styles.back}
-                  onPress={() => navigation.navigate("Screen2")}
+                  onPress={() => navigation.navigate("Part_B_Dec_Insurance")}
                 >
                   <View
                     style={{
@@ -471,7 +380,7 @@ const Screen3 = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Part_B_Dec_Contacted_Insurance")}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -510,4 +419,4 @@ const Screen3 = ({ navigation }) => {
   );
 };
 
-export default Screen3;
+export default Part_B_Up_Insurance;

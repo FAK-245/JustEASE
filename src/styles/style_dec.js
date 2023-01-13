@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import Theme from "../src/utils/Theme";
+import Theme from "../utils/Theme";
 
 const styles = StyleSheet.create({
   View1: {

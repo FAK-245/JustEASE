@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import Theme from "../../utils/Theme";
+import Theme from "../utils/Theme";
 const styles = StyleSheet.create({
   View1: {
     height: Theme.hp("10%"),
@@ -24,18 +24,72 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     margin: 10,
   },
+  View2: {
+    height: Theme.hp("20%"),
+  },
+  View3: {
+    height: Theme.hp("50%"),
+  },
+  yes: {
+    margin: 10,
 
+    height: Theme.hp("15%"),
+    width: Theme.wp("80%"),
+    backgroundColor: "blue",
+    borderRadius: 5,
+    alignSelf: "center",
+    // marginLeft: "5%",
+    opacity: 0.8,
+  },
+  no: {
+    margin: 10,
+    height: Theme.hp("15%"),
+    width: Theme.wp("80%"),
+    backgroundColor: "blue",
+    borderRadius: 5,
+    alignSelf: "center",
+    // marginRight: "5%",
+    opacity: 0.8,
+  },
+  back: {
+    margin: 10,
+    height: Theme.hp("6%"),
+    width: Theme.wp("25%"),
+    backgroundColor: "#1c5bd9",
+    borderRadius: 5,
+    marginLeft: "5%",
+    opacity: 0.8,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  next: {
+    margin: 10,
+    height: Theme.hp("6%"),
+    width: Theme.wp("25%"),
+    backgroundColor: "#1c5bd9",
+    borderRadius: 5,
+    marginRight: "5%",
+    opacity: 0.8,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  /*View1: {
+    // height: Theme.hp("10%"),
+    justifyContent: "center",
+    marginTop: "15%",
+  },*/
   signuptxt: {
     color: Theme.black,
     textAlign: "center",
-    fontSize: RFValue(24, 580),
+    fontSize: RFValue(25, 580),
 
     fontWeight: "700",
   },
   signuptxt1: {
     color: Theme.black,
     textAlign: "center",
-    fontSize: 25,
+    fontSize: RFValue(25, 580),
+
     fontWeight: "700",
     margin: 10,
   },
@@ -79,47 +133,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   FlatView: {
-    backgroundColor: "#778ef9",
-    height: Theme.hp("40%"),
+    backgroundColor: Theme.image,
+    height: Theme.hp("60%"),
     width: Theme.wp("86%"),
     alignSelf: "center",
     borderRadius: 10,
-    margin: 10,
-    padding: 10,
   },
   document1: {
-    color: Theme.white,
-    fontSize: RFValue(12, 580),
-    // padding: 20,
-    fontWeight: "800",
-  },
-  document2: {
-    color: Theme.white,
-    fontSize: RFValue(11, 580),
-    // padding: 20,
+    fontSize: RFValue(13, 580),
+    padding: 20,
     fontWeight: "400",
-  },
-  download: {
-    // backgroundColor: "#3243f7",
-    margin: 5,
-    height: Theme.hp("5%"),
-    width: Theme.wp("40%"),
-    backgroundColor: "#1c5bd9",
-    borderRadius: 20,
-    // marginLeft: "5%",
-    opacity: 0.8,
-  },
-  back: {
-    margin: 10,
-    height: Theme.hp("6%"),
-    width: Theme.wp("25%"),
-    backgroundColor: "#1c5bd9",
-    borderRadius: 5,
-    marginLeft: "5%",
-    opacity: 0.8,
-    flexDirection: "row",
-    justifyContent: "center",
-    marginTop: Theme.hp("5%"),
   },
 });
 export default styles;

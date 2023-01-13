@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import Theme from "../../utils/Theme";
+import Theme from "../utils/Theme";
 const styles = StyleSheet.create({
   View1: {
     height: Theme.hp("10%"),
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     margin: 15,
   },
   txtinput: {
+    color: "#87CEEB",
     marginTop: 5,
     flexDirection: "row",
     alignItems: "center",
@@ -115,14 +116,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     // backgroundColor: "",
     height: Theme.hp("7%"),
-    width: Theme.wp("86%"),
+    width: Theme.wp("80%"),
     alignSelf: "center",
+    marginLeft: '5%'
   },
   textinputconatiner: {
-    marginTop: 30,
+   
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignContent:'center',
+    justifyContent: 'space-between',
+    alignSelf: 'center'
+   
   },
   textinputconatiner2: {
-    marginTop: 10,
+    marginTop: 30,
   },
   uploadimage: {
     height: Theme.hp("16%"),
@@ -132,17 +140,12 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 10,
   },
-  FlatView: {
-    backgroundColor: Theme.image,
-    height: Theme.hp("60%"),
+  picker: {
+    height: Theme.hp("16%"),
     width: Theme.wp("86%"),
-    alignSelf: "center",
+    borderColor: 'black',
     borderRadius: 10,
-  },
-  document1: {
-    fontSize: RFValue(13, 580),
-    padding: 20,
-    fontWeight: "400",
-  },
+    
+  }
 });
 export default styles;

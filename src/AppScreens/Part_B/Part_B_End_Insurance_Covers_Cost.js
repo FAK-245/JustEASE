@@ -17,7 +17,7 @@ import todoReducer from "../../redux/todoReducer";
 import { useSelector, useDispatch } from "react-redux";
 import { addTodo } from "../../redux/action";
 
-import styles from "../../../Styles/style_end";
+import styles from "../../styles/style_end";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
 import im from '../../../assets/icon.png'

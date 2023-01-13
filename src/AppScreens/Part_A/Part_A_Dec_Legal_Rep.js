@@ -13,7 +13,7 @@ import * as Progress from "react-native-progress";
 
 import React from "react";
 import Theme from "../../utils/Theme";
-import styles from "../../../Styles/style_dec";
+import styles from "../../styles/style_dec";
 import Part_A_Legal_Rep_Info from "./Part_A_Legal_Rep_Info"
 
 const Part_A_Dec_Legal_Rep = ({ navigation }) => {
@@ -86,7 +86,7 @@ const Part_A_Dec_Legal_Rep = ({ navigation }) => {
                 //color: "#8da2b8",
               }}
             >
-              Do you have a legal representative?
+              Are you under 18 years old or are you not legally capable?
             </Text>
           </View>
           <View style={styles.View3}>

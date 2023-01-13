@@ -25,7 +25,7 @@ import Dialog, {
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import React, { useState } from "react";
-import styles from "../../../Styles/style_in";
+import styles from "../../styles/style_in";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
@@ -478,7 +478,7 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
               <Text
                 style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
               >
-                What is your name?
+                What is his/her name?
               </Text>
               <View style={styles.textinputconatiner}>
                 <TextInput
@@ -498,80 +498,6 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                   ></Ionicons>
                 </TouchableOpacity>
               </View>
-              <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "6%",
-                }}
-              >
-                {touched.Name && errors.Name}
-              </Text>
-              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your Occupation?
-              </Text>
-              <View style={styles.textinputconatiner}>
-                <TextInput
-                  placeholderTextColor={"#87CEEB"}
-                  cursorColor="#d75f4f"
-                  style={styles.txtinput}
-                  placeholder="Input your Text in here"
-                  value={values.Occupation}
-                  onChangeText={handleChange("Occupation")}
-                  onBlur={handleBlur("Occupation")}
-                />
-                <TouchableOpacity onPress={() => setOccDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ padding: 10 }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
-
-              <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "6%",
-                }}
-              >
-                {touched.Occupation && errors.Occupation}
-              </Text>
-              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your date of birth?
-              </Text>
-              <View style={styles.textinputconatiner}>
-                <TextInput
-                  placeholderTextColor={"#87CEEB"}
-                  cursorColor="#d75f4f"
-                  style={styles.txtinput}
-                  placeholder="Input your Text in here"
-                  value={values.Dob}
-                  onChangeText={handleChange("Dob")}
-                  onBlur={handleBlur("Dob")}
-                />
-                <TouchableOpacity onPress={() => setDobDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ padding: 10 }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
-
-              <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "6%",
-                }}
-              >
-                {touched.Dob && errors.Dob}
-              </Text>
               <View
                 style={{
                   flexDirection: "row",
@@ -581,7 +507,7 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                 }}
               >
                 <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                  What is your address?
+                  What is his/her address?
                 </Text>
                 <TouchableOpacity onPress={() => setAddDialog(true)}>
                   <Ionicons
@@ -684,7 +610,7 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                 </View>
               </View>
               <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your phone number?
+                What is his/her phone number?
               </Text>
               <View style={{ flexDirection: "row", marginLeft: "5%" }}>
                 <TextInput
@@ -714,43 +640,6 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
               >
                 {touched.PhoneNumber && errors.PhoneNumber}
               </Text>
-
-              <Text
-                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "4%" }}
-              >
-                Do you have a legal representative?
-              </Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <TouchableOpacity style={styles.yes} onPress={handleSubmit}>
-                  <Text
-                    style={{
-                      color: "white",
-                      textAlign: "center",
-                      margin: 5,
-                      fontWeight: "500",
-                    }}
-                  >
-                    Yes
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.no} onPress={handleSubmit}>
-                  <Text
-                    style={{
-                      color: "white",
-                      textAlign: "center",
-                      margin: 5,
-                      fontWeight: "500",
-                    }}
-                  >
-                    No
-                  </Text>
-                </TouchableOpacity>
-              </View>
 
               <View
                 style={{
@@ -788,7 +677,7 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                   style={styles.next}
                   //onPress={handleSubmit}
 
-                   onPress={() => navigation.navigate("Screen2")}
+                   onPress={() => navigation.navigate("Part_B_Dec_Insurance")}
                 >
                   <View
                     style={{

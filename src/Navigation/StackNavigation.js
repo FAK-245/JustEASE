@@ -17,7 +17,6 @@ import {store, persistor} from '../redux/store';
 
 import {Provider} from 'react-redux';
 
-
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Screen1 from "../Screens/Screen1/Screen1";

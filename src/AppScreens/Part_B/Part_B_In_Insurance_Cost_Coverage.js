@@ -30,6 +30,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
 import Theme from "../../utils/Theme";
+import Part_B_Dec_Answer_Insurance from "./Part_B_Dec_Answer_Insurance";
 
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -477,7 +478,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
               <Text
                 style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
               >
-                What is your name?
+                1.3) Up to what amount do they cover the cost?
               </Text>
               <View style={styles.textinputconatiner}>
                 <TextInput
@@ -757,7 +758,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <TouchableOpacity style={styles.back} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.back} onPress={() => navigation.navigate("Part_B_Dec_Answer_Insurance")}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -785,7 +786,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.next}
-                  onPress={handleSubmit}
+                  onPress={() => navigation.navigate("Part_B_Up_Insurance_Conf_Letter")}
 
                   // onPress={() => navigation.navigate("Screen2")}
                 >

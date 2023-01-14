@@ -14,6 +14,9 @@ import * as Progress from "react-native-progress";
 import React from "react";
 import Theme from "../../utils/Theme";
 import styles from "../../styles/style_dec";
+import Part_B_Up_Insurance_Conf_Letter from "./Part_B_Up_Insurance_Conf_Letter";
+import Part_B_Dec_Contacted_Insurance from "./Part_B_Dec_Contacted_Insurance";
+import Part_B_In_Insurance_Cost_Coverage from "./Part_B_In_Insurance_Cost_Coverage";
 
 
 const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
@@ -63,8 +66,8 @@ const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
     <View style={{ flex: 1, paddingBottom: "14.7%", backgroundColor: "white" }}>
       <ScrollView>
         <View style={styles.View1}>
-          <Text style={styles.Text1}>Part E -</Text>
-          <Text style={styles.Text2}>Gross Income</Text>
+          <Text style={styles.Text1}>Part B -</Text>
+          <Text style={styles.Text2}>Legal Protection</Text>
         </View>
         <View style={{ marginTop: "5%" }}>
           {/* <View
@@ -86,12 +89,12 @@ const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
                 //color: "#8da2b8",
               }}
             >
-              Do you have income from employment?
+                1.2) What was the response of the insurance company?
             </Text>
           </View>
           <View style={styles.View3}>
 
-            <TouchableOpacity style={styles.yes}  onPress={createThreeButtonAlert}>
+            <TouchableOpacity style={styles.yes}  onPress={() => navigation.navigate("Part_B_Up_Insurance_Conf_Letter")}>
               <Text
                 style={{
                   color: "white",
@@ -102,11 +105,11 @@ const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
                   fontSize: RFValue(15, 580),
                 }}
               >
-                Yes
+                It will cover the full cost of the process.
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.no} onPress={NoSelected}>
+            <TouchableOpacity style={styles.yes} onPress={() => navigation.navigate("Part_B_Up_Insurance_Conf_Letter")}>
               <Text
                 style={{
                   color: "white",
@@ -117,9 +120,24 @@ const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
                   fontSize: RFValue(15, 580),
                 }}
               >
-                No
+                It will partially cover the costs of the process.
               </Text>
             </TouchableOpacity>
+
+              <TouchableOpacity style={styles.no} onPress={() => navigation.navigate("Part_B_Up_Insurance_Rej_Letter")}>
+                  <Text
+                      style={{
+                          color: "white",
+                          textAlign: "center",
+
+                          fontWeight: "500",
+                          margin: "11%",
+                          fontSize: RFValue(15, 580),
+                      }}
+                  >
+                      It will not cover the cost of the process.
+                  </Text>
+              </TouchableOpacity>
           </View>
           <View
             style={{
@@ -130,7 +148,7 @@ const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={() => navigation.navigate("Screen1")}
+              onPress={() => navigation.navigate("Part_B_Dec_Contacted_Insurance")}
             >
               <View
                 style={{
@@ -159,7 +177,7 @@ const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.next}
-              onPress={() => navigation.navigate("Screen3")}
+              onPress={() => navigation.navigate("Part_B_In_Insurance_Cost_Coverage")}
             >
               <View
                 style={{

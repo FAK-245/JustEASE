@@ -32,6 +32,8 @@ import { shareAsync } from "expo-sharing";
 import * as ImagePicker from "expo-image-picker";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Part_B_Up_Insurance_Conf_Letter from "./Part_B_Up_Insurance_Conf_Letter";
+import Part_B_Dec_Other_Legal_Protection from "./Part_B_Dec_Other_Legal_Protection";
 const signUpSchema = Yup.object({
   Name: Yup.string()
     .min(0, "Minimum Input")
@@ -444,7 +446,7 @@ const Screen3 = ({ navigation }) => {
               >
                 <TouchableOpacity
                   style={styles.back}
-                  onPress={() => navigation.navigate("Screen2")}
+                  onPress={() => navigation.navigate("Part_B_Up_Insurance_Conf_Letter")}
                 >
                   <View
                     style={{
@@ -471,7 +473,7 @@ const Screen3 = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Part_B_Dec_Other_Legal_Protection")}>
                   <View
                     style={{
                       flexDirection: "row",

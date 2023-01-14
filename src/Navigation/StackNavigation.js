@@ -47,6 +47,7 @@ import Part_D_In_Up_Receiver_Income from "../AppScreens/Part_D/Part_D_In_Up_Rece
 import Part_SA_Dec_Receive_SA from "../AppScreens/Part_Social_Assistance/Part_SA_Dec_Receive_SA";
 import Part_SA_End_Receives_SA from "../AppScreens/Part_Social_Assistance/Part_SA_End_Receives_SA";
 import Part_SA_Up_Proof from "../AppScreens/Part_Social_Assistance/Part_SA_Up_Proof";
+import Part_B_Dec_Other_Legal_Protection from "../AppScreens/Part_B/Part_B_Dec_Other_Legal_Protection";
 
 
 const Tab = createBottomTabNavigator();
@@ -359,7 +360,7 @@ const StackNavigation = () => {
         <NavigationContainer>
 
 
-            <Stack.Navigator initialRouteName={'Part_A_Applicant_Info'}
+            <Stack.Navigator initialRouteName={"Part_B_Dec_Insurance"}
                 screenOptions={{headerShown: false}}>
                 <Stack.Screen name="Screen1" component={HomeTabs}/>
                 <Stack.Screen name="Screen2" component={Screen2}/>
@@ -378,6 +379,7 @@ const StackNavigation = () => {
                 {/* PART B Screens */}
                 <Stack.Screen name="Part_B_Dec_Answer_Insurance" component={Part_B_Dec_Answer_Insurance}/>
                 <Stack.Screen name="Part_B_Dec_Answer_Other_Protection" component={Part_B_Dec_Answer_Other_Protection}/>
+                <Stack.Screen name="Part_B_Dec_Other_Legal_Protection" component={Part_B_Dec_Other_Legal_Protection}/>
                 <Stack.Screen name="Part_B_Dec_Contacted_Insurance" component={Part_B_Dec_Contacted_Insurance}/>
                 <Stack.Screen name="Part_B_Dec_Applied_Other_Protection" component={Part_B_Dec_Applied_Other_Protection}/>
                 <Stack.Screen name="Part_B_Dec_Insurance" component={Part_B_Dec_Insurance}/>

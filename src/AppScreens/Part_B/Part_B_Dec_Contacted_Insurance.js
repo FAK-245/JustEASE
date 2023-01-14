@@ -14,6 +14,8 @@ import * as Progress from "react-native-progress";
 import React from "react";
 import Theme from "../../utils/Theme";
 import styles from "../../styles/style_dec";
+import Part_B_Dec_Answer_Insurance from "./Part_B_Dec_Answer_Insurance";
+import Part_B_Up_Insurance from "./Part_B_Up_Insurance";
 
 
 const Part_B_Dec_Contacted_Insurance = ({ navigation }) => {
@@ -63,8 +65,8 @@ const Part_B_Dec_Contacted_Insurance = ({ navigation }) => {
     <View style={{ flex: 1, paddingBottom: "14.7%", backgroundColor: "white" }}>
       <ScrollView>
         <View style={styles.View1}>
-          <Text style={styles.Text1}>Part E -</Text>
-          <Text style={styles.Text2}>Gross Income</Text>
+          <Text style={styles.Text1}>Part B -</Text>
+          <Text style={styles.Text2}>Legal Protection</Text>
         </View>
         <View style={{ marginTop: "5%" }}>
           {/* <View
@@ -86,12 +88,12 @@ const Part_B_Dec_Contacted_Insurance = ({ navigation }) => {
                 //color: "#8da2b8",
               }}
             >
-              Do you have income from employment?
+                1.1) Have you contacted the insurance already about financing the legal process?
             </Text>
           </View>
           <View style={styles.View3}>
 
-            <TouchableOpacity style={styles.yes}  onPress={createThreeButtonAlert}>
+            <TouchableOpacity style={styles.yes}  onPress={() => navigation.navigate("Part_B_Dec_Answer_Insurance")}>
               <Text
                 style={{
                   color: "white",
@@ -106,7 +108,7 @@ const Part_B_Dec_Contacted_Insurance = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.no} onPress={NoSelected}>
+            <TouchableOpacity style={styles.no} onPress={() => navigation.navigate("Part_B_End_Insurance_Not_Contacted")}>
               <Text
                 style={{
                   color: "white",
@@ -130,7 +132,7 @@ const Part_B_Dec_Contacted_Insurance = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={() => navigation.navigate("Screen1")}
+              onPress={() => navigation.navigate("Part_B_Up_Insurance")}
             >
               <View
                 style={{
@@ -157,9 +159,9 @@ const Part_B_Dec_Contacted_Insurance = ({ navigation }) => {
                 </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            {<TouchableOpacity
               style={styles.next}
-              onPress={() => navigation.navigate("Screen3")}
+              onPress={() => navigation.navigate("Part_B_Dec_Answer_Insurance")}
             >
               <View
                 style={{
@@ -187,7 +189,7 @@ const Part_B_Dec_Contacted_Insurance = ({ navigation }) => {
                   style={{ margin: 5 }}
                 />
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity>}
           </View>
         </View>
       </ScrollView>

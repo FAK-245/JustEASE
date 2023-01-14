@@ -14,6 +14,7 @@ import * as Progress from "react-native-progress";
 import React from "react";
 import Theme from "../../utils/Theme";
 import styles from "../../styles/style_dec";
+import Part_B_Dec_Applied_Other_Protection from "./Part_B_Dec_Applied_Other_Protection";
 
 
 const Part_B_Dec_Answer_Other_Protection = ({ navigation }) => {
@@ -86,7 +87,7 @@ const Part_B_Dec_Answer_Other_Protection = ({ navigation }) => {
                 //color: "#8da2b8",
               }}
             >
-              Do you have income from employment?
+                1.2) What was the response of the insurance company?
             </Text>
           </View>
           <View style={styles.View3}>
@@ -130,7 +131,7 @@ const Part_B_Dec_Answer_Other_Protection = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={() => navigation.navigate("Screen1")}
+              onPress={() => navigation.navigate("Part_B_Dec_Applied_Other_Protection")}
             >
               <View
                 style={{
@@ -159,7 +160,7 @@ const Part_B_Dec_Answer_Other_Protection = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.next}
-              onPress={() => navigation.navigate("Screen3")}
+              onPress={() => navigation.navigate("Part_B_In_Other_Cost_Coverage")}
             >
               <View
                 style={{

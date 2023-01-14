@@ -21,6 +21,7 @@ import styles from "../../styles/style_end";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
 import im from '../../../assets/icon.png'
+import Part_B_Up_Insurance from "./Part_B_Up_Insurance";
 
 
 const Screen5 = ({ navigation }) => {
@@ -35,7 +36,7 @@ console.log("hello",typeof(todoList.image))
 
 
 
-  const html = `
+/*  const html = `
     <html>
       <body>
       
@@ -52,7 +53,7 @@ console.log("hello",typeof(todoList.image))
       
       </body>
     </html>
-  `;
+  `;*/
 
   
   let generatePdf = async () => {
@@ -86,19 +87,21 @@ source={{uri:todoList.image2}}
 style={{height:200,width:200}}/> */}
         <View style={styles.FlatView}>
           <View style={{ margin: "8%" }}>
-            <Text style={styles.document1}>Your application is complete.</Text>
+            <Text style={styles.document1}>Application unsuccessful.</Text>
             <Text style={styles.document2}>
-              Click on the download button below to generate your application.
+                Application unsuccessfull
+                Please contact your insurance first, before applying to Legal Aid. The court will not process your
+                request before your insurance officially states, it will not cover the full cost.
             </Text>
           </View>
-          <View style={{ margin: "8%" }}>
+     {/*     <View style={{ margin: "8%" }}>
             <Text style={styles.document1}>Important</Text>
             <Text style={styles.document2}>
               After You have download your application you have to signit under
               point K on page 4. Afterwards you need to send it to your lawyer
               or directly to the court at which your case is being processed.
             </Text>
-          </View>
+          </View>*/}
         </View>
         <View
           style={{
@@ -108,7 +111,7 @@ style={{height:200,width:200}}/> */}
             paddingTop: "10%",
           }}
         >
-          <MaterialIcons name="file-download" size={50} color="black" />
+{/*          <MaterialIcons name="file-download" size={50} color="black" />
           <TouchableOpacity style={styles.download} onPress={generatePdf}>
             <Text
               style={{
@@ -122,11 +125,11 @@ style={{height:200,width:200}}/> */}
             >
               Download
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
         </View>
         <TouchableOpacity
           style={styles.back}
-          onPress={() => navigation.navigate("Screen3")}
+          onPress={() => navigation.navigate("Part_B_Up_Insurance")}
         >
           <View
             style={{

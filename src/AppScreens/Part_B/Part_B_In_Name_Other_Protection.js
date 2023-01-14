@@ -30,6 +30,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
 import Theme from "../../utils/Theme";
+import Part_B_Dec_Other_Legal_Protection from "./Part_B_Dec_Other_Legal_Protection";
+import Part_B_Dec_Answer_Other_Protection from "./Part_B_Dec_Answer_Other_Protection";
 
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -757,7 +759,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <TouchableOpacity style={styles.back} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.back} onPress={() => navigation.navigate("Part_B_Dec_Other_Legal_Protection")}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -785,7 +787,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.next}
-                  onPress={handleSubmit}
+                  onPress={() => navigation.navigate("Part_B_Dec_Answer_Other_Protection")}
 
                   // onPress={() => navigation.navigate("Screen2")}
                 >

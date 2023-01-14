@@ -444,7 +444,7 @@ const Screen3 = ({ navigation }) => {
               >
                 <TouchableOpacity
                   style={styles.back}
-                  onPress={() => navigation.navigate("Screen2")}
+                  onPress={() => navigation.navigate("Part_B_In_Other_Cost_Coverage")}
                 >
                   <View
                     style={{
@@ -471,7 +471,7 @@ const Screen3 = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Part_B_Up_Other_Rej_Letter")}>
                   <View
                     style={{
                       flexDirection: "row",

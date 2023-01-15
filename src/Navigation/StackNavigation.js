@@ -47,6 +47,9 @@ import Part_D_In_Up_Receiver_Income from "../AppScreens/Part_D/Part_D_In_Up_Rece
 import Part_SA_Dec_Receive_SA from "../AppScreens/Part_Social_Assistance/Part_SA_Dec_Receive_SA";
 import Part_SA_End_Receives_SA from "../AppScreens/Part_Social_Assistance/Part_SA_End_Receives_SA";
 import Part_SA_Up_Proof from "../AppScreens/Part_Social_Assistance/Part_SA_Up_Proof";
+import Screen6 from "../Screens/Screen6/Screen6";
+import End_of_Prototype from "../AppScreens/End/End_of_Prototype";
+import End_Screen from "../AppScreens/End/End_Screen";
 
 
 const Tab = createBottomTabNavigator();
@@ -359,9 +362,9 @@ const StackNavigation = () => {
         <NavigationContainer>
 
 
-            <Stack.Navigator initialRouteName={'Part_A_Applicant_Info'}
+            <Stack.Navigator initialRouteName={"Part_D_Dec_Maintenance_Obligations"}
                 screenOptions={{headerShown: false}}>
-                <Stack.Screen name="Screen1" component={HomeTabs}/>
+                {/*<Stack.Screen name="Screen1" component={HomeTabs}/>
                 <Stack.Screen name="Screen2" component={Screen2}/>
 
 
@@ -369,10 +372,11 @@ const StackNavigation = () => {
 
                 <Stack.Screen name="Screen4" component={Screen4}/>
                 <Stack.Screen name="Screen5" component={HomeTabs3}/>
+                <Stack.Screen name="Screen6" component={Screen6}/>*/}
 
                 {/* PART A Screens */}
-                <Stack.Screen name="Part_A_Dec_Legal_Rep" component={Part_A_Dec_Legal_Rep}/>
                 <Stack.Screen name="Part_A_Applicant_Info" component={Part_A_Applicant_Info}/>
+                <Stack.Screen name="Part_A_Dec_Legal_Rep" component={Part_A_Dec_Legal_Rep}/>
                 <Stack.Screen name="Part_A_Legal_Rep_Info" component={Part_A_Legal_Rep_Info}/>
 
                 {/* PART B Screens */}
@@ -410,6 +414,9 @@ const StackNavigation = () => {
                 <Stack.Screen name="Part_SA_End_Receives_SA" component={Part_SA_End_Receives_SA}/>
                 <Stack.Screen name="Part_SA_Up_Proof" component={Part_SA_Up_Proof}/>
 
+                {/* End of Prototype Screens */}
+                <Stack.Screen name="End_Screen" component={End_Screen}/>
+                <Stack.Screen name="End_of_Prototype" component={End_of_Prototype}/>
 
             </Stack.Navigator>
         </NavigationContainer>

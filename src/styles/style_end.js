@@ -121,5 +121,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: Theme.hp("5%"),
   },
+  next: {
+    margin: 10,
+    height: Theme.hp("6%"),
+    width: Theme.wp("25%"),
+    backgroundColor: "#1c5bd9",
+    //borderRadius: 5,
+    marginRight: "5%",
+    opacity: 0.8,
+  },
 });
 export default styles;

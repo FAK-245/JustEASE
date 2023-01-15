@@ -159,4 +159,4 @@ style={{height:200,width:200}}/> */}
   );
 };
 
-export default End_Screen.js;
+export default End_Screen;

@@ -34,13 +34,14 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Part_B_Up_Insurance_Rej_Letter from "./Part_B_Up_Insurance_Rej_Letter";
 import Part_B_In_Insurance_Cost_Coverage from "./Part_B_In_Insurance_Cost_Coverage";
+import Part_B_Dec_Other_Legal_Protection from "./Part_B_Dec_Other_Legal_Protection";
 const signUpSchema = Yup.object({
   Name: Yup.string()
     .min(0, "Minimum Input")
     .required("Required Field")
     .max(30, "Limit Exceed"),
 });
-const Screen3 = ({ navigation }) => {
+const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
@@ -271,10 +272,11 @@ const Screen3 = ({ navigation }) => {
               </DialogContent>
             </Dialog>
             <View style={styles.View1}>
-              <Text style={styles.signuptxt}>Part E - </Text>
-              <Text style={styles.signuptxt1}>Gross Income</Text>
+              <Text style={styles.signuptxt}>Part B - </Text>
+              <Text style={styles.signuptxt1}>Legal Protection</Text>
             </View>
             <View style={styles.Line}></View>
+
 
             <Text
               style={{
@@ -283,10 +285,10 @@ const Screen3 = ({ navigation }) => {
                 fontSize: RFValue(13, 580),
               }}
             >
-              1.1) How much do you earn monthly in € (gross)?
+              Please upload the following document here:
             </Text>
 
-            <View style={styles.textinputconatiner}>
+            {/*<View style={styles.textinputconatiner}>
               <TextInput
                 placeholderTextColor={"#87CEEB"}
                 cursorColor="blue"
@@ -305,7 +307,7 @@ const Screen3 = ({ navigation }) => {
                 ></Ionicons>
               </TouchableOpacity>
 
-              {/* <Text
+               <Text
                 style={{
                   fontSize: 10,
                   color: "red",
@@ -314,8 +316,8 @@ const Screen3 = ({ navigation }) => {
                 }}
               >
                 {touched.Name && errors.Name}
-              </Text> */}
-            </View>
+              </Text>
+            </View>*/}
 
             <View style={{ backgroundColor: "red" }}></View>
             <Text
@@ -362,8 +364,7 @@ const Screen3 = ({ navigation }) => {
                     marginRight: "6.5%",
                   }}
                 >
-                  E1-1.1) wage or salary slips from the workspace for the past
-                  12 months proir to the application.
+                  B-1.3) Copy of confirmation letter
                 </Text>
 
                 <TouchableOpacity
@@ -386,8 +387,8 @@ const Screen3 = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
 
-              <View style={{ margin: 10 }}>
-                {/* <Text
+              {/*<View style={{ margin: 10 }}>
+                 <Text
                   style={{
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
@@ -395,7 +396,7 @@ const Screen3 = ({ navigation }) => {
                   }}
                 >
                   E1-1.1b) Latest income tax notice from the tax
-                </Text> */}
+                </Text>
                 <Text
                   style={{
                     textAlign: "center",
@@ -409,7 +410,7 @@ const Screen3 = ({ navigation }) => {
                   electronic wage tax certificate revealing gross and net income
                   of last year.
                 </Text>
-                {/* <Text
+                 <Text
                   style={{
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
@@ -417,7 +418,7 @@ const Screen3 = ({ navigation }) => {
                   }}
                 >
                   revealing gross and net income of last year
-                </Text> */}
+                </Text>
 
                 <TouchableOpacity
                   style={styles.uploadimage}
@@ -435,7 +436,7 @@ const Screen3 = ({ navigation }) => {
                     style={{ alignSelf: "center", margin: 20 }}
                   />}
                 </TouchableOpacity>
-              </View>
+              </View>*/}
 
               <View
                 style={{
@@ -446,7 +447,7 @@ const Screen3 = ({ navigation }) => {
               >
                 <TouchableOpacity
                   style={styles.back}
-                  onPress={() => navigation.navigate("Part_B_In_Insurance_Cost_Coverage")}
+                  onPress={() => navigation.pop()}
                 >
                   <View
                     style={{
@@ -473,7 +474,7 @@ const Screen3 = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Part_B_Up_Insurance_Rej_Letter")}>
+                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Part_B_Dec_Other_Legal_Protection")}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -512,4 +513,4 @@ const Screen3 = ({ navigation }) => {
   );
 };
 
-export default Screen3;
+export default Part_B_Up_Insurance_Conf_Letter;

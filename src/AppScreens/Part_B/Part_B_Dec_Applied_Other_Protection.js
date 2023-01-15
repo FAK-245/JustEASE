@@ -66,8 +66,8 @@ const Part_B_Dec_Applied_Other_Protection = ({ navigation }) => {
     <View style={{ flex: 1, paddingBottom: "14.7%", backgroundColor: "white" }}>
       <ScrollView>
         <View style={styles.View1}>
-          <Text style={styles.Text1}>Part E -</Text>
-          <Text style={styles.Text2}>Gross Income</Text>
+          <Text style={styles.Text1}>Part B -</Text>
+          <Text style={styles.Text2}>Legal Protection</Text>
         </View>
         <View style={{ marginTop: "5%" }}>
           {/* <View
@@ -89,12 +89,12 @@ const Part_B_Dec_Applied_Other_Protection = ({ navigation }) => {
                 //color: "#8da2b8",
               }}
             >
-              Do you have income from employment?
+              4) Have you applied for financial help at the organization?
             </Text>
           </View>
           <View style={styles.View3}>
 
-            <TouchableOpacity style={styles.yes}  onPress={createThreeButtonAlert}>
+            <TouchableOpacity style={styles.yes}  onPress={() => navigation.navigate("Part_B_Dec_Answer_Other_Protection")}>
               <Text
                 style={{
                   color: "white",
@@ -109,7 +109,7 @@ const Part_B_Dec_Applied_Other_Protection = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.no} onPress={NoSelected}>
+            <TouchableOpacity style={styles.no} onPress={() => navigation.navigate("Part_B_End_Insurance_Not_Contacted")}>
               <Text
                 style={{
                   color: "white",
@@ -133,7 +133,7 @@ const Part_B_Dec_Applied_Other_Protection = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={() => navigation.navigate("Part_B_In_Name_Other_Protection")}
+              onPress={() => navigation.pop()}
             >
               <View
                 style={{

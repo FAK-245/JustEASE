@@ -94,7 +94,7 @@ const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
           </View>
           <View style={styles.View3}>
 
-            <TouchableOpacity style={styles.yes}  onPress={() => navigation.navigate("Part_B_Up_Insurance_Conf_Letter")}>
+            <TouchableOpacity style={styles.yes}  onPress={() => navigation.navigate("Part_B_End_Insurance_Covers_Cost")}>
               <Text
                 style={{
                   color: "white",
@@ -109,7 +109,7 @@ const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.yes} onPress={() => navigation.navigate("Part_B_Up_Insurance_Conf_Letter")}>
+            <TouchableOpacity style={styles.yes} onPress={() => navigation.navigate("Part_B_In_Insurance_Cost_Coverage")}>
               <Text
                 style={{
                   color: "white",
@@ -148,7 +148,7 @@ const Part_B_Dec_Answer_Insurance = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={() => navigation.navigate("Part_B_Dec_Contacted_Insurance")}
+              onPress={() => navigation.pop()}
             >
               <View
                 style={{

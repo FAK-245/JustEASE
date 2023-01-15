@@ -58,7 +58,7 @@ const signUpSchema = Yup.object({
     .max(20, "Limit Exceed"),
 });
 LogBox.ignoreAllLogs();
-const Part_A_Applicant_Info = ({ navigation }) => {
+const Part_B_In_Insurance_Cost_Coverage = ({ navigation }) => {
 
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
@@ -471,7 +471,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           }) => (
             <View style={styles.mainView}>
               <View style={styles.View1}>
-                <Text style={styles.signuptxt}>Part B - </Text>
+                <Text style={styles.signuptxt}>Part B -</Text>
                 <Text style={styles.signuptxt1}> Legal Protection </Text>
               </View>
 
@@ -498,7 +498,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                   ></Ionicons>
                 </TouchableOpacity>
               </View>
-              <Text
+             {/* <Text
                 style={{
                   fontSize: 10,
                   color: "red",
@@ -715,7 +715,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                 {touched.PhoneNumber && errors.PhoneNumber}
               </Text>
 
-              {/*<Text
+              <Text
                 style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "4%" }}
               >
                 Do you have a legal representative?
@@ -758,7 +758,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <TouchableOpacity style={styles.back} onPress={() => navigation.navigate("Part_B_Dec_Answer_Insurance")}>
+                <TouchableOpacity style={styles.back} onPress={() => navigation.pop()}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -832,4 +832,4 @@ const Part_A_Applicant_Info = ({ navigation }) => {
   );
 };
 
-export default Part_A_Applicant_Info;
+export default Part_B_In_Insurance_Cost_Coverage;

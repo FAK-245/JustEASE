@@ -1,3 +1,4 @@
+
 import {
   View,
   Text,
@@ -30,6 +31,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
 import Theme from "../../utils/Theme";
+import {RFValue} from "react-native-responsive-fontsize";
 
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -57,7 +59,7 @@ const signUpSchema = Yup.object({
     .max(20, "Limit Exceed"),
 });
 LogBox.ignoreAllLogs();
-const Screen1 = ({ navigation }) => {
+const Part_C_Dec_Maintenance_Claims = ({ navigation }) => {
 
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
@@ -206,597 +208,117 @@ const Screen1 = ({ navigation }) => {
     // setPhoneNumber("");
   };
   return (
-    <View style={{ flex: 1, paddingBottom: "14.5%", backgroundColor: "white" }}>
-      <ScrollView style={{ backgroundColor: "white", flexGrow: 1 }}>
-        {/* //For Name input */}
-        <Dialog
-          onTouchOutside={() => {
-            setNameDialog(false);
-          }}
-          width={0.9}
-          visible={nameDialog}
-          dialogAnimation={new ScaleAnimation()}
-          onHardwareBackPress={() => {
-            setNameDialog(false);
-            console.log("onHardwareBackPress");
-            return true;
-          }}
-          dialogTitle={
-            <DialogTitle
-              title="Info Box For Name Field
-                  "
-              hasTitleBar={false}
-            />
-          }
-          actions={[
-            <DialogButton
-              text="DISMISS"
-              onPress={() => {
-                setNameDialog(false);
-              }}
-              key="button-1"
-            />,
-          ]}
-        >
-          <DialogContent>
-            <View>
-              <Text style={{ marginBottom: "2%" }}>
-                Here you have to input your exact name which is written in your
-                documents etc..
-              </Text>
-              <Button
-                title="Close"
-                onPress={() => {
-                  setNameDialog(false);
-                }}
-                key="button-1"
-              />
-            </View>
-          </DialogContent>
-        </Dialog>
-        {/* //for Occupation */}
-
-        <Dialog
-          onTouchOutside={() => {
-            setOccDialog(false);
-          }}
-          width={0.9}
-          visible={occDialog}
-          dialogAnimation={new ScaleAnimation()}
-          onHardwareBackPress={() => {
-            setOccDialog(false);
-            console.log("onHardwareBackPress");
-            return true;
-          }}
-          dialogTitle={
-            <DialogTitle
-              title="Info Box For Occupation Field
-                  "
-              hasTitleBar={false}
-            />
-          }
-          actions={[
-            <DialogButton
-              text="DISMISS"
-              onPress={() => {
-                setOccDialog(false);
-              }}
-              key="button-1"
-            />,
-          ]}
-        >
-          <DialogContent>
-            <View>
-              <Text style={{ marginBottom: "2%" }}>
-                Here you have to input your Occupation for which you are
-                working....
-              </Text>
-              <Button
-                title="Close"
-                onPress={() => {
-                  setOccDialog(false);
-                }}
-                key="button-1"
-              />
-            </View>
-          </DialogContent>
-        </Dialog>
-        {/* //for Dob */}
-        <Dialog
-          onTouchOutside={() => {
-            setDobDialog(false);
-          }}
-          width={0.9}
-          visible={dobDialog}
-          dialogAnimation={new ScaleAnimation()}
-          onHardwareBackPress={() => {
-            setDobDialog(false);
-            console.log("onHardwareBackPress");
-            return true;
-          }}
-          dialogTitle={
-            <DialogTitle
-              title="Info Box For Date of Birth Field
-                  "
-              hasTitleBar={false}
-            />
-          }
-          actions={[
-            <DialogButton
-              text="DISMISS"
-              onPress={() => {
-                setDobDialog(false);
-              }}
-              key="button-1"
-            />,
-          ]}
-        >
-          <DialogContent>
-            <View>
-              <Text style={{ marginBottom: "2%" }}>
-                Here you have to input your exact DATE of BIRTH (MM/DD/YY) in
-                this form, by keeping in consider the documents...
-              </Text>
-              <Button
-                title="Close"
-                onPress={() => {
-                  setDobDialog(false);
-                }}
-                key="button-1"
-              />
-            </View>
-          </DialogContent>
-        </Dialog>
-        {/* //for Address Field */}
-        <Dialog
-          onTouchOutside={() => {
-            setAddDialog(false);
-          }}
-          width={0.9}
-          visible={addDialog}
-          dialogAnimation={new ScaleAnimation()}
-          onHardwareBackPress={() => {
-            setAddDialog(false);
-            console.log("onHardwareBackPress");
-            return true;
-          }}
-          dialogTitle={
-            <DialogTitle
-              title="Info Box For Address Field
-                  "
-              hasTitleBar={false}
-            />
-          }
-          actions={[
-            <DialogButton
-              text="DISMISS"
-              onPress={() => {
-                setAddDialog(false);
-              }}
-              key="button-1"
-            />,
-          ]}
-        >
-          <DialogContent>
-            <View>
-              <Text style={{ marginBottom: "2%" }}>
-                Here you have to input your exact Address (Street no,House
-                no,City and PostalCode) in this form, by keeping in consider the
-                documents...
-              </Text>
-              <Button
-                title="Close"
-                onPress={() => {
-                  setAddDialog(false);
-                }}
-                key="button-1"
-              />
-            </View>
-          </DialogContent>
-        </Dialog>
-        {/* //for Phone number */}
-        <Dialog
-          onTouchOutside={() => {
-            setPhoneDialog(false);
-          }}
-          width={0.9}
-          visible={phoneDialog}
-          dialogAnimation={new ScaleAnimation()}
-          onHardwareBackPress={() => {
-            setPhoneDialog(false);
-            console.log("onHardwareBackPress");
-            return true;
-          }}
-          dialogTitle={
-            <DialogTitle
-              title="Info Box For Phone Number
-                  "
-              hasTitleBar={false}
-            />
-          }
-          actions={[
-            <DialogButton
-              text="DISMISS"
-              onPress={() => {
-                setPhoneDialog(false);
-              }}
-              key="button-1"
-            />,
-          ]}
-        >
-          <DialogContent>
-            <View>
-              <Text style={{ marginBottom: "2%" }}>
-                Here you have to input your exact Phone Number, by keeping in
-                consider the documents...
-              </Text>
-              <Button
-                title="Close"
-                onPress={() => {
-                  setPhoneDialog(false);
-                }}
-                key="button-1"
-              />
-            </View>
-          </DialogContent>
-        </Dialog>
-        <Formik
-          initialValues={{
-            Name: Name,
-            Occupation: Occupation,
-            Dob: Dob,
-            Street: Street,
-            House: House,
-            City: City,
-            PostalCode: PostalCode,
-            PhoneNumber: PhoneNumber,
-          }}
-          validationSchema={signUpSchema}
-          onSubmit={(values, actions) => {
-            createUserFun(values);
-           // console.log(values);
-            // actions.resetForm();
-          }}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            isValid,
-            handleChange,
-            handleBlur,
-            isSubmitting,
-            handleSubmit,
-          }) => (
-            <View style={styles.mainView}>
-              <View style={styles.View1}>
-                <Text style={styles.signuptxt}>Part A - </Text>
-                <Text style={styles.signuptxt1}>Personal Information</Text>
-              </View>
-
+      <View style={{ flex: 1, paddingBottom: "14.7%", backgroundColor: "white" }}>
+        <ScrollView>
+          <View style={styles.View1}>
+            <Text style={styles.Text1}>Part C -</Text>
+            <Text style={styles.Text2}>Maintenance</Text>
+          </View>
+          <View style={{ marginTop: "5%" }}>
+            {/* <View
+            style={{
+              backgroundColor: "blue",
+              opacity: 0.6,
+              height: Theme.hp("0.8%"),
+              width: Theme.wp("15%"),
+              alignSelf: "center",
+            }}
+          ></View> */}
+            <View style={styles.Line}></View>
+            <View style={styles.View2}>
               <Text
-                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
+                  style={{
+                    marginLeft: "10%",
+                    color: "#1c5bd9",
+                    marginTop: "15%",
+                    //color: "#8da2b8",
+                  }}
               >
-                What is your name?
+                Do you have relatives who are obliged to pay maintenance to you (even if no actual payments are made)?
+                e.g. mother, father, spouse/civil partner
               </Text>
-              <View style={styles.textinputconatiner}>
-                <TextInput
-                  placeholderTextColor={"#87CEEB"}
-                  cursorColor="#d75f4f"
-                  placeholder="Input your Text in here"
-                  style={styles.txtinput}
-                  value={values.Name}
-                  onChangeText={handleChange("Name")}
-                  onBlur={handleBlur("Name")}
-                />
-                <TouchableOpacity onPress={() => setNameDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ padding: 10 }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
-              <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "6%",
-                }}
-              >
-                {touched.Name && errors.Name}
-              </Text>
-              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your Occupation?
-              </Text>
-              <View style={styles.textinputconatiner}>
-                <TextInput
-                  placeholderTextColor={"#87CEEB"}
-                  cursorColor="#d75f4f"
-                  style={styles.txtinput}
-                  placeholder="Input your Text in here"
-                  value={values.Occupation}
-                  onChangeText={handleChange("Occupation")}
-                  onBlur={handleBlur("Occupation")}
-                />
-                <TouchableOpacity onPress={() => setOccDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ padding: 10 }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
+            </View>
+            <View style={styles.View3}>
 
-              <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "6%",
-                }}
-              >
-                {touched.Occupation && errors.Occupation}
-              </Text>
-              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your date of birth?
-              </Text>
-              <View style={styles.textinputconatiner}>
-                <TextInput
-                  placeholderTextColor={"#87CEEB"}
-                  cursorColor="#d75f4f"
-                  style={styles.txtinput}
-                  placeholder="Input your Text in here"
-                  value={values.Dob}
-                  onChangeText={handleChange("Dob")}
-                  onBlur={handleBlur("Dob")}
-                />
-                <TouchableOpacity onPress={() => setDobDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ padding: 10 }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity style={styles.yes}  onPress={() => navigation.navigate("Part_C_In_Up_Provider")}>
+                <Text
+                    style={{
+                      color: "white",
+                      textAlign: "center",
 
-              <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "6%",
-                }}
-              >
-                {touched.Dob && errors.Dob}
-              </Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  alignContent: "center",
-                  // justifyContent: 'space-between',
-                }}
-              >
-                <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                  What is your address?
+                      fontWeight: "500",
+                      margin: "11%",
+                      fontSize: RFValue(15, 580),
+                    }}
+                >
+                  Yes
                 </Text>
-                <TouchableOpacity onPress={() => setAddDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ padding: 1 }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ marginLeft: "2%" }}>
-                  <TextInput
-                    placeholderTextColor={"#87CEEB"}
-                    cursorColor="#d75f4f"
-                    style={styles.txtinputAddress}
-                    placeholder="Street"
-                    value={values.Street}
-                    onChangeText={handleChange("Street")}
-                    onBlur={handleBlur("Street")}
-                  />
+              </TouchableOpacity>
 
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: "red",
-                      margin: "1%",
-                      marginLeft: "5%",
-                    }}
-                  >
-                    {touched.Street && errors.Street}
-                  </Text>
-                </View>
-                <View>
-                  <TextInput
-                    cursorColor="#d75f4f"
-                    placeholderTextColor={"#87CEEB"}
-                    style={styles.txtinputHouse}
-                    placeholder="House Nr"
-                    value={values.House}
-                    onChangeText={handleChange("House")}
-                    onBlur={handleBlur("House")}
-                  />
-
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: "red",
-                      margin: "1%",
-                      marginLeft: "5%",
-                    }}
-                  >
-                    {touched.House && errors.House}
-                  </Text>
-                </View>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ flexDirection: "column", marginLeft: "2%" }}>
-                  <TextInput
-                    cursorColor="#d75f4f"
-                    placeholderTextColor={"#87CEEB"}
-                    style={styles.txtinputCity}
-                    placeholder="City"
-                    value={values.City}
-                    onChangeText={handleChange("City")}
-                    onBlur={handleBlur("City")}
-                  />
-
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: "red",
-                      margin: "1%",
-                      marginLeft: "5%",
-                    }}
-                  >
-                    {touched.City && errors.City}
-                  </Text>
-                </View>
-                <View style={{ flexDirection: "column", marginLeft: "1%" }}>
-                  <TextInput
-                    cursorColor="#d75f4f"
-                    placeholderTextColor={"#87CEEB"}
-                    style={styles.txtinputPostalCode}
-                    placeholder="Postal Code"
-                    value={values.PostalCode}
-                    onChangeText={handleChange("PostalCode")}
-                    onBlur={handleBlur("PostalCode")}
-                  />
-
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: "red",
-                      margin: "1%",
-                      marginLeft: "5%",
-                    }}
-                  >
-                    {touched.PostalCode && errors.PostalCode}
-                  </Text>
-                </View>
-              </View>
-              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your phone number?
-              </Text>
-              <View style={{ flexDirection: "row", marginLeft: "5%" }}>
-                <TextInput
-                  placeholderTextColor={"#87CEEB"}
-                  cursorColor="#d75f4f"
-                  placeholder="Input your Text in here"
-                  style={styles.txtinput}
-                  value={values.PhoneNumber}
-                  onChangeText={handleChange("PhoneNumber")}
-                  onBlur={handleBlur("PhoneNumber")}
-                />
-                <TouchableOpacity onPress={() => setPhoneDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ paddingVertical: 20, marginLeft: "10%" }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
-              <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "5%",
-                }}
-              >
-                {touched.PhoneNumber && errors.PhoneNumber}
-              </Text>
-
-              <Text
-                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "4%" }}
-              >
-                Do you have a legal representative?
-              </Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <TouchableOpacity style={styles.yes} onPress={handleSubmit}>
-                  <Text
+              <TouchableOpacity style={styles.no} onPress={() => navigation.navigate("Part_D_Dec_Maintenance_Obligations")}>
+                <Text
                     style={{
                       color: "white",
                       textAlign: "center",
-                      margin: 5,
-                      fontWeight: "500",
-                    }}
-                  >
-                    Yes
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.no} onPress={handleSubmit}>
-                  <Text
-                    style={{
-                      color: "white",
-                      textAlign: "center",
-                      margin: 5,
-                      fontWeight: "500",
-                    }}
-                  >
-                    No
-                  </Text>
-                </TouchableOpacity>
-              </View>
 
-              <View
+                      fontWeight: "500",
+                      margin: "11%",
+                      fontSize: RFValue(15, 580),
+                    }}
+                >
+                  No
+                </Text>
+              </TouchableOpacity>
+
+            </View>
+            <View
                 style={{
                   flexDirection: "row",
                   justifyContent: "space-between",
+                  paddingTop: "20%",
                 }}
+            >
+              <TouchableOpacity
+                  style={styles.back}
+                  onPress={() => navigation.pop()}
               >
-                <TouchableOpacity style={styles.back} onPress={handleSubmit}>
-                  <View
+                <View
                     style={{
                       flexDirection: "row",
 
                       margin: 5,
                     }}
-                  >
-                    <Ionicons
+                >
+                  <Ionicons
                       name="chevron-back"
                       size={24}
                       color="white"
                       style={{ margin: 5 }}
-                    />
-                    <Text
+                  />
+                  <Text
                       style={{
                         color: "white",
-                        textAlign: "center",
+                        // textAlign: "center",
                         margin: 7,
                         fontWeight: "500",
                       }}
-                    >
-                      Back
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity
+                  >
+                    Back
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity
                   style={styles.next}
-                  onPress={handleSubmit}
-
-                  // onPress={() => navigation.navigate("Screen2")}
-                >
-                  <View
+                  onPress={() => navigation.navigate("Part_C_In_Up_Provider")}
+              >
+                <View
                     style={{
                       flexDirection: "row",
 
                       margin: 5,
                     }}
-                  >
-                    <Text
+                >
+                  <Text
                       style={{
                         color: "white",
                         // textAlign: "right",
@@ -805,30 +327,23 @@ const Screen1 = ({ navigation }) => {
                         margin: 7,
                         fontWeight: "500",
                       }}
-                    >
-                      Next
-                    </Text>
-                    <Ionicons
+                  >
+                    Next
+                  </Text>
+                  <Ionicons
                       name="chevron-forward"
                       size={24}
                       color="white"
                       style={{ margin: 5 }}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </View>
+                  />
+                </View>
+              </TouchableOpacity>
             </View>
-          )}
-        </Formik>
-
-
-     
-        {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
-
-      </ScrollView>
-      <Progress.Bar progress={1} width={50} height={3} />
-    </View>
+          </View>
+        </ScrollView>
+        <Progress.Bar progress={1} width={210} height={3} />
+      </View>
   );
 };
 
-export default Screen1;
+export default Part_C_Dec_Maintenance_Claims;

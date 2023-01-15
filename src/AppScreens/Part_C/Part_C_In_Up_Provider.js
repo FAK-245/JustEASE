@@ -8,7 +8,8 @@ import {
   Alert,
   LogBox,
   Button,
-  FlatList
+  FlatList,
+
 } from "react-native";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -59,7 +60,7 @@ const signUpSchema = Yup.object({
     .max(20, "Limit Exceed"),
 });
 LogBox.ignoreAllLogs();
-const Part_A_Applicant_Info = ({ navigation }) => {
+const Part_C_In_Up_Provider = ({ navigation }) => {
 
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
@@ -92,13 +93,13 @@ const Part_A_Applicant_Info = ({ navigation }) => {
         // <h1>Hi ${todoList.city}</h1>
         // <h1>Hi ${todoList.code}</h1>
         // <h1>Hi ${todoList.number}</h1>
-        
+
   //       <p style="color: red;">Hello. Bonjour. Hola.</p>
   //     </body>
   //   </html>
   // `;
 
-  
+
   // let generatePdf = async () => {
   //   const file = await printToFileAsync({
   //     html: html,
@@ -177,7 +178,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
   //   });
    };
 
-  
+
   console.log(todoList)
 
   const handleAddTodo = () => {
@@ -472,14 +473,14 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           }) => (
             <View style={styles.mainView}>
               <View style={styles.View1}>
-                <Text style={styles.signuptxt}>Part A - </Text>
-                <Text style={styles.signuptxt1}>Personal Information</Text>
+                <Text style={styles.signuptxt}>Part C - </Text>
+                <Text style={styles.signuptxt1}>Maintenance</Text>
               </View>
 
               <Text
                 style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
               >
-                What is your name?
+                Name of the party maintenance is provided by
               </Text>
               <View style={styles.textinputconatiner}>
                 <TextInput
@@ -509,202 +510,23 @@ const Part_A_Applicant_Info = ({ navigation }) => {
               >
                 {touched.Name && errors.Name}
               </Text>
+
               <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your Occupation?
+                Please upload the following document here:
               </Text>
-              <View style={styles.textinputconatiner}>
-                <TextInput
-                  placeholderTextColor={"#87CEEB"}
-                  cursorColor="#d75f4f"
-                  style={styles.txtinput}
-                  placeholder="Input your Text in here"
-                  value={values.Occupation}
-                  onChangeText={handleChange("Occupation")}
-                  onBlur={handleBlur("Occupation")}
-                />
-                <TouchableOpacity onPress={() => setOccDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ padding: 10 }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
 
               <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "6%",
-                }}
+                  style={{
+                    fontSize: 10,
+                    color: "red",
+                    margin: "1%",
+                    marginLeft: "6%",
+                  }}
               >
-                {touched.Occupation && errors.Occupation}
+                {touched.Name && errors.Name}
               </Text>
-              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your date of birth?
-              </Text>
-              <View style={styles.textinputconatiner}>
-                <TextInput
-                  placeholderTextColor={"#87CEEB"}
-                  cursorColor="#d75f4f"
-                  style={styles.txtinput}
-                  placeholder="Input your Text in here"
-                  value={values.Dob}
-                  onChangeText={handleChange("Dob")}
-                  onBlur={handleBlur("Dob")}
-                />
-                <TouchableOpacity onPress={() => setDobDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ padding: 10 }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
 
-              <Text
-                style={{
-                  fontSize: 10,
-                  color: "red",
-                  margin: "1%",
-                  marginLeft: "6%",
-                }}
-              >
-                {touched.Dob && errors.Dob}
-              </Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  alignContent: "center",
-                  // justifyContent: 'space-between',
-                }}
-              >
-                <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                  What is your address?
-                </Text>
-                <TouchableOpacity onPress={() => setAddDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ padding: 1 }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ marginLeft: "2%" }}>
-                  <TextInput
-                    placeholderTextColor={"#87CEEB"}
-                    cursorColor="#d75f4f"
-                    style={styles.txtinputAddress}
-                    placeholder="Street"
-                    value={values.Street}
-                    onChangeText={handleChange("Street")}
-                    onBlur={handleBlur("Street")}
-                  />
 
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: "red",
-                      margin: "1%",
-                      marginLeft: "5%",
-                    }}
-                  >
-                    {touched.Street && errors.Street}
-                  </Text>
-                </View>
-                <View>
-                  <TextInput
-                    cursorColor="#d75f4f"
-                    placeholderTextColor={"#87CEEB"}
-                    style={styles.txtinputHouse}
-                    placeholder="House Nr"
-                    value={values.House}
-                    onChangeText={handleChange("House")}
-                    onBlur={handleBlur("House")}
-                  />
-
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: "red",
-                      margin: "1%",
-                      marginLeft: "5%",
-                    }}
-                  >
-                    {touched.House && errors.House}
-                  </Text>
-                </View>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ flexDirection: "column", marginLeft: "2%" }}>
-                  <TextInput
-                    cursorColor="#d75f4f"
-                    placeholderTextColor={"#87CEEB"}
-                    style={styles.txtinputCity}
-                    placeholder="City"
-                    value={values.City}
-                    onChangeText={handleChange("City")}
-                    onBlur={handleBlur("City")}
-                  />
-
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: "red",
-                      margin: "1%",
-                      marginLeft: "5%",
-                    }}
-                  >
-                    {touched.City && errors.City}
-                  </Text>
-                </View>
-                <View style={{ flexDirection: "column", marginLeft: "1%" }}>
-                  <TextInput
-                    cursorColor="#d75f4f"
-                    placeholderTextColor={"#87CEEB"}
-                    style={styles.txtinputPostalCode}
-                    placeholder="Postal Code"
-                    value={values.PostalCode}
-                    onChangeText={handleChange("PostalCode")}
-                    onBlur={handleBlur("PostalCode")}
-                  />
-
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: "red",
-                      margin: "1%",
-                      marginLeft: "5%",
-                    }}
-                  >
-                    {touched.PostalCode && errors.PostalCode}
-                  </Text>
-                </View>
-              </View>
-              <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
-                What is your phone number?
-              </Text>
-              <View style={{ flexDirection: "row", marginLeft: "5%" }}>
-                <TextInput
-                  placeholderTextColor={"#87CEEB"}
-                  cursorColor="#d75f4f"
-                  placeholder="Input your Text in here"
-                  style={styles.txtinput}
-                  value={values.PhoneNumber}
-                  onChangeText={handleChange("PhoneNumber")}
-                  onBlur={handleBlur("PhoneNumber")}
-                />
-                <TouchableOpacity onPress={() => setPhoneDialog(true)}>
-                  <Ionicons
-                    name="information-circle-outline"
-                    size={25}
-                    style={{ paddingVertical: 20, marginLeft: "10%" }}
-                  ></Ionicons>
-                </TouchableOpacity>
-              </View>
               <Text
                 style={{
                   fontSize: 10,
@@ -759,7 +581,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <TouchableOpacity style={styles.back} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.back} onPress={() => navigation.pop()}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -787,7 +609,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.next}
-                  onPress={handleSubmit}
+                  onPress={() => navigation.navigate("Part_D_Dec_Maintenance_Obligations")}
 
                   // onPress={() => navigation.navigate("Screen2")}
                 >
@@ -824,7 +646,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
         </Formik>
 
 
-     
+
         {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
 
       </ScrollView>
@@ -833,4 +655,4 @@ const Part_A_Applicant_Info = ({ navigation }) => {
   );
 };
 
-export default Part_A_Applicant_Info;
+export default Part_C_In_Up_Provider;

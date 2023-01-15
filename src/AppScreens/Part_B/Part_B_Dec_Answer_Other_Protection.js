@@ -60,15 +60,15 @@ const Part_B_Dec_Answer_Other_Protection = ({ navigation }) => {
 
 
 
-  return (
-    <View style={{ flex: 1, paddingBottom: "14.7%", backgroundColor: "white" }}>
-      <ScrollView>
-        <View style={styles.View1}>
-          <Text style={styles.Text1}>Part E -</Text>
-          <Text style={styles.Text2}>Gross Income</Text>
-        </View>
-        <View style={{ marginTop: "5%" }}>
-          {/* <View
+    return (
+        <View style={{ flex: 1, paddingBottom: "14.7%", backgroundColor: "white" }}>
+            <ScrollView>
+                <View style={styles.View1}>
+                    <Text style={styles.Text1}>Part B -</Text>
+                    <Text style={styles.Text2}>Legal Protection</Text>
+                </View>
+                <View style={{ marginTop: "5%" }}>
+                    {/* <View
             style={{
               backgroundColor: "blue",
               opacity: 0.6,
@@ -77,124 +77,139 @@ const Part_B_Dec_Answer_Other_Protection = ({ navigation }) => {
               alignSelf: "center",
             }}
           ></View> */}
-          <View style={styles.Line}></View>
-          <View style={styles.View2}>
-            <Text
-              style={{
-                marginLeft: "10%",
-                color: "#1c5bd9",
-                marginTop: "15%",
-                //color: "#8da2b8",
-              }}
-            >
-                1.2) What was the response of the insurance company?
-            </Text>
-          </View>
-          <View style={styles.View3}>
+                    <View style={styles.Line}></View>
+                    <View style={styles.View2}>
+                        <Text
+                            style={{
+                                marginLeft: "10%",
+                                color: "#1c5bd9",
+                                marginTop: "15%",
+                                //color: "#8da2b8",
+                            }}
+                        >
+                            5) What was the response of the organization?
+                        </Text>
+                    </View>
+                    <View style={styles.View3}>
 
-            <TouchableOpacity style={styles.yes}  onPress={createThreeButtonAlert}>
-              <Text
-                style={{
-                  color: "white",
-                  textAlign: "center",
+                        <TouchableOpacity style={styles.yes}  onPress={() => navigation.navigate("Part_B_End_Other_Covers_Cost")}>
+                            <Text
+                                style={{
+                                    color: "white",
+                                    textAlign: "center",
 
-                  fontWeight: "500",
-                  margin: "11%",
-                  fontSize: RFValue(15, 580),
-                }}
-              >
-                Yes
-              </Text>
-            </TouchableOpacity>
+                                    fontWeight: "500",
+                                    margin: "11%",
+                                    fontSize: RFValue(15, 580),
+                                }}
+                            >
+                                It will cover the full cost of the process.
+                            </Text>
+                        </TouchableOpacity>
 
-            <TouchableOpacity style={styles.no} onPress={NoSelected}>
-              <Text
-                style={{
-                  color: "white",
-                  textAlign: "center",
+                        <TouchableOpacity style={styles.yes} onPress={() => navigation.navigate("Part_B_In_Other_Cost_Coverage")}>
+                            <Text
+                                style={{
+                                    color: "white",
+                                    textAlign: "center",
 
-                  fontWeight: "500",
-                  margin: "11%",
-                  fontSize: RFValue(15, 580),
-                }}
-              >
-                No
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingTop: "20%",
-            }}
-          >
-            <TouchableOpacity
-              style={styles.back}
-              onPress={() => navigation.navigate("Part_B_Dec_Applied_Other_Protection")}
-            >
-              <View
-                style={{
-                  flexDirection: "row",
+                                    fontWeight: "500",
+                                    margin: "11%",
+                                    fontSize: RFValue(15, 580),
+                                }}
+                            >
+                                It will partially cover the costs of the process.
+                            </Text>
+                        </TouchableOpacity>
 
-                  margin: 5,
-                }}
-              >
-                <Ionicons
-                  name="chevron-back"
-                  size={24}
-                  color="white"
-                  style={{ margin: 5 }}
-                />
-                <Text
-                  style={{
-                    color: "white",
-                    // textAlign: "center",
-                    margin: 7,
-                    fontWeight: "500",
-                  }}
-                >
-                  Back
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.next}
-              onPress={() => navigation.navigate("Part_B_In_Other_Cost_Coverage")}
-            >
-              <View
-                style={{
-                  flexDirection: "row",
+                        <TouchableOpacity style={styles.no} onPress={() => navigation.navigate("Part_B_Up_Other_Rej_Letter")}>
+                            <Text
+                                style={{
+                                    color: "white",
+                                    textAlign: "center",
 
-                  margin: 5,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "white",
-                    // textAlign: "right",
-                    // marginLeft: "10%",
-                    paddingLeft: "6%",
-                    margin: 7,
-                    fontWeight: "500",
-                  }}
-                >
-                  Next
-                </Text>
-                <Ionicons
-                  name="chevron-forward"
-                  size={24}
-                  color="white"
-                  style={{ margin: 5 }}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
+                                    fontWeight: "500",
+                                    margin: "11%",
+                                    fontSize: RFValue(15, 580),
+                                }}
+                            >
+                                It will not cover the cost of the process.
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                            paddingTop: "20%",
+                        }}
+                    >
+                        <TouchableOpacity
+                            style={styles.back}
+                            onPress={() => navigation.pop()}
+                        >
+                            <View
+                                style={{
+                                    flexDirection: "row",
+
+                                    margin: 5,
+                                }}
+                            >
+                                <Ionicons
+                                    name="chevron-back"
+                                    size={24}
+                                    color="white"
+                                    style={{ margin: 5 }}
+                                />
+                                <Text
+                                    style={{
+                                        color: "white",
+                                        // textAlign: "center",
+                                        margin: 7,
+                                        fontWeight: "500",
+                                    }}
+                                >
+                                    Back
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.next}
+                            onPress={() => navigation.navigate("Part_B_In_Other_Cost_Coverage")}
+                        >
+                            <View
+                                style={{
+                                    flexDirection: "row",
+
+                                    margin: 5,
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        color: "white",
+                                        // textAlign: "right",
+                                        // marginLeft: "10%",
+                                        paddingLeft: "6%",
+                                        margin: 7,
+                                        fontWeight: "500",
+                                    }}
+                                >
+                                    Next
+                                </Text>
+                                <Ionicons
+                                    name="chevron-forward"
+                                    size={24}
+                                    color="white"
+                                    style={{ margin: 5 }}
+                                />
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </ScrollView>
+            <Progress.Bar progress={1} width={210} height={3} />
         </View>
-      </ScrollView>
-      <Progress.Bar progress={1} width={210} height={3} />
-    </View>
-  );
+    );
 };
 
 export default Part_B_Dec_Answer_Other_Protection;

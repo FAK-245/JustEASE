@@ -109,7 +109,7 @@ const Part_B_Dec_Other_Legal_Protection = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.no} onPress={NoSelected}>
+            <TouchableOpacity style={styles.no} onPress={() => navigation.navigate("Part_C_Dec_Maintenance_Claims")}>
               <Text
                 style={{
                   color: "white",
@@ -133,7 +133,7 @@ const Part_B_Dec_Other_Legal_Protection = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={() => navigation.navigate("Part_B_Up_Insurance_Rej_Letter")}
+              onPress={() => navigation.pop()}
             >
               <View
                 style={{

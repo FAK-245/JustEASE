@@ -132,7 +132,7 @@ const Part_B_Dec_Insurance = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={NoSelected}
+              onPress={() => navigation.pop()}
             >
               <View
                 style={{

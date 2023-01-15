@@ -132,7 +132,7 @@ const Part_B_Dec_Contacted_Insurance = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={() => navigation.navigate("Part_B_Up_Insurance")}
+              onPress={() => navigation.pop()}
             >
               <View
                 style={{

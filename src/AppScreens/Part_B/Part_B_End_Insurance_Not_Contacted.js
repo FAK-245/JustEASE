@@ -24,7 +24,7 @@ import im from '../../../assets/icon.png'
 import Part_B_Up_Insurance from "./Part_B_Up_Insurance";
 
 
-const Screen5 = ({ navigation }) => {
+const Part_B_End_Insurance_Not_Contacted = ({ navigation }) => {
 
 
   
@@ -89,8 +89,8 @@ style={{height:200,width:200}}/> */}
           <View style={{ margin: "8%" }}>
             <Text style={styles.document1}>Application unsuccessful.</Text>
             <Text style={styles.document2}>
-                Application unsuccessfull
-                Please contact your insurance first, before applying to Legal Aid. The court will not process your
+                Application unsuccessful!
+                Please contact your insurance/organization first, before applying to Legal Aid. The court will not process your
                 request before your insurance officially states, it will not cover the full cost.
             </Text>
           </View>
@@ -129,7 +129,7 @@ style={{height:200,width:200}}/> */}
         </View>
         <TouchableOpacity
           style={styles.back}
-          onPress={() => navigation.navigate("Part_B_Up_Insurance")}
+          onPress={() => navigation.pop()}
         >
           <View
             style={{
@@ -162,4 +162,4 @@ style={{height:200,width:200}}/> */}
   );
 };
 
-export default Screen5;
+export default Part_B_End_Insurance_Not_Contacted;

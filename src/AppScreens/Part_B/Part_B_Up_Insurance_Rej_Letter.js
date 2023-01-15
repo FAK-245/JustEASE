@@ -40,7 +40,7 @@ const signUpSchema = Yup.object({
     .required("Required Field")
     .max(30, "Limit Exceed"),
 });
-const Screen3 = ({ navigation }) => {
+const Part_B_Up_Insurance_Rej_Letter = ({ navigation }) => {
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
@@ -199,94 +199,95 @@ const Screen3 = ({ navigation }) => {
 
   //  console.log(todoList.name);
   return (
-    <Formik
-      initialValues={{
-        Name: Name,
-      }}
-      validationSchema={signUpSchema}
-      onSubmit={(values, actions) => {
-        createUserFun(values);
+      <Formik
+          initialValues={{
+            Name: Name,
+          }}
+          validationSchema={signUpSchema}
+          onSubmit={(values, actions) => {
+            createUserFun(values);
 
-        console.log(values);
-        // actions.resetForm();
-      }}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        isValid,
-        handleChange,
-        handleBlur,
-        isSubmitting,
-        handleSubmit,
-      }) => (
-        <View
-          style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}
-        >
-          <ScrollView style={{ flexGrow: 1 }}>
-            <Dialog
-              onTouchOutside={() => {
-                setScaleAnimationDialog(false);
-              }}
-              width={0.9}
-              visible={scaleAnimationDialog}
-              dialogAnimation={new ScaleAnimation()}
-              onHardwareBackPress={() => {
-                setScaleAnimationDialog(false);
-                console.log("onHardwareBackPress");
-                return true;
-              }}
-              dialogTitle={
-                <DialogTitle
-                  title="Info Box For Monthly Gross
-                  "
-                  hasTitleBar={false}
-                />
-              }
-              actions={[
-                <DialogButton
-                  text="DISMISS"
-                  onPress={() => {
-                    setScaleAnimationDialog(false);
-                  }}
-                  key="button-1"
-                />,
-              ]}
+            console.log(values);
+            // actions.resetForm();
+          }}
+      >
+        {({
+            values,
+            errors,
+            touched,
+            isValid,
+            handleChange,
+            handleBlur,
+            isSubmitting,
+            handleSubmit,
+          }) => (
+            <View
+                style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}
             >
-              <DialogContent>
-                <View>
-                  <Text style={{ marginBottom: "2%" }}>
-                    Here is an example of scale animation dialog. Close using
-                    back button press
-                  </Text>
-                  <Button
-                    title="Close"
-                    onPress={() => {
+              <ScrollView style={{ flexGrow: 1 }}>
+                <Dialog
+                    onTouchOutside={() => {
                       setScaleAnimationDialog(false);
                     }}
-                    key="button-1"
-                  />
+                    width={0.9}
+                    visible={scaleAnimationDialog}
+                    dialogAnimation={new ScaleAnimation()}
+                    onHardwareBackPress={() => {
+                      setScaleAnimationDialog(false);
+                      console.log("onHardwareBackPress");
+                      return true;
+                    }}
+                    dialogTitle={
+                      <DialogTitle
+                          title="Info Box For Monthly Gross
+                  "
+                          hasTitleBar={false}
+                      />
+                    }
+                    actions={[
+                      <DialogButton
+                          text="DISMISS"
+                          onPress={() => {
+                            setScaleAnimationDialog(false);
+                          }}
+                          key="button-1"
+                      />,
+                    ]}
+                >
+                  <DialogContent>
+                    <View>
+                      <Text style={{ marginBottom: "2%" }}>
+                        Here is an example of scale animation dialog. Close using
+                        back button press
+                      </Text>
+                      <Button
+                          title="Close"
+                          onPress={() => {
+                            setScaleAnimationDialog(false);
+                          }}
+                          key="button-1"
+                      />
+                    </View>
+                  </DialogContent>
+                </Dialog>
+                <View style={styles.View1}>
+                  <Text style={styles.signuptxt}>Part B - </Text>
+                  <Text style={styles.signuptxt1}>Legal Protection</Text>
                 </View>
-              </DialogContent>
-            </Dialog>
-            <View style={styles.View1}>
-              <Text style={styles.signuptxt}>Part E - </Text>
-              <Text style={styles.signuptxt1}>Gross Income</Text>
-            </View>
-            <View style={styles.Line}></View>
+                <View style={styles.Line}></View>
 
-            <Text
-              style={{
-                color: "#1c5bd9",
-                textAlign: "center",
-                fontSize: RFValue(13, 580),
-              }}
-            >
-              1.1) How much do you earn monthly in € (gross)?
-            </Text>
 
-            <View style={styles.textinputconatiner}>
+                <Text
+                    style={{
+                      color: "#1c5bd9",
+                      textAlign: "center",
+                      fontSize: RFValue(13, 580),
+                    }}
+                >
+                  Please upload the following document here:
+                </Text>
+
+                {/*<View style={styles.textinputconatiner}>
               <TextInput
                 placeholderTextColor={"#87CEEB"}
                 cursorColor="blue"
@@ -305,7 +306,7 @@ const Screen3 = ({ navigation }) => {
                 ></Ionicons>
               </TouchableOpacity>
 
-              {/* <Text
+               <Text
                 style={{
                   fontSize: 10,
                   color: "red",
@@ -314,23 +315,23 @@ const Screen3 = ({ navigation }) => {
                 }}
               >
                 {touched.Name && errors.Name}
-              </Text> */}
-            </View>
+              </Text>
+            </View>*/}
 
-            <View style={{ backgroundColor: "red" }}></View>
-            <Text
-              style={{
-                fontSize: 10,
-                color: "red",
-                margin: "1%",
-                marginLeft: "8%",
-              }}
-            >
-              {touched.Name && errors.Name}
-            </Text>
-            <View style={styles.textinputconatiner2}>
-              <View>
-                {/* <Text
+                <View style={{ backgroundColor: "red" }}></View>
+                <Text
+                    style={{
+                      fontSize: 10,
+                      color: "red",
+                      margin: "1%",
+                      marginLeft: "8%",
+                    }}
+                >
+                  {touched.Name && errors.Name}
+                </Text>
+                <View style={styles.textinputconatiner2}>
+                  <View>
+                    {/* <Text
                   style={{
                     color: "#1c5bd9",
                     marginLeft: "9%",
@@ -340,9 +341,9 @@ const Screen3 = ({ navigation }) => {
                 >
                   Please upload the following documents here:
                 </Text> */}
-              </View>
-              <View style={{ margin: 10 }}>
-                {/* <Text
+                  </View>
+                  <View style={{ margin: 10 }}>
+                    {/* <Text
                   style={{
                     marginHorizontal: "5%",
                     color: "#1c5bd9",
@@ -352,42 +353,41 @@ const Screen3 = ({ navigation }) => {
                 >
                   E1-1.1) wage or salary slips from the workspace
                 </Text> */}
-                <Text
-                  style={{
-                    marginHorizontal: "2%",
-                    color: "#1c5bd9",
-                    fontSize: RFValue(13, 580),
-                    textAlign: "center",
-                    marginLeft: "6.5%",
-                    marginRight: "6.5%",
-                  }}
-                >
-                  E1-1.1) wage or salary slips from the workspace for the past
-                  12 months proir to the application.
-                </Text>
+                    <Text
+                        style={{
+                          marginHorizontal: "2%",
+                          color: "#1c5bd9",
+                          fontSize: RFValue(13, 580),
+                          textAlign: "center",
+                          marginLeft: "6.5%",
+                          marginRight: "6.5%",
+                        }}
+                    >
+                      B-1.2) Copy of the rejection letter
+                    </Text>
 
-                <TouchableOpacity
-                  style={styles.uploadimage}
-                  onPress={() => pickImage()}
-                >
-                  {image!=null?
-                  <Image
-                    style={styles.picker}
-                    source={ { uri: image }}
-                  />:
-                  <Ionicons
-                    name="images-outline"
-                    size={60}
-                    color="white"
-                    style={{ alignSelf: "center", margin: 20,  }}
-                   
-                  />}
-                  {/* {image && <Image source={{uri: image}} style={{flex: 1}} />} */}
-                </TouchableOpacity>
-              </View>
+                    <TouchableOpacity
+                        style={styles.uploadimage}
+                        onPress={() => pickImage()}
+                    >
+                      {image!=null?
+                          <Image
+                              style={styles.picker}
+                              source={ { uri: image }}
+                          />:
+                          <Ionicons
+                              name="images-outline"
+                              size={60}
+                              color="white"
+                              style={{ alignSelf: "center", margin: 20,  }}
 
-              <View style={{ margin: 10 }}>
-                {/* <Text
+                          />}
+                      {/* {image && <Image source={{uri: image}} style={{flex: 1}} />} */}
+                    </TouchableOpacity>
+                  </View>
+
+                  {/*<View style={{ margin: 10 }}>
+                 <Text
                   style={{
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
@@ -395,7 +395,7 @@ const Screen3 = ({ navigation }) => {
                   }}
                 >
                   E1-1.1b) Latest income tax notice from the tax
-                </Text> */}
+                </Text>
                 <Text
                   style={{
                     textAlign: "center",
@@ -409,7 +409,7 @@ const Screen3 = ({ navigation }) => {
                   electronic wage tax certificate revealing gross and net income
                   of last year.
                 </Text>
-                {/* <Text
+                 <Text
                   style={{
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
@@ -417,7 +417,7 @@ const Screen3 = ({ navigation }) => {
                   }}
                 >
                   revealing gross and net income of last year
-                </Text> */}
+                </Text>
 
                 <TouchableOpacity
                   style={styles.uploadimage}
@@ -435,81 +435,81 @@ const Screen3 = ({ navigation }) => {
                     style={{ alignSelf: "center", margin: 20 }}
                   />}
                 </TouchableOpacity>
-              </View>
+              </View>*/}
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  //paddingTop: '10%'
-                }}
-              >
-                <TouchableOpacity
-                  style={styles.back}
-                  onPress={() => navigation.navigate("Part_B_Up_Insurance_Conf_Letter")}
-                >
                   <View
-                    style={{
-                      flexDirection: "row",
-
-                      margin: 5,
-                    }}
-                  >
-                    <Ionicons
-                      name="chevron-back"
-                      size={24}
-                      color="white"
-                      style={{ margin: 5 }}
-                    />
-                    <Text
                       style={{
-                        color: "white",
-                        // textAlign: "center",
-                        margin: 7,
-                        fontWeight: "500",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        //paddingTop: '10%'
                       }}
-                    >
-                      Back
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Part_B_Dec_Other_Legal_Protection")}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-
-                      margin: 5,
-                    }}
                   >
-                    <Text
-                      style={{
-                        color: "white",
-                        // textAlign: "right",
-                        // marginLeft: "10%",
-                        paddingLeft: "6%",
-                        margin: 7,
-                        fontWeight: "500",
-                      }}
+                    <TouchableOpacity
+                        style={styles.back}
+                        onPress={() => navigation.pop()}
                     >
-                      Next
-                    </Text>
-                    <Ionicons
-                      name="chevron-forward"
-                      size={24}
-                      color="white"
-                      style={{ margin: 5 }}
-                    />
+                      <View
+                          style={{
+                            flexDirection: "row",
+
+                            margin: 5,
+                          }}
+                      >
+                        <Ionicons
+                            name="chevron-back"
+                            size={24}
+                            color="white"
+                            style={{ margin: 5 }}
+                        />
+                        <Text
+                            style={{
+                              color: "white",
+                              // textAlign: "center",
+                              margin: 7,
+                              fontWeight: "500",
+                            }}
+                        >
+                          Back
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Part_B_Dec_Other_Legal_Protection")}>
+                      <View
+                          style={{
+                            flexDirection: "row",
+
+                            margin: 5,
+                          }}
+                      >
+                        <Text
+                            style={{
+                              color: "white",
+                              // textAlign: "right",
+                              // marginLeft: "10%",
+                              paddingLeft: "6%",
+                              margin: 7,
+                              fontWeight: "500",
+                            }}
+                        >
+                          Next
+                        </Text>
+                        <Ionicons
+                            name="chevron-forward"
+                            size={24}
+                            color="white"
+                            style={{ margin: 5 }}
+                        />
+                      </View>
+                    </TouchableOpacity>
                   </View>
-                </TouchableOpacity>
-              </View>
+                </View>
+                {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
+              </ScrollView>
+              <Progress.Bar progress={1} width={210} height={3} />
             </View>
-            {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
-          </ScrollView>
-          <Progress.Bar progress={1} width={210} height={3} />
-        </View>
-      )}
-    </Formik>
+        )}
+      </Formik>
   );
 };
 
-export default Screen3;
+export default Part_B_Up_Insurance_Rej_Letter;

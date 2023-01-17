@@ -3,56 +3,51 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  ScrollView,
-  Image,
   Alert,
   LogBox,
   Button,
-  FlatList
 } from "react-native";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo } from "../../redux/action";
 import { Ionicons } from "@expo/vector-icons";
-import { printToFileAsync } from 'expo-print';
-import { shareAsync } from 'expo-sharing';
 import Dialog, {
   DialogTitle,
   DialogContent,
-  DialogFooter,
   DialogButton,
-  SlideAnimation,
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import React, { useState } from "react";
 import styles from "../../styles/style_in";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import * as Progress from "react-native-progress";
 import Part_B_Dec_Insurance from "../Part_B/Part_B_Dec_Insurance"
-import Theme from "../../utils/Theme";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {global} from "../../styles/shared/global";
+import Header from "../../Components/shared/Header";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import ButtonBar from "../../Components/shared/ButtonBar";
+import {modifyResponses} from "../../redux/slice/formSlice";
 
 const signUpSchema = Yup.object({
-  Name: Yup.string()
+  RepName: Yup.string()
     .min(0, "Minimum Input")
     .required("Required Field")
     .max(30, "Limit Exceed"),
-  Occupation: Yup.string()
+  RepOccupation: Yup.string()
     .required("Required Field")
     .min(0, "Minimum Input")
     .max(30, "Limit Exceed"),
-  Dob: Yup.string().min(0).required("Required Field").max(30, "Limit Exceed"),
-  Street: Yup.string()
+  RepStreet: Yup.string()
     .min(0)
     .required("Required Field")
     .max(20, "Limit Exceed"),
-  House: Yup.string().min(0).required("Required Field").max(20, "Limit Exceed"),
-  City: Yup.string().min(0).required("Required Field").max(20, "Limit Exceed"),
-  PostalCode: Yup.string()
+  RepHouse: Yup.string().min(0).required("Required Field").max(20, "Limit Exceed"),
+  RepCity: Yup.string().min(0).required("Required Field").max(20, "Limit Exceed"),
+  RepPostalCode: Yup.string()
     .min(0)
     .required("Required Field")
     .max(20, "Limit Exceed"),
-  PhoneNumber: Yup.string()
+  RepPhoneNumber: Yup.string()
     .min(0)
     .required("Required Field")
     .max(20, "Limit Exceed"),
@@ -60,17 +55,19 @@ const signUpSchema = Yup.object({
 LogBox.ignoreAllLogs();
 const Part_A_Legal_Rep_Info = ({ navigation }) => {
 
-  const todoList = useSelector((state) => state.todos);
+  //Safe are view
+  const insets = useSafeAreaInsets();
+
   const dispatch = useDispatch();
-  // const {t, i18n} = useTranslation();
-  const [Name, setName] = useState("");
-  const [Occupation, setOccupation] = useState("");
-  const [Dob, setDob] = useState("");
-  const [Street, setStreet] = useState("");
-  const [House, setHouse] = useState("");
-  const [City, setCity] = useState("");
-  const [PostalCode, setPostalCode] = useState("");
-  const [PhoneNumber, setPhoneNumber] = useState("");
+
+
+  const [RepName, setName] = useState("");
+  const [RepOccupation, setOccupation] = useState("");
+  const [RepStreet, setStreet] = useState("");
+  const [RepHouse, setHouse] = useState("");
+  const [RepCity, setCity] = useState("");
+  const [RepPostalCode, setPostalCode] = useState("");
+  const [RepPhoneNumber, setPhoneNumber] = useState("");
   //for dialog boxes
   const [occDialog, setOccDialog] = useState(false);
   const [nameDialog, setNameDialog] = useState(false);
@@ -79,137 +76,18 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
   const [addDialog, setAddDialog] = useState(false);
 
 
-
-  // const html = `
-  //   <html>
-  //     <body>
-        // <h1>Hi ${todoList.Name}</h1>
-        // <h1>Hi ${todoList.occupation}</h1>
-        // <h1>Hi ${todoList.dob}</h1>
-        // <h1>Hi ${todoList.street}</h1>
-        // <h1>Hi ${todoList.house}</h1>
-        // <h1>Hi ${todoList.city}</h1>
-        // <h1>Hi ${todoList.code}</h1>
-        // <h1>Hi ${todoList.number}</h1>
-        
-  //       <p style="color: red;">Hello. Bonjour. Hola.</p>
-  //     </body>
-  //   </html>
-  // `;
-
-  
-  // let generatePdf = async () => {
-  //   const file = await printToFileAsync({
-  //     html: html,
-  //     base64: false
-  //   });
-
-  //   await shareAsync(file.uri);
-  // };
-
-  const createUserFun = (values) => {
-    // console.log(values)
-    // return
-    if (values != "") {
-      dispatch(addTodo({
-        name:values.Name,
-         occupation:values.Occupation,
-         dob:values.Dob,
-         street:values.Street,
-         house:values.House,
-         city:values.City,
-         code:values.PostalCode,
-         number:values.PhoneNumber
-
-
-
-
-        // age:"123445",
-      }))
-    //  console.log(todoList)
-
-      Alert.alert(
-        "Personal Informaton Submitted!",
-        "Press Ok to go on Next Part",
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel",
-          },
-          { text: "OK", onPress: () => navigation.navigate("Screen2") },
-        ]
-      );
-    } else {
-      Alert.alert("Please Complete your information!");
-    }
-  // auth()
-  //   .createUserWithEmailAndPassword(values.email, values.password)
-  //   .then(() => {
-  //     firestore()
-  //       .collection('Users')
-  //       .doc(auth().currentUser.uid)
-  //       .set({
-  //         name: values.userName,
-  //         email: values.email,
-  //         // password: values.password,
-  //       })
-  //       .then(() => {
-  //         console.log('User added!');
-  //       })
-  //       .catch(e => {
-  //         console.log(e);
-  //       });
-  //     console.log('User account created & signed in!');
-  //     alert('user registered successfully');
-  //   })
-  //   .catch(error => {
-  //     if (error.code === 'auth/email-already-in-use') {
-  //       console.log('That email address is already in use!');
-  //     }
-
-  //     if (error.code === 'auth/invalid-email') {
-  //       console.log('That email address is invalid!');
-  //     }
-
-  //     console.error(error);
-  //   });
-   };
-
-  
-  console.log(todoList)
-
-  const handleAddTodo = () => {
-    // dispatch(
-      dispatch(addTodo({
-        name:"N",
-        age:"123445",
-      }))
-    //   addTodo(
-    //     Name,
-    //     // Occupation,
-    //     // Dob,
-    //     // Street,
-    //     // House,
-    //     // City,
-    //     // PostalCode,
-    //     // PhoneNumber
-    //   )
-    // );
-    //  console.log(todoList)
-    setName("");
-    // setOccupation("");
-    // setDob("");
-    // setStreet("");
-    // setHouse();
-    // setCity("");
-    // setPostalCode("");
-    // setPhoneNumber("");
+  const saveState = (values) => {
+        console.log(values);
+        dispatch(modifyResponses(values));
   };
+
+  
+
   return (
-    <View style={{ flex: 1, paddingBottom: "14.5%", backgroundColor: "white" }}>
-      <ScrollView style={{ backgroundColor: "white", flexGrow: 1 }}>
-        {/* //For Name input */}
+      <View style={[global.parentContainer, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+
+        <Header txt={"Part A - Legal Rep. Information"}/>
+
         <Dialog
           onTouchOutside={() => {
             setNameDialog(false);
@@ -224,8 +102,7 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
           }}
           dialogTitle={
             <DialogTitle
-              title="Info Box For Name Field
-                  "
+              title="Info Box For Name Field"
               hasTitleBar={false}
             />
           }
@@ -441,22 +318,22 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
             </View>
           </DialogContent>
         </Dialog>
+
+        <KeyboardAwareScrollView style={{ backgroundColor: "white", flexGrow: 1, width: "100%" }}>
         <Formik
           initialValues={{
-            Name: Name,
-            Occupation: Occupation,
-            Dob: Dob,
-            Street: Street,
-            House: House,
-            City: City,
-            PostalCode: PostalCode,
-            PhoneNumber: PhoneNumber,
+              RepName: RepName,
+              RepOccupation: RepOccupation,
+              RepStreet: RepStreet,
+              RepHouse: RepHouse,
+              RepCity: RepCity,
+              RepPostalCode: RepPostalCode,
+              RepPhoneNumber: RepPhoneNumber,
           }}
           validationSchema={signUpSchema}
           onSubmit={(values, actions) => {
-            createUserFun(values);
-           // console.log(values);
-            // actions.resetForm();
+              console.log(values)
+              saveState(values);
           }}
         >
           {({
@@ -470,14 +347,8 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
             handleSubmit,
           }) => (
             <View style={styles.mainView}>
-              <View style={styles.View1}>
-                <Text style={styles.signuptxt}>Part A - </Text>
-                <Text style={styles.signuptxt1}>Legal Representative Information</Text>
-              </View>
 
-              <Text
-                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
-              >
+              <Text style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}>
                 What is his/her name?
               </Text>
               <View style={styles.textinputconatiner}>
@@ -486,9 +357,9 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                   cursorColor="#d75f4f"
                   placeholder="Input your Text in here"
                   style={styles.txtinput}
-                  value={values.Name}
-                  onChangeText={handleChange("Name")}
-                  onBlur={handleBlur("Name")}
+                  value={values.RepName}
+                  onChangeText={handleChange("RepName")}
+                  onBlur={handleBlur("RepName")}
                 />
                 <TouchableOpacity onPress={() => setNameDialog(true)}>
                   <Ionicons
@@ -498,6 +369,29 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                   ></Ionicons>
                 </TouchableOpacity>
               </View>
+
+                <Text style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}>
+                    What is his/her occupation?
+                </Text>
+                <View style={styles.textinputconatiner}>
+                    <TextInput
+                        placeholderTextColor={"#87CEEB"}
+                        cursorColor="#d75f4f"
+                        placeholder="Input your Text in here"
+                        style={styles.txtinput}
+                        value={values.RepOccupation}
+                        onChangeText={handleChange("RepOccupation")}
+                        onBlur={handleBlur("RepOccupation")}
+                    />
+                    <TouchableOpacity onPress={() => setNameDialog(true)}>
+                        <Ionicons
+                            name="information-circle-outline"
+                            size={25}
+                            style={{ padding: 10 }}
+                        ></Ionicons>
+                    </TouchableOpacity>
+                </View>
+
               <View
                 style={{
                   flexDirection: "row",
@@ -506,7 +400,7 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                   // justifyContent: 'space-between',
                 }}
               >
-                <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
+                <Text style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}>
                   What is his/her address?
                 </Text>
                 <TouchableOpacity onPress={() => setAddDialog(true)}>
@@ -524,9 +418,9 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                     cursorColor="#d75f4f"
                     style={styles.txtinputAddress}
                     placeholder="Street"
-                    value={values.Street}
-                    onChangeText={handleChange("Street")}
-                    onBlur={handleBlur("Street")}
+                    value={values.RepStreet}
+                    onChangeText={handleChange("RepStreet")}
+                    onBlur={handleBlur("RepStreet")}
                   />
 
                   <Text
@@ -546,9 +440,9 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                     placeholderTextColor={"#87CEEB"}
                     style={styles.txtinputHouse}
                     placeholder="House Nr"
-                    value={values.House}
-                    onChangeText={handleChange("House")}
-                    onBlur={handleBlur("House")}
+                    value={values.RepHouse}
+                    onChangeText={handleChange("RepHouse")}
+                    onBlur={handleBlur("RepHouse")}
                   />
 
                   <Text
@@ -570,9 +464,9 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                     placeholderTextColor={"#87CEEB"}
                     style={styles.txtinputCity}
                     placeholder="City"
-                    value={values.City}
-                    onChangeText={handleChange("City")}
-                    onBlur={handleBlur("City")}
+                    value={values.RepCity}
+                    onChangeText={handleChange("RepCity")}
+                    onBlur={handleBlur("RepCity")}
                   />
 
                   <Text
@@ -592,9 +486,9 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                     placeholderTextColor={"#87CEEB"}
                     style={styles.txtinputPostalCode}
                     placeholder="Postal Code"
-                    value={values.PostalCode}
-                    onChangeText={handleChange("PostalCode")}
-                    onBlur={handleBlur("PostalCode")}
+                    value={values.RepPostalCode}
+                    onChangeText={handleChange("RepPostalCode")}
+                    onBlur={handleBlur("RepPostalCode")}
                   />
 
                   <Text
@@ -618,9 +512,9 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                   cursorColor="#d75f4f"
                   placeholder="Input your Text in here"
                   style={styles.txtinput}
-                  value={values.PhoneNumber}
-                  onChangeText={handleChange("PhoneNumber")}
-                  onBlur={handleBlur("PhoneNumber")}
+                  value={values.RepPhoneNumber}
+                  onChangeText={handleChange("RepPhoneNumber")}
+                  onBlur={handleBlur("RepPhoneNumber")}
                 />
                 <TouchableOpacity onPress={() => setPhoneDialog(true)}>
                   <Ionicons
@@ -641,82 +535,12 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                 {touched.PhoneNumber && errors.PhoneNumber}
               </Text>
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <TouchableOpacity style={styles.back} onPress={handleSubmit}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-
-                      margin: 5,
-                    }}
-                  >
-                    <Ionicons
-                      name="chevron-back"
-                      size={24}
-                      color="white"
-                      style={{ margin: 5 }}
-                    />
-                    <Text
-                      style={{
-                        color: "white",
-                        textAlign: "center",
-                        margin: 7,
-                        fontWeight: "500",
-                      }}
-                    >
-                      Back
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.next}
-                  //onPress={handleSubmit}
-
-                   onPress={() => navigation.navigate("Part_B_Dec_Insurance")}
-                >
-                  <View
-                    style={{
-                      flexDirection: "row",
-
-                      margin: 5,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: "white",
-                        // textAlign: "right",
-                        // marginLeft: "10%",
-                        paddingLeft: "6%",
-                        margin: 7,
-                        fontWeight: "500",
-                      }}
-                    >
-                      Next
-                    </Text>
-                    <Ionicons
-                      name="chevron-forward"
-                      size={24}
-                      color="white"
-                      style={{ margin: 5 }}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </View>
+                <ButtonBar next={'Part_B_Dec_Answer_Insurance'} submit={handleSubmit}/>
             </View>
           )}
         </Formik>
 
-
-     
-        {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
-
-      </ScrollView>
-      <Progress.Bar progress={1} width={50} height={3} />
+        </KeyboardAwareScrollView>
     </View>
   );
 };

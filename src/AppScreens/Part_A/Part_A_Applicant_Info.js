@@ -1,36 +1,30 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-  Alert,
-  LogBox,
-  Button,
-  FlatList
-} from "react-native";
+import {View, Text, TextInput, TouchableOpacity, ScrollView, Image, Alert, LogBox, Button, FlatList} from "react-native";
+import React, {useEffect, useState} from "react";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
+//Redux
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo } from "../../redux/action";
+import {modifyResponses, selectResponses} from "../../redux/slice/formSlice";
+
+//Components
+import ButtonBar from "../../Components/shared/ButtonBar";
+
 import { Ionicons } from "@expo/vector-icons";
-import { printToFileAsync } from 'expo-print';
-import { shareAsync } from 'expo-sharing';
 import Dialog, {
   DialogTitle,
   DialogContent,
-  DialogFooter,
   DialogButton,
-  SlideAnimation,
   ScaleAnimation,
 } from "react-native-popup-dialog";
-import React, { useState } from "react";
 import styles from "../../styles/style_in";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
 import Theme from "../../utils/Theme";
-import Part_A_Dec_Legal_Rep from "./Part_A_Dec_Legal_Rep";
+import Header from "../../Components/shared/Header";
+import {global} from "../../styles/shared/global";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
+
 
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -60,9 +54,12 @@ const signUpSchema = Yup.object({
 LogBox.ignoreAllLogs();
 const Part_A_Applicant_Info = ({ navigation }) => {
 
-  const todoList = useSelector((state) => state.todos);
+  //Safe are view
+  const insets = useSafeAreaInsets();
+
+  //Redux
   const dispatch = useDispatch();
-  // const {t, i18n} = useTranslation();
+
   const [Name, setName] = useState("");
   const [Occupation, setOccupation] = useState("");
   const [Dob, setDob] = useState("");
@@ -80,140 +77,16 @@ const Part_A_Applicant_Info = ({ navigation }) => {
 
 
 
-  // const html = `
-  //   <html>
-  //     <body>
-        // <h1>Hi ${todoList.Name}</h1>
-        // <h1>Hi ${todoList.occupation}</h1>
-        // <h1>Hi ${todoList.dob}</h1>
-        // <h1>Hi ${todoList.street}</h1>
-        // <h1>Hi ${todoList.house}</h1>
-        // <h1>Hi ${todoList.city}</h1>
-        // <h1>Hi ${todoList.code}</h1>
-        // <h1>Hi ${todoList.number}</h1>
-
-  //       <p style="color: red;">Hello. Bonjour. Hola.</p>
-  //     </body>
-  //   </html>
-  // `;
-
-
-  // let generatePdf = async () => {
-  //   const file = await printToFileAsync({
-  //     html: html,
-  //     base64: false
-  //   });
-
-  //   await shareAsync(file.uri);
-  // };
-
-  const createUserFun = (values) => {
-    // console.log(values)
-    // return
-    if (values != "") {
-      dispatch(addTodo({
-        name:values.Name,
-         occupation:values.Occupation,
-         dob:values.Dob,
-         street:values.Street,
-         house:values.House,
-         city:values.City,
-         code:values.PostalCode,
-         number:values.PhoneNumber
-
-
-
-
-        // age:"123445",
-      }))
-    //  console.log(todoList)
-
-      Alert.alert(
-        "Personal Informaton Submitted!",
-        "Press Ok to go on Next Part",
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel",
-          },
-          { text: "OK", onPress: () => navigation.navigate("Screen2") },
-        ]
-      );
-    } else {
-      Alert.alert("Please Complete your information!");
-    }
-  // auth()
-  //   .createUserWithEmailAndPassword(values.email, values.password)
-  //   .then(() => {
-  //     firestore()
-  //       .collection('Users')
-  //       .doc(auth().currentUser.uid)
-  //       .set({
-  //         name: values.userName,
-  //         email: values.email,
-  //         // password: values.password,
-  //       })
-  //       .then(() => {
-  //         console.log('User added!');
-  //       })
-  //       .catch(e => {
-  //         console.log(e);
-  //       });
-  //     console.log('User account created & signed in!');
-  //     alert('user registered successfully');
-  //   })
-  //   .catch(error => {
-  //     if (error.code === 'auth/email-already-in-use') {
-  //       console.log('That email address is already in use!');
-  //     }
-
-  //     if (error.code === 'auth/invalid-email') {
-  //       console.log('That email address is invalid!');
-  //     }
-
-  //     console.error(error);
-  //   });
+  const saveState = (values) => {
+      dispatch(modifyResponses(values));
    };
 
-
-  console.log(todoList)
-
-  const handleAddTodo = () => {
-    // dispatch(
-      dispatch(addTodo({
-        name:"N",
-        age:"123445",
-      }))
-    //   addTodo(
-    //     Name,
-    //     // Occupation,
-    //     // Dob,
-    //     // Street,
-    //     // House,
-    //     // City,
-    //     // PostalCode,
-    //     // PhoneNumber
-    //   )
-    // );
-    //  console.log(todoList)
-    setName("");
-    // setOccupation("");
-    // setDob("");
-    // setStreet("");
-    // setHouse();
-    // setCity("");
-    // setPostalCode("");
-    // setPhoneNumber("");
-  };
   return (
-    <View style={{ flex: 1, paddingBottom: "14.5%", backgroundColor: "white" }}>
-      <ScrollView style={{ backgroundColor: "white", flexGrow: 1 }}>
-        {/* //For Name input */}
-        <Dialog
-          onTouchOutside={() => {
-            setNameDialog(false);
-          }}
+      <View style={[global.parentContainer, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+
+        <Header txt={"Part A - Personal Information"}/>
+
+        <Dialog onTouchOutside={() => {setNameDialog(false);}}
           width={0.9}
           visible={nameDialog}
           dialogAnimation={new ScaleAnimation()}
@@ -441,6 +314,8 @@ const Part_A_Applicant_Info = ({ navigation }) => {
             </View>
           </DialogContent>
         </Dialog>
+
+        <KeyboardAwareScrollView style={{ backgroundColor: "white", flexGrow: 1, width: "100%" }}>
         <Formik
           initialValues={{
             Name: Name,
@@ -454,9 +329,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           }}
           validationSchema={signUpSchema}
           onSubmit={(values, actions) => {
-            createUserFun(values);
-           // console.log(values);
-            // actions.resetForm();
+              saveState(values);
           }}
         >
           {({
@@ -470,16 +343,8 @@ const Part_A_Applicant_Info = ({ navigation }) => {
             handleSubmit,
           }) => (
             <View style={styles.mainView}>
-              <View style={styles.View1}>
-                <Text style={styles.signuptxt}>Part A - </Text>
-                <Text style={styles.signuptxt1}> Personal Information </Text>
-              </View>
 
-              <Text
-                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
-              >
-                What is your name?
-              </Text>
+              <Text style={{ paddingLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}>What is your name?</Text>
               <View style={styles.textinputconatiner}>
                 <TextInput
                   placeholderTextColor={"#87CEEB"}
@@ -713,122 +578,11 @@ const Part_A_Applicant_Info = ({ navigation }) => {
               >
                 {touched.PhoneNumber && errors.PhoneNumber}
               </Text>
-
-              {/* Not required anymore since the decisions gets an extra screen*/}
-
-              {/*<Text
-                style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "4%" }}
-              >
-                Do you have a legal representative?
-              </Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <TouchableOpacity style={styles.yes} onPress={handleSubmit}>
-                  <Text
-                    style={{
-                      color: "white",
-                      textAlign: "center",
-                      margin: 5,
-                      fontWeight: "500",
-                    }}
-                  >
-                    Yes
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.no} onPress={handleSubmit}>
-                  <Text
-                    style={{
-                      color: "white",
-                      textAlign: "center",
-                      margin: 5,
-                      fontWeight: "500",
-                    }}
-                  >
-                    No
-                  </Text>
-                </TouchableOpacity>
-              </View>*/}
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <TouchableOpacity style={styles.back} onPress={handleSubmit}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-
-                      margin: 5,
-                    }}
-                  >
-                    <Ionicons
-                      name="chevron-back"
-                      size={24}
-                      color="white"
-                      style={{ margin: 5 }}
-                    />
-                    <Text
-                      style={{
-                        color: "white",
-                        textAlign: "center",
-                        margin: 7,
-                        fontWeight: "500",
-                      }}
-                    >
-                      Back
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.next}
-                  //onPress={handleSubmit}
-
-                  onPress={() => navigation.navigate("Part_A_Dec_Legal_Rep")}
-                >
-                  <View
-                    style={{
-                      flexDirection: "row",
-
-                      margin: 5,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: "white",
-                        // textAlign: "right",
-                        // marginLeft: "10%",
-                        paddingLeft: "6%",
-                        margin: 7,
-                        fontWeight: "500",
-                      }}
-                    >
-                      Next
-                    </Text>
-                    <Ionicons
-                      name="chevron-forward"
-                      size={24}
-                      color="white"
-                      style={{ margin: 5 }}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </View>
+                <ButtonBar next={'Part_A_Dec_Legal_Rep'} submit={handleSubmit}/>
             </View>
           )}
         </Formik>
-
-
-
-        {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
-
-      </ScrollView>
-      <Progress.Bar progress={1} width={50} height={3} />
+        </KeyboardAwareScrollView>
     </View>
   );
 };

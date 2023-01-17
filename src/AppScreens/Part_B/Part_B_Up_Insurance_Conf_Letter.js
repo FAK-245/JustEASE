@@ -12,8 +12,6 @@ import {
 import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { useSelector, useDispatch } from "react-redux";
-import { addTodo } from "../../redux/action";
 
 import * as Progress from "react-native-progress";
 import * as Yup from "yup";
@@ -32,18 +30,14 @@ import { shareAsync } from "expo-sharing";
 import * as ImagePicker from "expo-image-picker";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Part_B_Up_Insurance_Rej_Letter from "./Part_B_Up_Insurance_Rej_Letter";
-import Part_B_In_Insurance_Cost_Coverage from "./Part_B_In_Insurance_Cost_Coverage";
-import Part_B_Dec_Other_Legal_Protection from "./Part_B_Dec_Other_Legal_Protection";
 const signUpSchema = Yup.object({
   Name: Yup.string()
     .min(0, "Minimum Input")
     .required("Required Field")
     .max(30, "Limit Exceed"),
 });
-const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
-  const todoList = useSelector((state) => state.todos);
-  const dispatch = useDispatch();
+const Screen3 = ({ navigation }) => {
+
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
   const [scaleAnimationDialog, setScaleAnimationDialog] = useState(false);
   const [slideAnimationDialog, setSlideAnimationDialog] = useState(false);
@@ -272,11 +266,10 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
               </DialogContent>
             </Dialog>
             <View style={styles.View1}>
-              <Text style={styles.signuptxt}>Part B - </Text>
-              <Text style={styles.signuptxt1}>Legal Protection</Text>
+              <Text style={styles.signuptxt}>Part E - </Text>
+              <Text style={styles.signuptxt1}>Gross Income</Text>
             </View>
             <View style={styles.Line}></View>
-
 
             <Text
               style={{
@@ -285,10 +278,10 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                 fontSize: RFValue(13, 580),
               }}
             >
-              Please upload the following document here:
+              1.1) How much do you earn monthly in € (gross)?
             </Text>
 
-            {/*<View style={styles.textinputconatiner}>
+            <View style={styles.textinputconatiner}>
               <TextInput
                 placeholderTextColor={"#87CEEB"}
                 cursorColor="blue"
@@ -307,7 +300,7 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                 ></Ionicons>
               </TouchableOpacity>
 
-               <Text
+              {/* <Text
                 style={{
                   fontSize: 10,
                   color: "red",
@@ -316,8 +309,8 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                 }}
               >
                 {touched.Name && errors.Name}
-              </Text>
-            </View>*/}
+              </Text> */}
+            </View>
 
             <View style={{ backgroundColor: "red" }}></View>
             <Text
@@ -364,7 +357,8 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                     marginRight: "6.5%",
                   }}
                 >
-                  B-1.3) Copy of confirmation letter
+                  E1-1.1) wage or salary slips from the workspace for the past
+                  12 months proir to the application.
                 </Text>
 
                 <TouchableOpacity
@@ -387,8 +381,8 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
 
-              {/*<View style={{ margin: 10 }}>
-                 <Text
+              <View style={{ margin: 10 }}>
+                {/* <Text
                   style={{
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
@@ -396,7 +390,7 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                   }}
                 >
                   E1-1.1b) Latest income tax notice from the tax
-                </Text>
+                </Text> */}
                 <Text
                   style={{
                     textAlign: "center",
@@ -410,7 +404,7 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                   electronic wage tax certificate revealing gross and net income
                   of last year.
                 </Text>
-                 <Text
+                {/* <Text
                   style={{
                     color: "#1c5bd9",
                     fontSize: RFValue(13, 580),
@@ -418,7 +412,7 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                   }}
                 >
                   revealing gross and net income of last year
-                </Text>
+                </Text> */}
 
                 <TouchableOpacity
                   style={styles.uploadimage}
@@ -436,7 +430,7 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                     style={{ alignSelf: "center", margin: 20 }}
                   />}
                 </TouchableOpacity>
-              </View>*/}
+              </View>
 
               <View
                 style={{
@@ -447,7 +441,7 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
               >
                 <TouchableOpacity
                   style={styles.back}
-                  onPress={() => navigation.pop()}
+                  onPress={() => navigation.navigate("Screen2")}
                 >
                   <View
                     style={{
@@ -474,7 +468,7 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Part_B_Dec_Other_Legal_Protection")}>
+                <TouchableOpacity style={styles.next} onPress={handleSubmit}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -513,4 +507,4 @@ const Part_B_Up_Insurance_Conf_Letter = ({ navigation }) => {
   );
 };
 
-export default Part_B_Up_Insurance_Conf_Letter;
+export default Screen3;

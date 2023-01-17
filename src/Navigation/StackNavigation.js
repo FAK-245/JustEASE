@@ -1,25 +1,19 @@
 import {StyleSheet, Text, View} from "react-native";
 import React from "react";
-import {AntDesign} from "@expo/vector-icons";
 import {FontAwesome} from "@expo/vector-icons";
 import {Entypo} from "@expo/vector-icons";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {NavigationContainer} from "@react-navigation/native";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+
+import Landing from '../AppScreens/Landing/Landing';
+import Language from '../AppScreens/Landing/Language';
+import LanguagePicker from '../AppScreens/Landing/LanguagePicker';
+import Overview from "../AppScreens/Overview/Overview";
+
 import Part_A_Applicant_Info from "../AppScreens/Part_A/Part_A_Applicant_Info";
 import Part_A_Dec_Legal_Rep from "../AppScreens/Part_A/Part_A_Dec_Legal_Rep";
 import Part_A_Legal_Rep_Info from "../AppScreens/Part_A/Part_A_Legal_Rep_Info";
-import Screen2 from "../Screens/Screen2/Screen2";
-import Screen3 from "../Screens/Screen3/Screen3";
-import Screen4 from "../Screens/Screen4/Screen4";
-import Screen5 from "../Screens/Screen5/Screen5";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {PersistGate} from 'redux-persist/integration/react'
-import {store, persistor} from '../redux/store';
-
-import {Provider} from 'react-redux';
-
-import {NavigationContainer} from "@react-navigation/native";
-import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import Screen1 from "../Screens/Screen1/Screen1";
 import Part_B_Dec_Answer_Insurance from "../AppScreens/Part_B/Part_B_Dec_Answer_Insurance";
 import Part_B_Dec_Answer_Other_Protection from "../AppScreens/Part_B/Part_B_Dec_Answer_Other_Protection";
 import Part_B_Dec_Contacted_Insurance from "../AppScreens/Part_B/Part_B_Dec_Contacted_Insurance";
@@ -47,310 +41,7 @@ import Part_D_In_Up_Receiver_Income from "../AppScreens/Part_D/Part_D_In_Up_Rece
 import Part_SA_Dec_Receive_SA from "../AppScreens/Part_Social_Assistance/Part_SA_Dec_Receive_SA";
 import Part_SA_End_Receives_SA from "../AppScreens/Part_Social_Assistance/Part_SA_End_Receives_SA";
 import Part_SA_Up_Proof from "../AppScreens/Part_Social_Assistance/Part_SA_Up_Proof";
-import Part_B_Dec_Other_Legal_Protection from "../AppScreens/Part_B/Part_B_Dec_Other_Legal_Protection";
-
-
-const Tab = createBottomTabNavigator();
-
-function HomeTabs() {
-    return (
-        <Tab.Navigator
-            screenOptions={{
-                headerShown: false,
-                tabBarStyle: {
-                    height: 60,
-                    position: "absolute",
-
-                    borderTopRightRadius: 12,
-                    backgroundColor: "white",
-                },
-            }}
-            null
-            // screenOptions={{headerShown: false,
-
-            // }}
-            tabBarOptions={{
-                activeTintColor: "#2F5FDB",
-                inactiveTintColor: "lightgray",
-            }}
-        >
-            <Tab.Screen
-                name="Screen1"
-                component={Screen1}
-                options={{
-                    tabBarLabel: () => {
-                        return null;
-                    },
-                    tabBarIcon: () => (
-                        <FontAwesome
-                            name="home"
-                            size={30}
-                            color="black"
-                            style={{elevation: 40, backgroundColor: "white"}}
-                        />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="HomeTabs"
-                component={HomeTabs}
-                listeners={{
-                    tabPress: (e) => {
-                        // Prevent default action
-                        e.preventDefault();
-                    },
-                }}
-                options={{
-                    tabBarLabel: () => (
-                        <>
-                            <Text style={{marginBottom: "15%", fontWeight: "600"}}>
-                                My Applications
-                            </Text>
-                        </>
-                    ),
-                    tabBarIcon: () => {
-                        return null;
-                    },
-                }}
-            />
-
-            <Tab.Screen
-                name="Part_A_Dec_Legal_Rep"
-                component={Part_A_Dec_Legal_Rep}
-                options={{
-                    tabBarLabel: () => {
-                        return null;
-                    },
-                    tabBarIcon: () => (
-                        <Entypo
-                            name="dots-three-horizontal"
-                            size={30}
-                            color="black"
-                            style={{backgroundColor: "white"}}
-                        />
-                    ),
-                }}
-            />
-
-            <Tab.Screen
-                name="Part_A_Legal_Rep_Info"
-                component={Part_A_Legal_Rep_Info}
-                options={{
-                    tabBarLabel: () => {
-                        return null;
-                    },
-                    tabBarIcon: () => (
-                        <Entypo
-                            name="dots-three-horizontal"
-                            size={30}
-                            color="black"
-                            style={{backgroundColor: "white"}}
-                        />
-                    ),
-                }}
-            />
-        </Tab.Navigator>
-    );
-}
-
-function HomeTabs2() {
-    return (
-        <Tab.Navigator
-            screenOptions={{
-                headerShown: false,
-                tabBarStyle: {
-                    height: 60,
-                    position: "absolute",
-
-                    borderTopRightRadius: 12,
-                    backgroundColor: "white",
-                },
-            }}
-            null
-            // screenOptions={{headerShown: false,
-
-            // }}
-            tabBarOptions={{
-                activeTintColor: "#2F5FDB",
-                inactiveTintColor: "lightgray",
-            }}
-        >
-            <Tab.Screen
-                name="Screen3"
-                component={Screen3}
-                options={{
-                    tabBarLabel: () => {
-                        return null;
-                    },
-                    tabBarIcon: () => (
-                        <FontAwesome
-                            name="home"
-                            size={30}
-                            color="black"
-                            style={{elevation: 40, backgroundColor: "white"}}
-                        />
-                    ),
-                }}
-            />
-
-            <Tab.Screen
-                name="HomeTabs2"
-                component={HomeTabs2}
-                listeners={{
-                    tabPress: (e) => {
-                        // Prevent default action
-                        e.preventDefault();
-                    },
-                }}
-                options={{
-                    tabBarLabel: () => (
-                        <>
-                            <Text style={{marginBottom: "15%", fontWeight: "600"}}>
-                                My Applications
-                            </Text>
-                        </>
-                    ),
-                    tabBarIcon: () => {
-                        return null;
-                    },
-                }}
-            />
-
-            <Tab.Screen
-                name="Screen4"
-                component={Screen4}
-                options={{
-                    tabBarLabel: () => {
-                        return null;
-                    },
-                    tabBarIcon: () => (
-                        <Entypo
-                            name="dots-three-horizontal"
-                            size={30}
-                            color="black"
-                            style={{backgroundColor: "white"}}
-                        />
-                    ),
-                }}
-            />
-        </Tab.Navigator>
-    );
-}
-
-function HomeTabs3() {
-    return (
-        <Tab.Navigator
-            screenOptions={{
-                headerShown: false,
-                tabBarStyle: {
-                    height: 60,
-                    position: "absolute",
-
-                    borderTopRightRadius: 12,
-                    backgroundColor: "white",
-                },
-            }}
-            null
-            // screenOptions={{headerShown: false,
-
-            // }}
-            tabBarOptions={{
-                activeTintColor: "#2F5FDB",
-                inactiveTintColor: "lightgray",
-            }}
-        >
-            <Tab.Screen
-                name="Screen5"
-                component={Screen5}
-                options={{
-                    tabBarLabel: () => {
-                        return null;
-                    },
-                    tabBarIcon: () => (
-                        <FontAwesome
-                            name="home"
-                            size={30}
-                            color="black"
-                            style={{elevation: 40, backgroundColor: "white"}}
-                        />
-                    ),
-                }}
-            />
-
-            <Tab.Screen
-                name="HomeTabs2"
-                component={HomeTabs2}
-                listeners={{
-                    tabPress: (e) => {
-                        // Prevent default action
-                        e.preventDefault();
-                    },
-                }}
-                options={{
-                    tabBarLabel: () => (
-                        <>
-                            <Text style={{marginBottom: "15%", fontWeight: "600"}}>
-                                My Applications
-                            </Text>
-                        </>
-                    ),
-                    tabBarIcon: () => {
-                        return null;
-                    },
-                }}
-            />
-
-            <Tab.Screen
-                name="HomeTabs3"
-                component={HomeTabs3}
-                listeners={{
-                    tabPress: (e) => {
-                        // Prevent default action
-                        e.preventDefault();
-                    },
-                }}
-                options={{
-                    tabBarLabel: () => (
-                        <>
-                            <Entypo
-                                name="dots-three-horizontal"
-                                size={30}
-                                color="black"
-                                style={{backgroundColor: "white", marginBottom: 15}}
-                            />
-                        </>
-                    ),
-                    tabBarIcon: () => {
-                        <FontAwesome
-                            name="home"
-                            size={30}
-                            color="black"
-                            style={{elevation: 40, backgroundColor: "white"}}
-                        />;
-                    },
-                }}
-            />
-
-            {/* <Tab.Screen
-        name="Screen5"
-        component={Screen5}
-        options={{
-          tabBarLabel: () => {
-            return null;
-          },
-          tabBarIcon: () => (
-            <Entypo
-              name="dots-three-horizontal"
-              size={30}
-              color="black"
-              style={{ backgroundColor: "#FFB6C1" }}
-            />
-          ),
-        }}
-      /> */}
-        </Tab.Navigator>
-    );
-}
+import End_Screen from "../AppScreens/End/End_Screen";
 
 const Stack = createNativeStackNavigator();
 const StackNavigation = () => {
@@ -359,27 +50,32 @@ const StackNavigation = () => {
 
         <NavigationContainer>
 
+            <Stack.Navigator initialRouteName={'Landing'} screenOptions={{headerShown: false}}>
 
-            <Stack.Navigator initialRouteName={"Part_B_Dec_Insurance"}
-                screenOptions={{headerShown: false}}>
-                <Stack.Screen name="Screen1" component={HomeTabs}/>
-                <Stack.Screen name="Screen2" component={Screen2}/>
+                {/* Landing */}
+                <Stack.Screen name="Landing" component={Landing} />
+                <Stack.Screen name="Language" component={Language} options={{animationEnabled: true, gestureEnabled: true}}/>
+                <Stack.Screen name="LanguagePicker" component={LanguagePicker} options={{
+                    presentation: 'transparentModal',
+                    headerMode: 'none',
+                    cardStyle:{
+                        backgroundColor:"transparent",
+                        opacity:0.9
+                    },
+                    animationEnabled: true
+                }}/>
 
-
-                <Stack.Screen name="Screen3" component={HomeTabs2}/>
-
-                <Stack.Screen name="Screen4" component={Screen4}/>
-                <Stack.Screen name="Screen5" component={HomeTabs3}/>
+                {/* Overview */}
+                <Stack.Screen name="Overview" component={Overview} options={{animationEnabled: true, gestureEnabled: true}}/>
 
                 {/* PART A Screens */}
-                <Stack.Screen name="Part_A_Dec_Legal_Rep" component={Part_A_Dec_Legal_Rep}/>
                 <Stack.Screen name="Part_A_Applicant_Info" component={Part_A_Applicant_Info}/>
+                <Stack.Screen name="Part_A_Dec_Legal_Rep" component={Part_A_Dec_Legal_Rep}/>
                 <Stack.Screen name="Part_A_Legal_Rep_Info" component={Part_A_Legal_Rep_Info}/>
 
                 {/* PART B Screens */}
                 <Stack.Screen name="Part_B_Dec_Answer_Insurance" component={Part_B_Dec_Answer_Insurance}/>
                 <Stack.Screen name="Part_B_Dec_Answer_Other_Protection" component={Part_B_Dec_Answer_Other_Protection}/>
-                <Stack.Screen name="Part_B_Dec_Other_Legal_Protection" component={Part_B_Dec_Other_Legal_Protection}/>
                 <Stack.Screen name="Part_B_Dec_Contacted_Insurance" component={Part_B_Dec_Contacted_Insurance}/>
                 <Stack.Screen name="Part_B_Dec_Applied_Other_Protection" component={Part_B_Dec_Applied_Other_Protection}/>
                 <Stack.Screen name="Part_B_Dec_Insurance" component={Part_B_Dec_Insurance}/>
@@ -412,6 +108,9 @@ const StackNavigation = () => {
                 <Stack.Screen name="Part_SA_End_Receives_SA" component={Part_SA_End_Receives_SA}/>
                 <Stack.Screen name="Part_SA_Up_Proof" component={Part_SA_Up_Proof}/>
 
+                {/* End of Prototype Screens */}
+                <Stack.Screen name="End_Screen" component={End_Screen}/>
+
 
             </Stack.Navigator>
         </NavigationContainer>
@@ -419,5 +118,3 @@ const StackNavigation = () => {
 };
 
 export default StackNavigation;
-
-const styles = StyleSheet.create({});

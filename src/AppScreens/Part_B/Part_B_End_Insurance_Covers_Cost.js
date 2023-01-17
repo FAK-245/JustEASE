@@ -13,9 +13,6 @@ import { FontAwesome } from "@expo/vector-icons";
 import * as Progress from "react-native-progress";
 import { printToFileAsync } from 'expo-print';
 import { shareAsync } from 'expo-sharing';
-import todoReducer from "../../redux/todoReducer";
-import { useSelector, useDispatch } from "react-redux";
-import { addTodo } from "../../redux/action";
 
 import styles from "../../styles/style_end";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
@@ -23,7 +20,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import im from '../../../assets/icon.png'
 
 
-const Part_B_End_Insurance_Covers_Cost = ({ navigation }) => {
+const Screen5 = ({ navigation }) => {
 
 
   
@@ -86,22 +83,21 @@ source={{uri:todoList.image2}}
 style={{height:200,width:200}}/> */}
         <View style={styles.FlatView}>
           <View style={{ margin: "8%" }}>
-            <Text style={styles.document1}>Application unsucessful!</Text>
+            <Text style={styles.document1}>Your application is complete.</Text>
             <Text style={styles.document2}>
-                In case your legal protection insurance covers the full cost of the court process,
-                you will not be granted legal aid. Please refrain from applying.
+              Click on the download button below to generate your application.
             </Text>
           </View>
-{/*          <View style={{ margin: "8%" }}>
+          <View style={{ margin: "8%" }}>
             <Text style={styles.document1}>Important</Text>
             <Text style={styles.document2}>
               After You have download your application you have to signit under
               point K on page 4. Afterwards you need to send it to your lawyer
               or directly to the court at which your case is being processed.
             </Text>
-          </View>*/}
+          </View>
         </View>
-{/*        <View
+        <View
           style={{
             flexDirection: "row",
             justifyContent: "center",
@@ -124,10 +120,10 @@ style={{height:200,width:200}}/> */}
               Download
             </Text>
           </TouchableOpacity>
-        </View>*/}
+        </View>
         <TouchableOpacity
           style={styles.back}
-          onPress={() => navigation.pop()}
+          onPress={() => navigation.navigate("Screen3")}
         >
           <View
             style={{
@@ -160,4 +156,4 @@ style={{height:200,width:200}}/> */}
   );
 };
 
-export default Part_B_End_Insurance_Covers_Cost;
+export default Screen5;

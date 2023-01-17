@@ -12,7 +12,6 @@ import {
 } from "react-native";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo } from "../../redux/action";
 import { Ionicons } from "@expo/vector-icons";
 import { printToFileAsync } from 'expo-print';
 import { shareAsync } from 'expo-sharing';
@@ -30,7 +29,6 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
 import Theme from "../../utils/Theme";
-import Part_B_Dec_Answer_Insurance from "./Part_B_Dec_Answer_Insurance";
 
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -58,7 +56,7 @@ const signUpSchema = Yup.object({
     .max(20, "Limit Exceed"),
 });
 LogBox.ignoreAllLogs();
-const Part_B_In_Insurance_Cost_Coverage = ({ navigation }) => {
+const Part_A_Applicant_Info = ({ navigation }) => {
 
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
@@ -471,14 +469,14 @@ const Part_B_In_Insurance_Cost_Coverage = ({ navigation }) => {
           }) => (
             <View style={styles.mainView}>
               <View style={styles.View1}>
-                <Text style={styles.signuptxt}>Part B -</Text>
+                <Text style={styles.signuptxt}>Part B - </Text>
                 <Text style={styles.signuptxt1}> Legal Protection </Text>
               </View>
 
               <Text
                 style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}
               >
-                1.3) Up to what amount do they cover the cost?
+                What is your name?
               </Text>
               <View style={styles.textinputconatiner}>
                 <TextInput
@@ -498,7 +496,7 @@ const Part_B_In_Insurance_Cost_Coverage = ({ navigation }) => {
                   ></Ionicons>
                 </TouchableOpacity>
               </View>
-             {/* <Text
+              <Text
                 style={{
                   fontSize: 10,
                   color: "red",
@@ -715,7 +713,7 @@ const Part_B_In_Insurance_Cost_Coverage = ({ navigation }) => {
                 {touched.PhoneNumber && errors.PhoneNumber}
               </Text>
 
-              <Text
+              {/*<Text
                 style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "4%" }}
               >
                 Do you have a legal representative?
@@ -758,7 +756,7 @@ const Part_B_In_Insurance_Cost_Coverage = ({ navigation }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <TouchableOpacity style={styles.back} onPress={() => navigation.pop()}>
+                <TouchableOpacity style={styles.back} onPress={handleSubmit}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -786,7 +784,7 @@ const Part_B_In_Insurance_Cost_Coverage = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.next}
-                  onPress={() => navigation.navigate("Part_B_Up_Insurance_Conf_Letter")}
+                  onPress={handleSubmit}
 
                   // onPress={() => navigation.navigate("Screen2")}
                 >
@@ -832,4 +830,4 @@ const Part_B_In_Insurance_Cost_Coverage = ({ navigation }) => {
   );
 };
 
-export default Part_B_In_Insurance_Cost_Coverage;
+export default Part_A_Applicant_Info;

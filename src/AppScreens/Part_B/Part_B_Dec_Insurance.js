@@ -15,7 +15,6 @@ import React from "react";
 import Theme from "../../utils/Theme";
 import styles from "../../styles/style_dec";
 import Part_A_Legal_Rep_Info from "../Part_A/Part_A_Legal_Rep_Info";
-import Part_B_Dec_Other_Legal_Protection from "./Part_B_Dec_Other_Legal_Protection";
 
 
 const Part_B_Dec_Insurance = ({ navigation }) => {
@@ -88,7 +87,7 @@ const Part_B_Dec_Insurance = ({ navigation }) => {
                 //color: "#8da2b8",
               }}
             >
-              1) Do you have legal protection insurance?
+              Do you have legal protection insurance?
             </Text>
           </View>
           <View style={styles.View3}>
@@ -108,7 +107,7 @@ const Part_B_Dec_Insurance = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.no} onPress={() => navigation.navigate("Part_B_Dec_Other_Legal_Protection")}>
+            <TouchableOpacity style={styles.no} onPress={NoSelected}>
               <Text
                 style={{
                   color: "white",
@@ -132,7 +131,7 @@ const Part_B_Dec_Insurance = ({ navigation }) => {
           >
             <TouchableOpacity
               style={styles.back}
-              onPress={() => navigation.pop()}
+              onPress={() => navigation.navigate("Part_A_Legal_Rep_Info")}
             >
               <View
                 style={{

@@ -12,7 +12,6 @@ import {
 } from "react-native";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo } from "../../redux/action";
 import { Ionicons } from "@expo/vector-icons";
 import { printToFileAsync } from 'expo-print';
 import { shareAsync } from 'expo-sharing';
@@ -79,36 +78,10 @@ const Screen1 = ({ navigation }) => {
 
 
 
-  // const html = `
-  //   <html>
-  //     <body>
-        // <h1>Hi ${todoList.Name}</h1>
-        // <h1>Hi ${todoList.occupation}</h1>
-        // <h1>Hi ${todoList.dob}</h1>
-        // <h1>Hi ${todoList.street}</h1>
-        // <h1>Hi ${todoList.house}</h1>
-        // <h1>Hi ${todoList.city}</h1>
-        // <h1>Hi ${todoList.code}</h1>
-        // <h1>Hi ${todoList.number}</h1>
-        
-  //       <p style="color: red;">Hello. Bonjour. Hola.</p>
-  //     </body>
-  //   </html>
-  // `;
-
-  
-  // let generatePdf = async () => {
-  //   const file = await printToFileAsync({
-  //     html: html,
-  //     base64: false
-  //   });
-
-  //   await shareAsync(file.uri);
-  // };
-
   const createUserFun = (values) => {
     // console.log(values)
     // return
+    /*
     if (values != "") {
       dispatch(addTodo({
         name:values.Name,
@@ -125,6 +98,7 @@ const Screen1 = ({ navigation }) => {
 
         // age:"123445",
       }))
+
     //  console.log(todoList)
 
       Alert.alert(
@@ -142,69 +116,11 @@ const Screen1 = ({ navigation }) => {
     } else {
       Alert.alert("Please Complete your information!");
     }
-  // auth()
-  //   .createUserWithEmailAndPassword(values.email, values.password)
-  //   .then(() => {
-  //     firestore()
-  //       .collection('Users')
-  //       .doc(auth().currentUser.uid)
-  //       .set({
-  //         name: values.userName,
-  //         email: values.email,
-  //         // password: values.password,
-  //       })
-  //       .then(() => {
-  //         console.log('User added!');
-  //       })
-  //       .catch(e => {
-  //         console.log(e);
-  //       });
-  //     console.log('User account created & signed in!');
-  //     alert('user registered successfully');
-  //   })
-  //   .catch(error => {
-  //     if (error.code === 'auth/email-already-in-use') {
-  //       console.log('That email address is already in use!');
-  //     }
 
-  //     if (error.code === 'auth/invalid-email') {
-  //       console.log('That email address is invalid!');
-  //     }
-
-  //     console.error(error);
-  //   });
+     */
    };
 
-  
-  console.log(todoList)
 
-  const handleAddTodo = () => {
-    // dispatch(
-      dispatch(addTodo({
-        name:"N",
-        age:"123445",
-      }))
-    //   addTodo(
-    //     Name,
-    //     // Occupation,
-    //     // Dob,
-    //     // Street,
-    //     // House,
-    //     // City,
-    //     // PostalCode,
-    //     // PhoneNumber
-    //   )
-    // );
-    //  console.log(todoList)
-    setName("");
-    // setOccupation("");
-    // setDob("");
-    // setStreet("");
-    // setHouse();
-    // setCity("");
-    // setPostalCode("");
-    // setPhoneNumber("");
-  };
   return (
     <View style={{ flex: 1, paddingBottom: "14.5%", backgroundColor: "white" }}>
       <ScrollView style={{ backgroundColor: "white", flexGrow: 1 }}>

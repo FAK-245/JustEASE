@@ -13,7 +13,6 @@ import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo } from "../../redux/action";
 
 import * as Progress from "react-native-progress";
 import * as Yup from "yup";
@@ -353,7 +352,7 @@ const Part_B_Up_Insurance = ({ navigation }) => {
               >
                 <TouchableOpacity
                   style={styles.back}
-                  onPress={() => navigation.pop()}
+                  onPress={() => navigation.navigate("Part_B_Dec_Insurance")}
                 >
                   <View
                     style={{

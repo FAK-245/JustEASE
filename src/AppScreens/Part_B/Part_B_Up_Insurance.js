@@ -25,14 +25,12 @@ import Dialog, {
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import { Formik } from "formik";
-import styles from "../../styles/style_up"
-import { printToFileAsync } from "expo-print";
-import { shareAsync } from "expo-sharing";
 import * as ImagePicker from "expo-image-picker";
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import { SafeAreaView } from "react-native-safe-area-context";
-import Part_B_Dec_Contacted_Insurance from "./Part_B_Dec_Contacted_Insurance";
-import Part_B_Dec_Insurance from "./Part_B_Dec_Insurance";
+import {global} from "../../styles/shared/global";
+import Header from "../../Components/shared/Header";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
+import ButtonBar from "../../Components/shared/ButtonBar";
+import styles from "../../styles/style_up";
 const signUpSchema = Yup.object({
   Name: Yup.string()
     .min(0, "Minimum Input")
@@ -40,7 +38,10 @@ const signUpSchema = Yup.object({
     .max(30, "Limit Exceed"),
 });
 const Part_B_Up_Insurance = ({ navigation }) => {
-  const todoList = useSelector((state) => state.todos);
+
+  //Safe are view
+  const insets = useSafeAreaInsets();
+
   const dispatch = useDispatch();
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
   const [scaleAnimationDialog, setScaleAnimationDialog] = useState(false);
@@ -50,153 +51,21 @@ const Part_B_Up_Insurance = ({ navigation }) => {
   const [image, setImage] = useState(null);
   const [image2, setImage2] = useState(null);
   const [Name, setName] = useState("");
-  // const [task, setTask] = React.useState("");
-
-  // const handleAddTodo = () => {
-  //   dispatch(addTodo(task));
-  //   console.log(todoList)
-  //   setTask("");
-  // };
-
-  // const html = `
-  //   <html>
-  //     <body>
-  //       <h1>Hi ${todoList.name}</h1>
-  //       <p style="color: red;">Hello. Bonjour. Hola.</p>
-  //     </body>
-  //   </html>
-  // `;
-
-  // let generatePdf = async () => {
-  //   const file = await printToFileAsync({
-  //     html: html,
-  //     base64: false
-  //   });
-
-  //   await shareAsync(file.uri);
-  // };
-  useEffect(() => {
-    (async () => {
-      const galleryStatus =
-        await ImagePicker.requestMediaLibraryPermissionsAsync(
-          dispatch(todoList)
-        );
-      sethasGalleryPermissin(galleryStatus.status === "granted");
-    })();
-  }, []);
-  useEffect(() => {
-    (async () => {
-      const galleryStatus =
-        await ImagePicker.requestMediaLibraryPermissionsAsync();
-      sethasGalleryPermissin1(galleryStatus.status === "granted");
-    })();
-  }, []);
-
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-    console.log(result);
-
-    if (!result.canceled) {
-      setImage(result.uri);
-    }
-  };
-  if (hasGalleryPermission === false) {
-    return <Text>no access to internal storage</Text>;
-  }
-
-  const pickSecondImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    
-    
-    })
-    
-   
-
-    if (!result.canceled) {
-      setImage2(result.uri);
-    }
-    console.log(result.uri, "heloo")
-   
-  };
-  if (hasGalleryPermission1 === false) {
-    return <Text>no access to internal storage</Text>;
-  }
 
 
 
-  
-  // console.log(todoList, "d")
-  console.log(todoList, "d");
-
-  const createUserFun = (values) => {
-    setName(values.Name);
-    if (values != "") {
-      dispatch(
-        addTodo({
-          Screen3: values.Name, 
+  const saveState = (values) => {
+    /*
+    dispatch(
          image :image,
          image2 :image2,
-           name:todoList.name,
-         occupation:todoList.occupation,
-         dob:todoList.dob,
-         street:todoList.street,
-         house:todoList.house,
-         city:todoList.city,
-         code:todoList.code,
-         number:todoList.number
-          
-         
-          // Screen3: values.Name,
-          // name: todoList.name,
-          // occupation: todoList.occupation,
-          // dob: todoList.dob,
-          // street: todoList.street,
-          // house: todoList.house,
-          // city: todoList.city,
-          // code: todoList.code,
-          // number: todoList.number,
-
-          // age:"123445",
         })
       );
 
-      Alert.alert(
-        "Personal Informaton Submitted!",
-        "Press Ok to go on Next Part",
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel",
-          },
-          { text: "OK", onPress: () => navigation.navigate("Screen4") },
-        ]
-      );
-    } else {
-      Alert.alert("Please Complete your information!");
-    }
+     */
+
   };
 
-  // let options = {
-  //   saveToPhotos: true,
-  //   mediaType: 'photo',
-  // };
-  // const openGallery = async () => {
-  //   const result = await ImagePicker(options);
-  //   setGalleryPhoto(result.assets[0].uri);
-
-  // };
-
-  //  console.log(todoList.name);
   return (
     <Formik
       initialValues={{
@@ -204,7 +73,7 @@ const Part_B_Up_Insurance = ({ navigation }) => {
       }}
       validationSchema={signUpSchema}
       onSubmit={(values, actions) => {
-        createUserFun(values);
+        saveState(values);
 
         console.log(values);
         // actions.resetForm();
@@ -220,10 +89,10 @@ const Part_B_Up_Insurance = ({ navigation }) => {
         isSubmitting,
         handleSubmit,
       }) => (
-        <View
-          style={{ flex: 1, backgroundColor: "white", paddingBottom: "14.7%" }}
-        >
-          <ScrollView style={{ flexGrow: 1 }}>
+          <View style={[global.parentContainer, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
+
+            <Header txt={"Part B - Legal Protection"}/>
+            <ScrollView style={{ flexGrow: 1 }}>
             <Dialog
               onTouchOutside={() => {
                 setScaleAnimationDialog(false);
@@ -268,150 +137,13 @@ const Part_B_Up_Insurance = ({ navigation }) => {
                 </View>
               </DialogContent>
             </Dialog>
-            <View style={styles.View1}>
-              <Text style={styles.signuptxt}>Part B - </Text>
-              <Text style={styles.signuptxt1}>Legal Protection</Text>
-            </View>
-            <View style={styles.Line}></View>
-
-            <View style={{ backgroundColor: "red" }}></View>
-            <Text
-              style={{
-                fontSize: 10,
-                color: "red",
-                margin: "1%",
-                marginLeft: "8%",
-              }}
-            >
-              {touched.Name && errors.Name}
-            </Text>
-            <View style={styles.textinputconatiner2}>
-              <View>
-                {/* <Text
-                  style={{
-                    color: "#1c5bd9",
-                    marginLeft: "9%",
-                    fontSize: RFValue(13, 580),
-                    marginHorizontal: "2%",
-                  }}
-                >
-                  Please upload the following documents here:
-                </Text> */}
+              <View style={styles.mainView}>
+                <Text style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}>Please upload a copy of the insurance policy document</Text>
+                <View style={styles.textinputconatiner}>
+                </View>
               </View>
-              <View style={{ margin: 10 }}>
-                {/* <Text
-                  style={{
-                    marginHorizontal: "5%",
-                    color: "#1c5bd9",
-                    fontSize: RFValue(13, 580),
-                    textAlign: "center",
-                  }}
-                >
-                  E1-1.1) wage or salary slips from the workspace
-                </Text> */}
-                <Text
-                  style={{
-                    marginHorizontal: "2%",
-                    color: "#1c5bd9",
-                    fontSize: RFValue(13, 580),
-                    textAlign: "center",
-                    marginLeft: "6.5%",
-                    marginRight: "6.5%",
-                  }}
-                >
-                  B-1) Please upload a copy of the insurance policy document.
-                </Text>
-
-                <TouchableOpacity
-                  style={styles.uploadimage}
-                  onPress={() => pickImage()}
-                >
-                  {image!=null?
-                  <Image
-                    style={styles.picker}
-                    source={ { uri: image }}
-                  />:
-                  <Ionicons
-                    name="images-outline"
-                    size={60}
-                    color="white"
-                    style={{ alignSelf: "center", margin: 20,  }}
-                   
-                  />}
-                  {/* {image && <Image source={{uri: image}} style={{flex: 1}} />} */}
-                </TouchableOpacity>
-              </View>
-
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  //paddingTop: '10%'
-                }}
-              >
-                <TouchableOpacity
-                  style={styles.back}
-                  onPress={() => navigation.navigate("Part_B_Dec_Insurance")}
-                >
-                  <View
-                    style={{
-                      flexDirection: "row",
-
-                      margin: 5,
-                    }}
-                  >
-                    <Ionicons
-                      name="chevron-back"
-                      size={24}
-                      color="white"
-                      style={{ margin: 5 }}
-                    />
-                    <Text
-                      style={{
-                        color: "white",
-                        // textAlign: "center",
-                        margin: 7,
-                        fontWeight: "500",
-                      }}
-                    >
-                      Back
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.next} onPress={() => navigation.navigate("Part_B_Dec_Contacted_Insurance")}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-
-                      margin: 5,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: "white",
-                        // textAlign: "right",
-                        // marginLeft: "10%",
-                        paddingLeft: "6%",
-                        margin: 7,
-                        fontWeight: "500",
-                      }}
-                    >
-                      Next
-                    </Text>
-                    <Ionicons
-                      name="chevron-forward"
-                      size={24}
-                      color="white"
-                      style={{ margin: 5 }}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-            {/* <Button title="Generate PDF" onPress={generatePdf} /> */}
-          </ScrollView>
-          <Progress.Bar progress={1} width={210} height={3} />
+            </ScrollView>
+            <ButtonBar next={'Part_B_Dec_Contacted_Insurance'} submit={handleSubmit}/>
         </View>
       )}
     </Formik>

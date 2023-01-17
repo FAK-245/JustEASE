@@ -21,11 +21,9 @@ const End_Screen = ({ navigation }) => {
     const insets = useSafeAreaInsets();
 
     const answerData = useSelector(selectResponses);
-    console.log(answerData);
 
     const createPDF = async (output) => {
         console.log(answerData);
-        return alert("moin");
         try {
             /*
             const pdf = await PDFDocument.load(await readFile("../assets/PKH.pdf"));
@@ -73,13 +71,12 @@ const End_Screen = ({ navigation }) => {
       <View style={[global.parentContainer, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
           <Header txt={"Download"}/>
 
-          <Text style={styles.document1}>Your application is complete.</Text>
+          <Text style={{fontSize: 18, fontWeight: "bold", marginTop: "10%"}}>Your application is complete.</Text>
           <TouchableOpacity onPress={() => createPDF('completedForm.pdf')}>
-              <Text style={styles.document2}>Click on the download button below to generate your application.</Text>
+              <Text style={{fontSize: 34, marginTop: "15%", textDecorationLine: "underline"}}>Download</Text>
           </TouchableOpacity>
 
-          <Text style={styles.document1}>Important</Text>
-          <Text style={styles.document2}>
+          <Text style={{fontSize: 14, width: "85%", marginTop: "15%"}}>
               After You have download your application you have to signit under
               point K on page 4. Afterwards you need to send it to your lawyer
               or directly to the court at which your case is being processed.

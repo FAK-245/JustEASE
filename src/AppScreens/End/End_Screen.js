@@ -10,10 +10,11 @@ import {global} from "../../styles/shared/global";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 import Header from "../../Components/shared/Header";
 import BackButtonBar from "../../Components/shared/BackButtonBar";
+import {store} from "../../redux/store/store";
 
 const {PDFDocument} = require('pdf-lib');
-//const {readFile, writeFile} = require('fs/promises');
 const data = require('./fields.json');
+
 
 
 const End_Screen = ({navigation}) => {
@@ -26,8 +27,8 @@ const End_Screen = ({navigation}) => {
     const createPDF = async (output) => {
         console.log(answerData);
         try {
-            //const pdf = await PDFDocument.load(await readFile("../assets/PKH.pdf"));
-            const formUrl = 'https://tm-ds.s3.eu-central-1.amazonaws.com/tc/zp1a.pdf'
+            //const pdf = await PDFDocument.load(await readFile("../../../assets/PKH.pdf"));
+            const formUrl = '../../assets/PKH.pdf'
             const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
             const pdf = await PDFDocument.load(formPdfBytes)
 
@@ -42,20 +43,19 @@ const End_Screen = ({navigation}) => {
                 if (type === 'PDFCheckBox') {
                     let fieldTemp = form.getCheckBox(name);
 
-                    if (data.hasOwnProperty(name)) {
+                    if (store[name] === true) {
                         fieldTemp.check();
                     }
-                    index++;
                 }
 
                 if (type === 'PDFTextField') {
                     let fieldTemp = form.getTextField(name);
 
-                    if (data.hasOwnProperty(name)) {
-                        fieldTemp.setText(data[name]);
+                    if (store[name]) {
+                        fieldTemp.setText(store[name]);
                     }
-                    index++;
                 }
+                index++;
             })
 
             const pdfBytes = await pdf.save();

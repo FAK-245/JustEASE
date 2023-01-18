@@ -167,8 +167,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           }}
           dialogTitle={
             <DialogTitle
-              title="Info Box For Occupation Field
-                  "
+              title="Info Box For Occupation Field"
               hasTitleBar={false}
             />
           }

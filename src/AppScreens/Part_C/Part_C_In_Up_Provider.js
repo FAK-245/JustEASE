@@ -1,10 +1,10 @@
 import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  LogBox,
-  Button
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    LogBox,
+    Button, Image
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -26,8 +26,9 @@ import {useSafeAreaInsets} from "react-native-safe-area-context";
 import Header from "../../Components/shared/Header";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import ButtonBar from "../../Components/shared/ButtonBar";
-import {modifyResponses} from "../../redux/slice/formSlice";
+import {modifyImg, modifyResponses} from "../../redux/slice/formSlice";
 import {useDispatch} from "react-redux";
+import * as ImagePicker from "expo-image-picker";
 
 //TODO: Add Upload field
 const signUpSchema = Yup.object({
@@ -57,6 +58,42 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           "Name des Unterhaltspflichtingen": values.MaintenanceName,
       }));
    };
+
+    //Local state
+    const [imgData, setImgData] = useState({active: false});
+
+    //Image handling
+
+    /**
+     * @function (01) Open the image picker and assign this as a result
+     *           (02) If the result has been canceled return and do not display images
+     *           (03) Assign to local state
+     */
+    const pickImage = async () => {
+        //01
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 0.5,
+            base64: true,
+            //allowsMultipleSelection: false
+        });
+        //02
+        if (result.canceled) return
+        //03
+        setImgData({...result.assets[0], active: true});
+        //04
+        dispatch(modifyImg({"provider": `data:image/jpg;base64,${result.assets[0].base64}`}))
+    };
+
+    /**
+     * @function (01) Reset to initial state
+     */
+    const removeImg = () => {
+        //01
+        setImgData({active: false})
+    }
 
   return (
       <View style={[global.parentContainer, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
@@ -147,6 +184,43 @@ const Part_A_Applicant_Info = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
                 <Text>File upload here</Text>
+                  <TouchableOpacity activeOpacity={1} style={{
+                      width: 200,
+                      height: 200,
+                      borderRadius: 16,
+                      backgroundColor: "#F4F4F4",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      position: "relative",
+                      overflow: "hidden",
+                      marginTop: "10%"
+                  }
+                  } onPress={() => pickImage()}>
+                      {
+                          imgData.active ? (
+                              <>
+                                  <Image source={{ uri: imgData.uri }} style={{width: "100%", height: "100%"}} />
+                                  <TouchableOpacity style={{
+                                      width: 30,
+                                      height: 30,
+                                      borderRadius: 30/2,
+                                      position: "absolute",
+                                      top: 5,
+                                      right: 5,
+                                      display: "flex",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      backgroundColor: "white"
+                                  }} onPress={() => removeImg()}>
+                                      <Text>X</Text>
+                                  </TouchableOpacity>
+                              </>
+                          ) : (
+                              <Text>Upload</Text>
+                          )
+                      }
+                  </TouchableOpacity>
                   <ButtonBar next={'Part_D_Dec_Add_Person'} submit={handleSubmit}/>
             </View>
           )}

@@ -2,7 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {formSubmit} from '../service/form.service';
 
 const initialState = {
-    responses: {}
+    responses: {},
+    img: {}
 };
 
 //Form handling
@@ -19,8 +20,10 @@ export const formSlice = createSlice({
     initialState,
     reducers: {
         modifyResponses(state, action) {
-            console.log(action.payload)
             state.responses = {...state.responses, ...action.payload};
+        },
+        modifyImg(state, action) {
+            state.img = {...state.img, ...action.payload};
         },
     },
     extraReducers: (builder) => {
@@ -32,7 +35,8 @@ export const formSlice = createSlice({
 });
 
 export const selectResponses = (state) => state.form.responses;
+export const selectImg = (state) => state.form.img;
 
-export const { modifyResponses } = formSlice.actions
+export const { modifyResponses, modifyImg } = formSlice.actions
 
 export default formSlice.reducer;

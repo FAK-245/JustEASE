@@ -6,6 +6,11 @@ import {
 } from "react-native-responsive-screen";
 import Theme from "../utils/Theme";
 const styles = StyleSheet.create({
+  mainView: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
   View1: {
     height: Theme.hp("10%"),
     justifyContent: "center",

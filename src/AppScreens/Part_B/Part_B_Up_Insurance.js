@@ -9,12 +9,11 @@ import {
   FlatList,
   Image,
 } from "react-native";
-import React, { useState, useEffect } from "react";
-import { Ionicons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {modifyImg} from "../../redux/slice/formSlice";
+import * as ImagePicker from "expo-image-picker";
 
-import * as Progress from "react-native-progress";
 import * as Yup from "yup";
 import Dialog, {
   DialogTitle,
@@ -25,7 +24,6 @@ import Dialog, {
   ScaleAnimation,
 } from "react-native-popup-dialog";
 import { Formik } from "formik";
-import * as ImagePicker from "expo-image-picker";
 import {global} from "../../styles/shared/global";
 import Header from "../../Components/shared/Header";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
@@ -37,34 +35,60 @@ const signUpSchema = Yup.object({
     .required("Required Field")
     .max(30, "Limit Exceed"),
 });
-const Part_B_Up_Insurance = ({ navigation }) => {
+
+
+const Part_B_Up_Insurance = ({}) => {
 
   //Safe are view
   const insets = useSafeAreaInsets();
 
+  //Dispatch
   const dispatch = useDispatch();
+
   const [defaultAnimationDialog, setDefaultAnimationDialog] = useState(false);
   const [scaleAnimationDialog, setScaleAnimationDialog] = useState(false);
   const [slideAnimationDialog, setSlideAnimationDialog] = useState(false);
   const [hasGalleryPermission, sethasGalleryPermissin] = useState(null);
   const [hasGalleryPermission1, sethasGalleryPermissin1] = useState(null);
   const [image, setImage] = useState(null);
-  const [image2, setImage2] = useState(null);
   const [Name, setName] = useState("");
 
 
+  //Local state
+  const [imgData, setImgData] = useState({active: false});
 
-  const saveState = (values) => {
-    /*
-    dispatch(
-         image :image,
-         image2 :image2,
-        })
-      );
+  //Image handling
 
-     */
-
+  /**
+   * @function (01) Open the image picker and assign this as a result
+   *           (02) If the result has been canceled return and do not display images
+   *           (03) Assign to local state
+   */
+  const pickImage = async () => {
+    //01
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 0.5,
+      base64: true,
+      //allowsMultipleSelection: false
+    });
+    //02
+    if (result.canceled) return
+    //03
+    setImgData({...result.assets[0], active: true});
+    //04
+    dispatch(modifyImg({"insurance_proof": `data:image/jpg;base64,${result.assets[0].base64}`}))
   };
+
+  /**
+   * @function (01) Reset to initial state
+   */
+  const removeImg = () => {
+    //01
+    setImgData({active: false})
+  }
 
   return (
     <Formik
@@ -73,8 +97,6 @@ const Part_B_Up_Insurance = ({ navigation }) => {
       }}
       validationSchema={signUpSchema}
       onSubmit={(values, actions) => {
-        saveState(values);
-
         console.log(values);
         // actions.resetForm();
       }}
@@ -139,8 +161,45 @@ const Part_B_Up_Insurance = ({ navigation }) => {
             </Dialog>
               <View style={styles.mainView}>
                 <Text style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}>Please upload a copy of the insurance policy document</Text>
-                <View style={styles.textinputconatiner}>
-                </View>
+
+                <TouchableOpacity activeOpacity={1} style={{
+                  width: 200,
+                  height: 200,
+                  borderRadius: 16,
+                  backgroundColor: "#F4F4F4",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  position: "relative",
+                  overflow: "hidden",
+                  marginTop: "10%"
+                }
+                } onPress={() => pickImage()}>
+                  {
+                    imgData.active ? (
+                        <>
+                          <Image source={{ uri: imgData.uri }} style={{width: "100%", height: "100%"}} />
+                          <TouchableOpacity style={{
+                            width: 30,
+                            height: 30,
+                            borderRadius: 30/2,
+                            position: "absolute",
+                            top: 5,
+                            right: 5,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            backgroundColor: "white"
+                          }} onPress={() => removeImg()}>
+                            <Text>X</Text>
+                          </TouchableOpacity>
+                        </>
+                    ) : (
+                        <Text>Upload</Text>
+                    )
+                  }
+                </TouchableOpacity>
+
               </View>
             </ScrollView>
             <ButtonBar next={'Part_B_Dec_Contacted_Insurance'} submit={handleSubmit}/>

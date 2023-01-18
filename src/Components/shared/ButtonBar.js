@@ -7,7 +7,7 @@ import {StackActions, useNavigation} from "@react-navigation/native";
 //Redux
 import {useSelector} from "react-redux";
 import {selectLanguage} from "../../redux/slice/settingSlice";
-import {selectResponses} from "../../redux/slice/formSlice";
+import {selectImg, selectResponses} from "../../redux/slice/formSlice";
 
 //Styles
 import {Ionicons} from "@expo/vector-icons";
@@ -18,6 +18,7 @@ import { button } from "../../styles/shared/button";
 const ButtonBar = ({ next, submit }) => {
 
     const responseData = useSelector(selectResponses)
+    const imgData = useSelector(selectImg)
 
     const navigation = useNavigation()
     const back = () => {
@@ -29,8 +30,12 @@ const ButtonBar = ({ next, submit }) => {
     }
 
     useEffect(() => {
-        console.log(responseData);
+        //console.log(responseData);
     }, [responseData])
+
+    useEffect(() => {
+        //console.log(imgData);
+    }, [imgData])
 
 
 

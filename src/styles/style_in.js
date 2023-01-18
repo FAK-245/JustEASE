@@ -3,7 +3,9 @@ import Theme from "../utils/Theme";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 const styles = StyleSheet.create({
   mainView: {
-    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column"
   },
   textinputconatiner: {
    

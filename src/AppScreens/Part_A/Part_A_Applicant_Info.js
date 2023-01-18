@@ -35,6 +35,10 @@ const signUpSchema = Yup.object({
     .required("Required Field")
     .min(0, "Minimum Input")
     .max(30, "Limit Exceed"),
+    MaritalStatus: Yup.string()
+        .required("Required Field")
+        .min(0, "Minimum Input")
+        .max(30, "Limit Exceed"),
   Dob: Yup.string().min(0).required("Required Field").max(30, "Limit Exceed"),
   Street: Yup.string()
     .min(0)
@@ -62,6 +66,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
 
   const [Name, setName] = useState("");
   const [Occupation, setOccupation] = useState("");
+    const [MaritalStatus, setMaritalStatus] = useState("");
   const [Dob, setDob] = useState("");
   const [Street, setStreet] = useState("");
   const [House, setHouse] = useState("");
@@ -78,7 +83,25 @@ const Part_A_Applicant_Info = ({ navigation }) => {
 
 
   const saveState = (values) => {
-      dispatch(modifyResponses(values));
+      /*
+            Felder aus dem Form die wir mappen müssen
+            Name: Name,
+            Occupation: Occupation,
+            Dob: Dob,
+            Street: Street,
+            House: House,
+            City: City,
+            PostalCode: PostalCode,
+            PhoneNumber: PhoneNumber,
+       */
+      dispatch(modifyResponses({
+          "Name Vorname ggf Geburtsname": values.Name,
+          "Beruf Erwerbstätigkeit": values.Occupation,
+          "Geburtsdatum": values.Dob,
+          "Text3": values.MaritalStatus,
+          "Anschrift Straße Hausnummer Postleitzahl Wohnort": `${values.Street} ${values.House} ${values.PostalCode} ${values.City}`,
+          "Text 2": values.PhoneNumber,
+      }));
    };
 
   return (
@@ -320,6 +343,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           initialValues={{
             Name: Name,
             Occupation: Occupation,
+              MaritalStatus: MaritalStatus,
             Dob: Dob,
             Street: Street,
             House: House,
@@ -404,6 +428,40 @@ const Part_A_Applicant_Info = ({ navigation }) => {
               >
                 {touched.Occupation && errors.Occupation}
               </Text>
+
+                <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
+                    What is your marital status?
+                </Text>
+                <View style={styles.textinputconatiner}>
+                    <TextInput
+                        placeholderTextColor={"#87CEEB"}
+                        cursorColor="#d75f4f"
+                        style={styles.txtinput}
+                        placeholder="Input your Text in here"
+                        value={values.MaritalStatus}
+                        onChangeText={handleChange("MaritalStatus")}
+                        onBlur={handleBlur("MaritalStatus")}
+                    />
+                    <TouchableOpacity onPress={() => setOccDialog(true)}>
+                        <Ionicons
+                            name="information-circle-outline"
+                            size={25}
+                            style={{ padding: 10 }}
+                        ></Ionicons>
+                    </TouchableOpacity>
+                </View>
+
+                <Text
+                    style={{
+                        fontSize: 10,
+                        color: "red",
+                        margin: "1%",
+                        marginLeft: "6%",
+                    }}
+                >
+                    {touched.MaritalStatus && errors.MaritalStatus}
+                </Text>
+
               <Text style={{ marginLeft: "6%", color: "#1c5bd9" }}>
                 What is your date of birth?
               </Text>

@@ -12,7 +12,7 @@ import Header from "../../Components/shared/Header";
 
 const {PDFDocument} = require('pdf-lib');
 //const {readFile, writeFile} = require('fs/promises');
-//const data = require('./fields.json');
+const data = require('./fields.json');
 
 
 const End_Screen = ({ navigation }) => {
@@ -25,8 +25,10 @@ const End_Screen = ({ navigation }) => {
     const createPDF = async (output) => {
         console.log(answerData);
         try {
-            /*
-            const pdf = await PDFDocument.load(await readFile("../assets/PKH.pdf"));
+            //const pdf = await PDFDocument.load(await readFile("../assets/PKH.pdf"));
+            const formUrl = 'https://tm-ds.s3.eu-central-1.amazonaws.com/tc/zp1a.pdf'
+            const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
+            const pdf = await PDFDocument.load(formPdfBytes)
 
             const form = pdf.getForm()
 
@@ -57,11 +59,9 @@ const End_Screen = ({ navigation }) => {
 
             const pdfBytes = await pdf.save();
 
-            await writeFile(output, pdfBytes);
+            //await writeFile(output, pdfBytes);
             console.log("PDF creation successful");
 
-             */
-            console.log("hallo")
         } catch (err) {
             console.log(err);
         }

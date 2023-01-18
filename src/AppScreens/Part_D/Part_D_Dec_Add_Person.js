@@ -17,12 +17,25 @@ import {global} from "../../styles/shared/global";
 import Header from "../../Components/shared/Header";
 import {screens} from "../../styles/shared/screens";
 import {RFValue} from "react-native-responsive-fontsize";
+import BackButtonBar from "../../Components/shared/BackButtonBar";
+import {useDispatch} from "react-redux";
+import {modifyResponses} from "../../redux/slice/formSlice";
 
 LogBox.ignoreAllLogs();
 const Screen1 = ({ navigation }) => {
 
   //Safe are view
   const insets = useSafeAreaInsets();
+
+  //Redux
+    const dispatch = useDispatch();
+
+    const saveState = (answer) => {
+        dispatch(modifyResponses({
+            "Ja_2": answer,
+            "Nein_3": !answer
+        }))
+    }
 
   return (
       <View style={[global.parentContainer, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
@@ -43,6 +56,7 @@ const Screen1 = ({ navigation }) => {
           </TouchableOpacity>
 
         </View>
+        <BackButtonBar/>
       </View>
   );
 

@@ -18,7 +18,7 @@ import Part_B_Dec_Answer_Insurance from "../AppScreens/Part_B/Part_B_Dec_Answer_
 import Part_B_Dec_Answer_Other_Protection from "../AppScreens/Part_B/Part_B_Dec_Answer_Other_Protection";
 import Part_B_Dec_Contacted_Insurance from "../AppScreens/Part_B/Part_B_Dec_Contacted_Insurance";
 import Part_B_Dec_Applied_Other_Protection from "../AppScreens/Part_B/Part_B_Dec_Applied_Other_Protection";
-import Part_B_Dec_Insurance from "../AppScreens/Part_B/Part_B_Dec_Insurance";
+import Part_B_Dec_Insurance from "../AppScreens/Part_B/Part_B_Dec_Insurance_Coverage";
 import Part_B_End_Insurance_Covers_Cost from "../AppScreens/Part_B/Part_B_End_Insurance_Covers_Cost";
 import Part_B_End_Insurance_Not_Contacted from "../AppScreens/Part_B/Part_B_End_Insurance_Not_Contacted";
 import Part_B_End_Other_Covers_Cost from "../AppScreens/Part_B/Part_B_End_Other_Covers_Cost";

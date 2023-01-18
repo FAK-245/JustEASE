@@ -17,12 +17,25 @@ import {global} from "../../styles/shared/global";
 import Header from "../../Components/shared/Header";
 import {screens} from "../../styles/shared/screens";
 import {RFValue} from "react-native-responsive-fontsize";
+import BackButtonBar from "../../Components/shared/BackButtonBar";
+import {useDispatch} from "react-redux";
+import {modifyResponses} from "../../redux/slice/formSlice";
 
 LogBox.ignoreAllLogs();
 const Screen1 = ({ navigation }) => {
 
   //Safe are view
   const insets = useSafeAreaInsets();
+
+  //Redux
+    const dispatch = useDispatch();
+
+    const saveState = (answer) => {
+        dispatch(modifyResponses({
+            "Ja_4": answer,
+            "eigene Einnahmen1": !answer
+        }))
+    }
 
   return (
       <View style={[global.parentContainer, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
@@ -32,14 +45,21 @@ const Screen1 = ({ navigation }) => {
 
           <Text style={{color: "#1c5bd9", fontSize: 18, marginTop: "15%", marginBottom: "15%"}}>1.5) Do these relatives have income of their own? e.g. training allowance, maintenance payment from the other parent, etc..</Text>
 
-          <TouchableOpacity style={screens.largeBtnContainer} onPress={() => navigation.navigate("Part_D_In_Up_Receiver_Income")}>
+          <TouchableOpacity style={screens.largeBtnContainer} onPress={() => {
+            navigation.navigate("Part_D_In_Up_Receiver_Income");
+            saveState(true)
+          }}>
             <Text style={{color: "white", fontWeight: "500", fontSize: RFValue(15, 580)}}>Yes</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={screens.largeBtnContainer} onPress={() => navigation.navigate("Part_SA_Dec_Receive_SA")}>
+          <TouchableOpacity style={screens.largeBtnContainer} onPress={() => {
+            navigation.navigate("Part_SA_Dec_Receive_SA");
+            saveState(false)
+          }}>
             <Text style={{color: "white", fontWeight: "500", fontSize: RFValue(15, 580)}}>No</Text>
           </TouchableOpacity>
 
         </View>
+        <BackButtonBar/>
       </View>
   );
 

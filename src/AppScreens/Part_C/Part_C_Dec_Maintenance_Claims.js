@@ -36,6 +36,8 @@ import {global} from "../../styles/shared/global";
 import Header from "../../Components/shared/Header";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 import {screens} from "../../styles/shared/screens";
+import {modifyResponses} from "../../redux/slice/formSlice";
+import BackButtonBar from "../../Components/shared/BackButtonBar";
 
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -67,6 +69,16 @@ const Part_C_Dec_Maintenance_Claims = ({ navigation }) => {
 
     //Safe are view
     const insets = useSafeAreaInsets();
+
+    //Redux
+    const dispatch = useDispatch();
+
+    const saveState = (answer) => {
+        dispatch(modifyResponses({
+            "Ja, ich habe Angehörige, die Ihnen gegenüber gesetzlich zur Leistung von Unterhalt verpflichtet sind": answer,
+            "Nein, ich habe keine Angehörigen, die Ihnen gegenüber gesetzlich zur Leistung von Unterhalt verpflichtet sind": !answer
+        }))
+    }
     
     return (
       <View style={[global.parentContainer, {paddingTop: insets.top, paddingBottom: insets.bottom}]}>
@@ -75,13 +87,20 @@ const Part_C_Dec_Maintenance_Claims = ({ navigation }) => {
 
               <Text style={{color: "#1c5bd9", width: "80%", fontSize: 18, marginTop: "15%", marginBottom: "15%"}}>Do you have relatives who are obliged to pay maintenance to you (even if no actual payments are made)? e.g. mother, father, spouse/civil partner</Text>
 
-              <TouchableOpacity style={screens.largeBtnContainer} onPress={() => navigation.navigate("Part_C_In_Up_Provider")}>
+              <TouchableOpacity style={screens.largeBtnContainer} onPress={() => {
+                  navigation.navigate("Part_C_In_Up_Provider");
+                  saveState(true)
+              }}>
                   <Text style={{color: "white", fontWeight: "500", fontSize: RFValue(15, 580)}}>Yes</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={screens.largeBtnContainer} onPress={() => navigation.navigate("Part_D_Dec_Add_Person")}>
+              <TouchableOpacity style={screens.largeBtnContainer} onPress={() => {
+                  navigation.navigate("Part_D_Dec_Add_Person");
+                  saveState(false)
+              }}>
                   <Text style={{color: "white", fontWeight: "500", fontSize: RFValue(15, 580)}}>No</Text>
               </TouchableOpacity>
           </View>
+          <BackButtonBar/>
       </View>
   );
 };

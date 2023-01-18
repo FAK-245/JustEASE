@@ -21,6 +21,7 @@ import {screens} from "../../styles/shared/screens";
 //Components
 import Part_A_Legal_Rep_Info from "./Part_A_Legal_Rep_Info"
 import Header from "../../Components/shared/Header";
+import BackButtonBar from "../../Components/shared/BackButtonBar";
 
 
 const Part_A_Dec_Legal_Rep = ({ navigation }) => {
@@ -42,8 +43,8 @@ const Part_A_Dec_Legal_Rep = ({ navigation }) => {
                 <TouchableOpacity style={screens.largeBtnContainer} onPress={() => navigation.navigate("Part_A_Legal_Rep_Info")}>
                     <Text style={{color: "white", fontWeight: "500", fontSize: RFValue(15, 580)}}>No</Text>
                 </TouchableOpacity>
-
           </View>
+            <BackButtonBar/>
     </View>
   );
 };

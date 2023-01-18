@@ -35,6 +35,7 @@ import {global} from "../../styles/shared/global";
 import Header from "../../Components/shared/Header";
 import {screens} from "../../styles/shared/screens";
 import {RFValue} from "react-native-responsive-fontsize";
+import BackButtonBar from "../../Components/shared/BackButtonBar";
 
 const signUpSchema = Yup.object({
   Name: Yup.string()
@@ -86,6 +87,7 @@ const Screen1 = ({ navigation }) => {
           </TouchableOpacity>
 
         </View>
+      <BackButtonBar/>
       </View>
   );
 };

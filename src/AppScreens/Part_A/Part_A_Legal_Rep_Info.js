@@ -20,7 +20,7 @@ import React, { useState } from "react";
 import styles from "../../styles/style_in";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import Part_B_Dec_Insurance from "../Part_B/Part_B_Dec_Insurance"
+import Part_B_Dec_Insurance from "../Part_B/Part_B_Dec_Insurance_Coverage"
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 import {global} from "../../styles/shared/global";
 import Header from "../../Components/shared/Header";
@@ -62,7 +62,6 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
 
 
   const [RepName, setName] = useState("");
-  const [RepOccupation, setOccupation] = useState("");
   const [RepStreet, setStreet] = useState("");
   const [RepHouse, setHouse] = useState("");
   const [RepCity, setCity] = useState("");
@@ -80,7 +79,7 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
         console.log(values);
         dispatch(modifyResponses({
             "Sofern vorhanden Gesetzlicher Vertreter Name Vorname Anschrift Telefon": `${values.RepName} 
-            ${values.RepOccupation} ${values.RepStreet} ${values.RepHouse} ${values.RepCity} 
+            ${values.RepStreet} ${values.RepHouse} ${values.RepCity} 
             ${values.RepPostalCode} ${values.RepPhoneNumber}`,
         }));
   };
@@ -327,7 +326,6 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
         <Formik
           initialValues={{
               RepName: RepName,
-              RepOccupation: RepOccupation,
               RepStreet: RepStreet,
               RepHouse: RepHouse,
               RepCity: RepCity,
@@ -373,28 +371,6 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
                   ></Ionicons>
                 </TouchableOpacity>
               </View>
-
-                <Text style={{ marginLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}>
-                    What is his/her occupation?
-                </Text>
-                <View style={styles.textinputconatiner}>
-                    <TextInput
-                        placeholderTextColor={"#87CEEB"}
-                        cursorColor="#d75f4f"
-                        placeholder="Input your Text in here"
-                        style={styles.txtinput}
-                        value={values.RepOccupation}
-                        onChangeText={handleChange("RepOccupation")}
-                        onBlur={handleBlur("RepOccupation")}
-                    />
-                    <TouchableOpacity onPress={() => setNameDialog(true)}>
-                        <Ionicons
-                            name="information-circle-outline"
-                            size={25}
-                            style={{ padding: 10 }}
-                        ></Ionicons>
-                    </TouchableOpacity>
-                </View>
 
               <View
                 style={{

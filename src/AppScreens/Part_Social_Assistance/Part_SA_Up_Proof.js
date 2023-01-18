@@ -28,7 +28,7 @@ import styles from "../../styles/style_in";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as Progress from "react-native-progress";
-import Part_B_Dec_Insurance from "../Part_B/Part_B_Dec_Insurance"
+import Part_B_Dec_Insurance from "../Part_B/Part_B_Dec_Insurance_Coverage"
 import Theme from "../../utils/Theme";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 import {global} from "../../styles/shared/global";

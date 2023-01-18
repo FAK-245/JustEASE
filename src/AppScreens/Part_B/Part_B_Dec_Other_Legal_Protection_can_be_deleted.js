@@ -16,7 +16,7 @@ import Theme from "../../utils/Theme";
 import styles from "../../styles/style_dec";
 
 
-const Part_B_Dec_Other_Legal_Protection = ({ navigation }) => {
+const Part_B_Dec_Other_Legal_Protection_can_be_deleted = ({ navigation }) => {
 
 
   const createThreeButtonAlert = () =>
@@ -196,4 +196,4 @@ const Part_B_Dec_Other_Legal_Protection = ({ navigation }) => {
   );
 };
 
-export default Part_B_Dec_Other_Legal_Protection;
+export default Part_B_Dec_Other_Legal_Protection_can_be_deleted;

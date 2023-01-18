@@ -68,7 +68,12 @@ const Part_A_Applicant_Info = ({ navigation }) => {
   const [addDialog, setAddDialog] = useState(false);
 
   const saveState = (values) => {
-    dispatch(modifyResponses(values));
+    dispatch(modifyResponses({
+      "Angehöriger Nummer eins": `${values.RCLName} ${values.RCFName} ${values.RCStreet}`,
+      "Geburts datum1": values.RCDob,
+      "Verhältnis1": values.RCRelationship,
+      "Monatsbetrag1": values.RCSum,
+    }));
    };
 
   return (

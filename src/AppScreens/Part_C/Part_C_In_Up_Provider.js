@@ -53,7 +53,9 @@ const Part_A_Applicant_Info = ({ navigation }) => {
     const [addDialog, setAddDialog] = useState(false);
 
   const setState = (values) => {
-      dispatch(modifyResponses(values));
+      dispatch(modifyResponses({
+          "Name des Unterhaltspflichtingen": values.MaintenanceName,
+      }));
    };
 
   return (

@@ -78,7 +78,11 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
 
   const saveState = (values) => {
         console.log(values);
-        dispatch(modifyResponses(values));
+        dispatch(modifyResponses({
+            "Sofern vorhanden Gesetzlicher Vertreter Name Vorname Anschrift Telefon": `${values.RepName} 
+            ${values.RepOccupation} ${values.RepStreet} ${values.RepHouse} ${values.RepCity} 
+            ${values.RepPostalCode} ${values.RepPhoneNumber}`,
+        }));
   };
 
   

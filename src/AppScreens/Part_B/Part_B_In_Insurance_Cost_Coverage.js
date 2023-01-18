@@ -50,7 +50,10 @@ const Part_A_Applicant_Info = ({ navigation }) => {
   const [addDialog, setAddDialog] = useState(false);
 
   const saveState = (values) => {
-    dispatch(modifyResponses(values));
+      console.log(values);
+      dispatch(modifyResponses({
+          "Höhe der Kosten": values.CostCoverage,
+      }));
   };
 
   return (

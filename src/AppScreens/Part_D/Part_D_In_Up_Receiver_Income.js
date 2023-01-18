@@ -57,7 +57,9 @@ const Part_A_Legal_Rep_Info = ({ navigation }) => {
 
 
   const setState  = (values) => {
-      dispatch(modifyResponses(values));
+      dispatch(modifyResponses({
+          "Betrag_1": values.RIncome,
+      }));
   };
 
 

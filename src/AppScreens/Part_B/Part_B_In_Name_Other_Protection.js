@@ -50,7 +50,9 @@ const Part_A_Applicant_Info = ({ navigation }) => {
   const [addDialog, setAddDialog] = useState(false);
 
   const saveState = (values) => {
-    dispatch(modifyResponses(values));
+      dispatch(modifyResponses({
+          "Bezeichnung der Versicherung": values.OrgName,
+      }));
   };
 
   return (
@@ -123,7 +125,8 @@ const Part_A_Applicant_Info = ({ navigation }) => {
               }) => (
                 <View style={styles.mainView}>
 
-                  <Text style={{ paddingLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}>What is the name of the organization</Text>
+                  <Text style={{ paddingLeft: "6%", color: "#1c5bd9", marginTop: "5%" }}>What is the name of the organization?
+                      Up to what amount do they cover the cost? Please separate your answers by ";". </Text>
                   <View style={styles.textinputconatiner}>
                     <TextInput
                         placeholderTextColor={"#87CEEB"}

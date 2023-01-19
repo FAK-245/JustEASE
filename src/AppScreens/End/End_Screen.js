@@ -1,19 +1,18 @@
 import {
     View,
-    Text, TouchableOpacity,
+    Text,
+    TouchableOpacity, Button
 } from "react-native";
+import * as Linking from 'expo-linking';
+import { WebView } from 'react-native-webview';
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {selectResponses} from "../../redux/slice/formSlice";
+import {formSubmitAsync, selectImg, selectResponses} from "../../redux/slice/formSlice";
 import styles from "../../styles/style_end";
 import {global} from "../../styles/shared/global";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 import Header from "../../Components/shared/Header";
 import BackButtonBar from "../../Components/shared/BackButtonBar";
-import {store} from "../../redux/store/store";
-
-const {PDFDocument} = require('pdf-lib');
-const data = require('./fields.json');
 
 
 
@@ -22,50 +21,27 @@ const End_Screen = ({navigation}) => {
     //Safe are view
     const insets = useSafeAreaInsets();
 
+    //Local state
+    const [loading, setLoading] = useState(false)
+    const [imgId, setImgId] = useState("");
+
+    const dispatch = useDispatch();
     const answerData = useSelector(selectResponses);
+    const imgData = useSelector(selectImg);
 
-    const createPDF = async (output) => {
-        console.log(answerData);
-        try {
-            //const pdf = await PDFDocument.load(await readFile("../../../assets/PKH.pdf"));
-            const formUrl = '../../assets/PKH.pdf'
-            const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
-            const pdf = await PDFDocument.load(formPdfBytes)
-
-            const form = pdf.getForm()
-
-            const fields = form.getFields()
-            let index = 0;
-            fields.forEach(field => {
-                const type = field.constructor.name
-                const name = field.getName()
-
-                if (type === 'PDFCheckBox') {
-                    let fieldTemp = form.getCheckBox(name);
-
-                    if (store[name] === true) {
-                        fieldTemp.check();
-                    }
-                }
-
-                if (type === 'PDFTextField') {
-                    let fieldTemp = form.getTextField(name);
-
-                    if (store[name]) {
-                        fieldTemp.setText(store[name]);
-                    }
-                }
-                index++;
+    const createPDF = async () => {
+        setImgId("frmr.pdf");
+        return
+        setLoading(true)
+        dispatch(formSubmitAsync({answers: answerData, img: imgData}))
+            .then(res => {
+                console.log(res.payload.id)
+                setImgId(`${res.payload.id}.pdf`);
+                setLoading(false)
             })
-
-            const pdfBytes = await pdf.save();
-
-            //await writeFile(output, pdfBytes);
-            console.log("PDF creation successful");
-
-        } catch (err) {
-            console.log(err);
-        }
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     return (
@@ -82,9 +58,23 @@ const End_Screen = ({navigation}) => {
                 justifyContent: "flex-start"
             }}>
                 <Text style={{fontSize: 18, fontWeight: "bold", marginTop: "10%"}}>Your application is complete.</Text>
-                <TouchableOpacity onPress={() => createPDF('completedForm.pdf')}>
-                    <Text style={{fontSize: 34, marginTop: "15%", textDecorationLine: "underline"}}>Download</Text>
-                </TouchableOpacity>
+                {
+                    (!loading && imgId === "") && (
+                        <TouchableOpacity onPress={() => createPDF('completedForm.pdf')}>
+                            <Text style={{fontSize: 34, marginTop: "15%", textDecorationLine: "underline"}}>Create Download</Text>
+                        </TouchableOpacity>
+                    )
+                }
+                {
+                    (!loading && imgId !== "") && (
+                        <TouchableOpacity onPress={() => Linking.openURL(`https://justease.zurstiege.de/uploads/${imgId}`)}>
+                            <Text style={{fontSize: 34, marginTop: "15%", textDecorationLine: "underline"}}>Download</Text>
+                        </TouchableOpacity>
+                    )
+                }
+                {
+                    loading && <Text style={{fontSize: 34, marginTop: "15%", textDecorationLine: "underline"}}>Loading...</Text>
+                }
 
                 <Text style={{fontSize: 14, width: "85%", marginTop: "15%"}}>
                     After You have download your application you have to signit under

@@ -10,8 +10,8 @@ const initialState = {
 
 export const formSubmitAsync = createAsyncThunk(
     'form/submit',
-    async (credentials) => {
-        //return await login(credentials);
+    async (data) => {
+        return await formSubmit(data);
     }
 );
 

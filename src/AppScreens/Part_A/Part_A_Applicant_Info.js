@@ -138,8 +138,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           <DialogContent>
             <View>
               <Text style={{ marginBottom: "2%" }}>
-                Here you have to input your exact name which is written in your
-                documents etc..
+                Please input your full name as given in your ID/passport.
               </Text>
               <Button
                 title="Close"
@@ -184,8 +183,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           <DialogContent>
             <View>
               <Text style={{ marginBottom: "2%" }}>
-                Here you have to input your Occupation for which you are
-                working....
+                  {'What is your job?\n\nE.g., caretaker, lawyer, nurse, cashier, etc.'}
               </Text>
               <Button
                 title="Close"
@@ -230,8 +228,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           <DialogContent>
             <View>
               <Text style={{ marginBottom: "2%" }}>
-                Here you have to input your exact DATE of BIRTH (MM/DD/YY) in
-                this form, by keeping in consider the documents...
+                Please input your birthday as given in your ID/passport.
               </Text>
               <Button
                 title="Close"
@@ -276,9 +273,7 @@ const Part_A_Applicant_Info = ({ navigation }) => {
           <DialogContent>
             <View>
               <Text style={{ marginBottom: "2%" }}>
-                Here you have to input your exact Address (Street no,House
-                no,City and PostalCode) in this form, by keeping in consider the
-                documents...
+                  {"What is the address where you live?\n\nExample: Sonnenstraße 1, 12345 Beispielstadt"}
               </Text>
               <Button
                 title="Close"

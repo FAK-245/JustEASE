@@ -33,7 +33,6 @@
     "react-native-gesture-handler": "^2.9.0",
     "react-native-image-picker": "^5.0.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
-    "react-native-popup-dialog": "^0.18.3",
     "react-native-progress": "^5.0.0",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-responsive-screen": "^1.4.2",

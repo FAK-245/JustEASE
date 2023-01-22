@@ -3,8 +3,11 @@
     "name": "JUSTEASE",
     "slug": "JUSTEASE",
     "sdkVersion": "47.0.0",
-    
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,23 +23,37 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "To upload images we need to access your photos"
+        }
+      ]
+    ],
     "ios": {
-      "supportsTablet": true
+      "buildNumber": "4",
+      "supportsTablet": false,
+      "bundleIdentifier": "com.yamleeha.JUSTEASE"
     },
     "android": {
+      "versionCode": 3,
+      "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.yamleeha.JUSTEASE"
+      "package": "com.yamleeha.JUSTEASE",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "f560b16e-ed67-40ba-80f8-f04967a5baa9"
-       
+        "projectId": "6d1b1801-4559-4936-9f8a-2d2b68c67ed4"
       }
     }
   }

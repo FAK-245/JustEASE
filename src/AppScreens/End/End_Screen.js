@@ -30,13 +30,10 @@ const End_Screen = ({navigation}) => {
     const imgData = useSelector(selectImg);
 
     const createPDF = async () => {
-        setImgId("frmr.pdf");
-        return
         setLoading(true)
         dispatch(formSubmitAsync({answers: answerData, img: imgData}))
             .then(res => {
-                console.log(res.payload.id)
-                setImgId(`${res.payload.id}.pdf`);
+                setImgId(res.payload.img);
                 setLoading(false)
             })
             .catch(err => {
@@ -67,7 +64,7 @@ const End_Screen = ({navigation}) => {
                 }
                 {
                     (!loading && imgId !== "") && (
-                        <TouchableOpacity onPress={() => Linking.openURL(`https://justease.zurstiege.de/uploads/${imgId}`)}>
+                        <TouchableOpacity onPress={() => Linking.openURL(imgId)}>
                             <Text style={{fontSize: 34, marginTop: "15%", textDecorationLine: "underline"}}>Download</Text>
                         </TouchableOpacity>
                     )
